@@ -240,6 +240,11 @@ body {
   border-radius: 8px; padding: 12px 14px; margin: 0 0 10px;
   font-size: 13.5px; line-height: 1.55; color: var(--text);
 }
+.map-wrap {
+  border: 0.5px solid var(--border); border-radius: 8px;
+  overflow: hidden; background: var(--card); margin: 0 0 10px;
+}
+.map-wrap svg { display: block; width: 100%; height: auto; }
 .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 600px) { .faq-grid { grid-template-columns: 1fr; } }
 .faq-card {
@@ -395,7 +400,7 @@ body.editing .editable-field { display: block; }
     <div class="info-card">
       <div class="info-title">Swan House Farm</div>
       <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
-<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a></div>
+<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps →</a></div>
     </div>
     <div class="info-card" id="parking-card">
       <div class="info-title">Parking &amp; arrival</div>
@@ -409,6 +414,135 @@ body.editing .editable-field { display: block; }
     <div class="editable-field">
       <label>Route note (the rust card above — leave blank to hide)</label>
       <textarea id="edit-route"></textarea>
+    </div>
+    <div class="map-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 1180" preserveAspectRatio="xMidYMid meet" font-family="Caladea, Georgia, serif" role="img" aria-label="Map of Swan House Farm">
+  <defs>
+    <radialGradient id="paperGrad" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#fbf6ea"/>
+      <stop offset="100%" stop-color="#ece2cc"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.4"/>
+      <feOffset dx="0.8" dy="1.2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1380" height="1180" fill="url(#paperGrad)"/>
+  <g transform="translate(690 50)">
+    <text text-anchor="middle" font-size="26" font-weight="700" fill="#5a3a22" letter-spacing="3">SWAN HOUSE FARM</text>
+    <text y="24" text-anchor="middle" font-size="12" font-style="italic" fill="#8a6a4a" letter-spacing="1.5">19479 Landing Rd · Mount Vernon · Skagit County</text>
+  </g>
+  <g transform="translate(185 90)">
+    <rect x="-4" y="-4" width="1018" height="1008" fill="#fbf6ea" stroke="#8a6a4a" stroke-width="1"/>
+    <image href="farm-aerial.jpg" x="0" y="0" width="1010" height="1000"/>
+    <rect x="0" y="0" width="1010" height="1000" fill="#a8842c" opacity="0.07"/>
+  </g>
+  <g transform="translate(1130 130)">
+    <circle r="22" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1.2" opacity="0.95"/>
+    <polygon points="0,-14 -8,8 0,2 8,8" fill="#5a3a22"/>
+    <text y="20" text-anchor="middle" font-size="9" font-weight="700" fill="#5a3a22">N</text>
+  </g>
+  <symbol id="pin" overflow="visible">
+    <circle r="8" fill="none" stroke="#a8842c" stroke-width="2"/>
+    <circle r="3" fill="#a8842c"/>
+  </symbol>
+  <g>
+    <use href="#pin" x="540" y="610"/>
+    <line x1="540" y1="610" x2="1240" y2="430" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(1240 412)" filter="url(#softShadow)">
+      <rect x="-100" y="-18" width="135" height="46" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="-2" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Main House</text>
+      <text x="-32" y="14" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">the farmhouse kitchen</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="520" y="590"/>
+    <line x1="520" y1="590" x2="1250" y2="540" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(1250 525)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Bar</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">welcome pours</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="570" y="660"/>
+    <line x1="570" y1="660" x2="1250" y2="650" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(1250 635)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Pergola</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">the dining table</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="475" y="620"/>
+    <line x1="475" y1="620" x2="135" y2="640" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(135 625)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Swan House</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">the namesake</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="445" y="560"/>
+    <line x1="445" y1="560" x2="135" y2="450" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(135 435)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Parking</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">guest arrival</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="460" y="590"/>
+    <line x1="460" y1="590" x2="135" y2="540" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(135 525)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Farm Stand</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">restrooms here</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="445" y="675"/>
+    <line x1="445" y1="675" x2="135" y2="800" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(135 786)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Barn</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">animals · farm work</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="395" y="745"/>
+    <line x1="395" y1="745" x2="135" y2="905" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(135 890)" filter="url(#softShadow)">
+      <rect x="-100" y="-15" width="135" height="46" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="-32" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Lamb Field</text>
+      <text x="-32" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">+ pig enclosure</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="330" y="475"/>
+    <line x1="330" y1="475" x2="330" y2="200" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(290 185)" filter="url(#softShadow)">
+      <rect x="-68" y="-15" width="135" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="0" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Glampground</text>
+      <text x="0" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">in the alder grove</text>
+    </g>
+  </g>
+  <g>
+    <use href="#pin" x="445" y="880"/>
+    <line x1="445" y1="880" x2="950" y2="1110" stroke="#5a3a22" stroke-width="1.2" opacity="0.85"/>
+    <g transform="translate(950 1098)" filter="url(#softShadow)">
+      <rect x="0" y="-15" width="200" height="42" rx="4" fill="#fbf6ea" stroke="#5a3a22" stroke-width="1"/>
+      <text x="100" y="3" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a22">Road to Boat Launch</text>
+      <text x="100" y="18" text-anchor="middle" font-size="9" font-style="italic" fill="#8a6a4a">down to the Skagit River</text>
+    </g>
+  </g>
+  <g transform="translate(195 1108)">
+    <use href="#pin" x="10" y="0"/>
+    <text x="26" y="4" font-size="11" fill="#5a3a22" font-style="italic">marks the spot on the property</text>
+  </g>
+</svg>
     </div>
   </div>
 
