@@ -240,6 +240,16 @@ body {
   border-radius: 8px; padding: 12px 14px; margin: 0 0 10px;
   font-size: 13.5px; line-height: 1.55; color: var(--text);
 }
+.map-wrap {
+  border: 0.5px solid var(--border); border-radius: 8px;
+  overflow: hidden; background: var(--card); margin: 0 0 10px;
+}
+.map-wrap img { display: block; width: 100%; height: auto; }
+.map-caption {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute); text-align: center;
+  padding: 8px 10px 10px;
+}
 .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 600px) { .faq-grid { grid-template-columns: 1fr; } }
 .faq-card {
@@ -409,6 +419,10 @@ body.editing .editable-field { display: block; }
     <div class="editable-field">
       <label>Route note (the rust card above — leave blank to hide)</label>
       <textarea id="edit-route"></textarea>
+    </div>
+    <div class="map-wrap">
+      <img src="property-map.jpg" alt="Swan House Farm property map" loading="lazy">
+      <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
     </div>
   </div>
 
