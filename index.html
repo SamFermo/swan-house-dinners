@@ -328,11 +328,49 @@ body.editing .editable-field { display: block; }
 
   <!-- welcome -->
   <div class="section">
-    <p class="prose">We can't wait to see you up on the farm. We're a family farm on the North Fork of the Skagit River outside La Conner, and these dinners are our favorite nights of the year: everything Skagit Valley and Swan House have to offer, cooked by the San Fermo team and served in the garden pergola as the evening comes in.</p>
+    <p class="prose">We can't wait to see you up on the farm. We're a family farm on the North Fork of the Skagit River outside La Conner, and these dinners are our favorite nights of the year: everything Skagit Valley and Swan House have to offer, cooked by the San Fermo team and served in the garden pergola as the evening comes on.</p>
     <p class="prose" id="host-note-display" style="display:none;"></p>
     <div class="editable-field">
       <label>A note from the hosts (optional, shows under the welcome)</label>
       <textarea id="edit-host-note"></textarea>
+    </div>
+  </div>
+
+  <!-- getting here -->
+  <div class="section">
+    <div class="section-label">Getting here</div>
+    <div class="info-card">
+      <div class="info-title">Swan House Farm</div>
+      <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
+Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.
+<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps →</a></div>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Driving directions</div>
+      <div class="info-body">Weekend traffic from Seattle can be heavy, so give yourself a little extra time.
+
+Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head west toward La Conner. Just past the North Fork bridge, turn left onto Dodge Valley Rd. In about 0.6 miles, turn left onto Landing Rd — it's a bit of a blind turn, so take it slow. Follow the bends and continue past the private road sign.</div>
+    </div>
+    <div class="info-card" id="parking-card">
+      <div class="info-title">Parking</div>
+      <div class="info-body" id="parking-body"></div>
+      <div class="editable-field">
+        <label>Parking instructions</label>
+        <textarea id="edit-parking"></textarea>
+      </div>
+    </div>
+    <div class="route-note" id="route-note"></div>
+    <div class="editable-field">
+      <label>Day-of traffic note (rust card above — auto-filled the morning of each dinner; leave blank to hide)</label>
+      <textarea id="edit-route"></textarea>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Staying the night</div>
+      <div class="info-body">For guests who'd like to stay nearby, we recommend the Channel Lodge in La Conner, about four miles away.</div>
+    </div>
+    <div class="map-wrap">
+      <img src="property-map.jpg" alt="Swan House Farm property map" loading="lazy">
+      <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
     </div>
   </div>
 
@@ -343,37 +381,25 @@ body.editing .editable-field { display: block; }
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time" id="ev-arrival-time">Arrival · 3:30 pm</div>
-          <div class="ev-name">Welcome reception</div>
-          <div class="ev-desc">You'll be greeted as you park. Settle in with arrival refreshments and hors d'oeuvres.</div>
-          <div class="editable-field">
-            <label>Arrival time (e.g. "3:30 pm")</label>
-            <input id="edit-arrival" type="text">
-          </div>
+          <div class="ev-time">3:30 – 4:30 pm</div>
+          <div class="ev-name">Arrival &amp; farm tours</div>
+          <div class="ev-desc">Arrive any time after 3:30 for welcome drinks, hors d'oeuvres, and a walk through the farm.</div>
         </div>
       </div>
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time">Late afternoon</div>
-          <div class="ev-name">A walk through the farm</div>
-          <div class="ev-desc">Walking tours of the orchards, market garden, pastures, and the animals who call Swan House home.</div>
-        </div>
-      </div>
-      <div class="ev-step">
-        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
-        <div class="ev-body">
-          <div class="ev-time">Golden hour</div>
+          <div class="ev-time">4:30 pm</div>
           <div class="ev-name">Dinner in the garden</div>
-          <div class="ev-desc">We sit down together at three communal tables under the pergola for a five-course paired wine dinner.</div>
+          <div class="ev-desc">We sit down together at three communal tables under the pergola for a five-course paired wine dinner. Running behind? Give us a call at 206.551.3328 and we'll make sure you're set.</div>
         </div>
       </div>
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time">Evening · ends 7–8 pm</div>
+          <div class="ev-time">Wraps up around 8 pm</div>
           <div class="ev-name">Dessert &amp; coffee</div>
-          <div class="ev-desc">The evening closes with dessert and locally roasted espresso.</div>
+          <div class="ev-desc">The evening closes with dessert and Cafe Umbria coffee.</div>
         </div>
       </div>
     </div>
@@ -384,6 +410,12 @@ body.editing .editable-field { display: block; }
     <div class="section-label">The menu</div>
     <p class="tap-hint">tap any dish for the story behind it</p>
     <div id="menu"></div>
+  </div>
+
+  <!-- dietary -->
+  <div class="section">
+    <div class="section-label">Allergies &amp; dietary needs</div>
+    <div class="dietary">All food allergies and dietary needs were sent to the chef before the menu was built. If you have any last-minute concerns, please email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>
   </div>
 
   <!-- wine -->
@@ -399,33 +431,6 @@ body.editing .editable-field { display: block; }
     <div id="cocktails"></div>
   </div>
 
-  <!-- getting here -->
-  <div class="section">
-    <div class="section-label">Getting here</div>
-    <div class="info-card">
-      <div class="info-title">Swan House Farm</div>
-      <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
-<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps →</a></div>
-    </div>
-    <div class="info-card" id="parking-card">
-      <div class="info-title">Parking &amp; arrival</div>
-      <div class="info-body" id="parking-body"></div>
-      <div class="editable-field">
-        <label>Parking &amp; arrival instructions</label>
-        <textarea id="edit-parking"></textarea>
-      </div>
-    </div>
-    <div class="route-note" id="route-note"></div>
-    <div class="editable-field">
-      <label>Route note (the rust card above — leave blank to hide)</label>
-      <textarea id="edit-route"></textarea>
-    </div>
-    <div class="map-wrap">
-      <img src="property-map.jpg" alt="Swan House Farm property map" loading="lazy">
-      <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
-    </div>
-  </div>
-
   <!-- good to know -->
   <div class="section">
     <div class="section-label">Good to know</div>
@@ -434,19 +439,13 @@ body.editing .editable-field { display: block; }
       <div class="faq-card"><div class="faq-q">The terrain</div><div class="faq-a">Farm tours follow walking paths over uneven ground — another vote for sturdy shoes.</div></div>
       <div class="faq-card"><div class="faq-q">Seating</div><div class="faq-a">All 26 guests share three communal tables. Joining a larger group? Reach out and we'll seat you together.</div></div>
       <div class="faq-card"><div class="faq-q">Wine &amp; zero-proof</div><div class="faq-a">Paired wine and bubbles are included, and we pour excellent non-alcoholic wines for anyone who prefers them.</div></div>
-      <div class="faq-card"><div class="faq-q">Bees live here</div><div class="faq-a">It's a working farm with pollinators everywhere. If anyone in your party has a serious sting allergy, please weigh that carefully.</div></div>
+      <div class="faq-card"><div class="faq-q">Out by the river</div><div class="faq-a">We sit right along the Skagit River, so bees, wasps, and mosquitos come with the setting. We suggest bringing a little bug spray — and if anyone has a serious sting allergy, please weigh that carefully.</div></div>
       <div class="faq-card"><div class="faq-q">The animals</div><div class="faq-a">Tours offer a chance to visit the livestock. Say hello — gently, and at your own discretion.</div></div>
       <div class="faq-card"><div class="faq-q">Restrooms</div><div class="faq-a">The farm septic system is modest, so we provide comfortable temporary restrooms for the evening.</div></div>
       <div class="faq-card"><div class="faq-q">Dogs</div><div class="faq-a">We love them, but the livestock don't — please leave pups at home.</div></div>
       <div class="faq-card"><div class="faq-q">Photos</div><div class="faq-a">Please take pictures and share the evening. We appreciate the support!</div></div>
       <div class="faq-card"><div class="faq-q">Tickets</div><div class="faq-a">Bookings are final, but tickets are transferable — if plans change, contact us and we'll help hand them to new guests. Severe weather is the one exception: we'll cancel and make it right.</div></div>
     </div>
-  </div>
-
-  <!-- dietary -->
-  <div class="section">
-    <div class="section-label">Allergies &amp; dietary needs</div>
-    <div class="dietary">All 26 guests are served the same menu, and we've already noted everything shared at booking. If anything has changed — a new allergy, a guest swap, anything at all — just <strong>reply to the menu email this page came with</strong> and we'll take care of it quietly before you arrive.</div>
   </div>
 
   <div class="footer">
@@ -466,9 +465,8 @@ body.editing .editable-field { display: block; }
 const SERIES_ID = "2026-06";
 
 const GUEST_INFO_DEFAULTS = {
-  arrival_time: "3:30 pm",
-  parking: "",
-  route_note: "One heads-up for the drive: the bridge out of Mount Vernon has its east-bound lane closed for long-term construction. If that bridge is part of your route home, plan an alternate for the way back.",
+  parking: "At the end of Landing Rd you'll see the Swan House Farm sign and an A-board pointing the way in. Head up the drive and the parking area is on your right.",
+  route_note: "",   /* day-of I-5 traffic note, auto-filled the morning of each dinner; blank = hidden */
   host_note: ""
 };
 
@@ -536,7 +534,7 @@ const REF = {
     ]},
     { label: "Caffé", subtitle: "to close", dishes: [
       { name: "Cafe Umbria", pronunciation: null, components: null,
-        story: "Locally roasted espresso from Seattle's Cafe Umbria, served to close the meal.",
+        story: "Locally roasted coffee from Seattle's Cafe Umbria, served to close the meal.",
         ingredients: [] }
     ]}
   ],
@@ -694,16 +692,11 @@ function toggle(key) {
 }
 
 function renderGuestInfo() {
-  document.getElementById("ev-arrival-time").textContent = "Arrival · " + (guestInfo.arrival_time || GUEST_INFO_DEFAULTS.arrival_time);
   const pb = document.getElementById("parking-body");
   const pc = document.getElementById("parking-card");
-  if (guestInfo.parking && guestInfo.parking.trim()) {
-    pb.textContent = guestInfo.parking;
-    pc.classList.remove("pending");
-  } else {
-    pb.innerHTML = "<em>Parking specifics are coming in your menu email — for now, just follow the driveway and we'll wave you in.</em>";
-    pc.classList.add("pending");
-  }
+  const parking = (guestInfo.parking && guestInfo.parking.trim()) ? guestInfo.parking : GUEST_INFO_DEFAULTS.parking;
+  pb.textContent = parking;
+  pc.classList.remove("pending");
   const rn = document.getElementById("route-note");
   if (guestInfo.route_note && guestInfo.route_note.trim()) {
     rn.textContent = guestInfo.route_note; rn.style.display = "block";
@@ -752,7 +745,6 @@ function enterEditMode() {
   const pin = prompt("Host PIN:");
   if (pin !== EDIT_PIN) { if (pin !== null) alert("That's not it."); return; }
   document.body.classList.add("editing");
-  document.getElementById("edit-arrival").value = guestInfo.arrival_time || "";
   document.getElementById("edit-parking").value = guestInfo.parking || "";
   document.getElementById("edit-route").value = guestInfo.route_note || "";
   document.getElementById("edit-host-note").value = guestInfo.host_note || "";
@@ -763,7 +755,6 @@ async function saveEdits() {
   const status = document.getElementById("edit-status");
   status.textContent = "Publishing…";
   const payload = {
-    arrival_time: document.getElementById("edit-arrival").value.trim(),
     parking: document.getElementById("edit-parking").value.trim(),
     route_note: document.getElementById("edit-route").value.trim(),
     host_note: document.getElementById("edit-host-note").value.trim(),
