@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Swan House Farm — Farm Dinners</title>
+<meta property="og:title" content="Swan House Farm — Farm Dinners">
+<meta property="og:description" content="Your evening at the farm: menu, wine pairings, and everything to know before you arrive.">
+<style>
+:root {
+  --bg:           #f4ede0;
+  --bg-deeper:    #ece2cc;
+  --card:         #fbf6ea;
+  --card-edge:    #d8c8a8;
+  --border:       #d8c8a8;
+  --border-soft:  #e6d8b8;
+  --text:         #2a2418;
+  --text-soft:    #6a5e48;
+  --text-mute:    #a89a78;
+  --accent:       #4a6a3a;
+  --accent-dark:  #2e4624;
+  --accent-soft:  #c8d6b8;
+  --rust:         #b04a1a;
+  --rust-soft:    #f4dec8;
+  --gold:         #a8842c;
+  --gold-soft:    #f0e4c4;
+  --wood:         #5a3a22;
+  --wood-soft:    #8a6a4a;
+  --shadow:       0 1px 2px rgba(58, 42, 22, 0.06);
+  --shadow-lift:  0 2px 6px rgba(58, 42, 22, 0.12);
+  --radius:       6px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'Caladea', 'Cambria', Georgia, serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(244, 237, 224, 0.52), rgba(244, 237, 224, 0.62)),
+    url('../dinner-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.sans { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; }
+
+.bubble {
+  background: rgba(251, 246, 234, 0.95);
+  max-width: 720px;
+  margin: 18px auto 24px;
+  border-radius: 14px;
+  padding: 26px 22px 34px;
+  box-shadow:
+    0 6px 22px rgba(58, 42, 22, 0.28),
+    0 0 0 1px rgba(216, 200, 168, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+@media (max-width: 760px) { .bubble { margin: 10px 10px 18px; padding: 22px 16px 28px; } }
+
+/* ---------- header ---------- */
+.hdr { text-align: center; margin-bottom: 26px; }
+.hdr-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--gold); margin-bottom: 8px;
+}
+.hdr-title { font-size: 30px; font-weight: 700; color: var(--wood); line-height: 1.15; }
+.hdr-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13.5px; color: var(--text-mute); margin-top: 8px;
+}
+.hdr-dates {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px;
+}
+.hdr-date {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; font-weight: 600; color: var(--wood);
+  background: var(--gold-soft); border: 1px solid var(--gold);
+  border-radius: 999px; padding: 4px 13px;
+}
+
+/* ---------- sections ---------- */
+.section { margin: 0 0 30px; }
+.section-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--gold);
+  margin: 0 0 12px; padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--border);
+}
+.prose { font-size: 14.5px; line-height: 1.6; color: var(--text); }
+.prose + .prose { margin-top: 10px; }
+.prose em { color: var(--text-soft); }
+
+/* ---------- evening timeline ---------- */
+.evening { display: flex; flex-direction: column; gap: 0; }
+.ev-step { display: flex; gap: 14px; }
+.ev-rail { display: flex; flex-direction: column; align-items: center; width: 14px; flex-shrink: 0; }
+.ev-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gold); margin-top: 6px; flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+.ev-line { width: 1px; flex: 1; background: var(--border); margin: 4px 0 2px; }
+.ev-step:last-child .ev-line { display: none; }
+.ev-body { padding-bottom: 18px; }
+.ev-time {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold);
+}
+.ev-name { font-size: 16px; font-weight: 700; color: var(--wood); margin: 2px 0 3px; }
+.ev-desc { font-size: 13.5px; line-height: 1.5; color: var(--text-soft); }
+
+/* ---------- course + dish cards ---------- */
+.course { margin: 0 0 22px; }
+.course-label { font-size: 22px; font-weight: 500; color: var(--wood); text-align: center; }
+.course-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; font-style: italic; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-mute); text-align: center; margin: 2px 0 12px;
+}
+.dish, .wine, .cocktail {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  margin: 0 0 10px;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.dish.expanded, .wine.expanded, .cocktail.expanded { border-color: var(--gold); }
+.dish-head, .wine-head, .cocktail-head { padding: 14px 16px; cursor: pointer; user-select: none; }
+.dish-details, .wine-details, .cocktail-details {
+  display: none; padding: 4px 18px 18px; border-top: 0.5px dashed var(--border);
+}
+.dish.expanded .dish-details, .wine.expanded .wine-details, .cocktail.expanded .cocktail-details { display: block; }
+
+.dish-name { font-size: 16.5px; font-weight: 700; color: var(--wood); text-align: center; }
+.dish-pron { font-size: 13px; font-style: italic; font-weight: 400; color: var(--gold); }
+.dish-comp { font-size: 14px; font-style: italic; color: var(--text-mute); text-align: center; margin-top: 4px; }
+.dish-story { font-size: 14.5px; line-height: 1.55; color: var(--text); margin-top: 10px; }
+.ing-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold); margin: 14px 0 6px;
+}
+.ing { font-size: 13.5px; line-height: 1.5; margin: 0 0 6px; }
+.ing-bullet { color: var(--gold); margin-right: 5px; }
+.ing-term { font-weight: 700; color: var(--wood); }
+.ing-pron { font-style: italic; color: var(--gold); }
+.tap-hint {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute); text-align: center; margin: 0 0 12px;
+}
+
+/* ---------- wine cards ---------- */
+.wine-pills { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; flex-wrap: wrap; }
+.wine-type {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; border-radius: 999px; padding: 3px 10px;
+}
+.wine-type-white     { background: #f5ead0; color: var(--wood); }
+.wine-type-red       { background: #e8d4cc; color: #6b2818; }
+.wine-type-sparkling { background: #e8e8d4; color: #5f5a2a; }
+.wine-type-na        { background: #e0e8de; color: #3a5a3a; }
+.wine-name { font-size: 16.5px; font-weight: 700; color: var(--wood); }
+.wine-vint { font-size: 13px; font-style: italic; font-weight: 400; color: var(--gold); }
+.wine-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12.5px; color: var(--text-mute); margin: 2px 0 8px;
+}
+.wine-notes { font-size: 14px; line-height: 1.5; color: var(--text); }
+.wine-specs {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  margin-top: 12px; padding-top: 10px; border-top: 0.5px dashed var(--border);
+}
+.wine-spec { text-align: center; }
+.wine-spec-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-mute); margin-bottom: 3px;
+}
+.wine-dots { display: inline-flex; gap: 3px; align-items: center; }
+.wine-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+.wine-dot.on { background: var(--gold); }
+.wine-spec-range {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 9.5px; color: var(--text-mute); margin-top: 2px;
+}
+.detail-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold); margin: 14px 0 5px;
+}
+.detail-body { font-size: 14px; line-height: 1.55; color: var(--text); }
+
+/* ---------- cocktail ---------- */
+.cocktail-tag { font-size: 13px; font-style: italic; color: var(--gold); margin: 2px 0 8px; }
+.cocktail-ing { padding: 9px 0; border-bottom: 0.5px dashed var(--border-soft); }
+.cocktail-ing:last-child { border-bottom: none; }
+.cocktail-ing.has-highlight {
+  border-left: 3px solid var(--accent);
+  padding-left: 10px; margin-left: -10px;
+  background: linear-gradient(to right, rgba(200, 214, 184, 0.18), transparent 60%);
+  border-radius: 4px;
+}
+.ci-row { display: flex; align-items: baseline; gap: 8px; }
+.ci-name { font-size: 14px; font-weight: 700; color: var(--wood); }
+.ci-amount {
+  margin-left: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; color: var(--text-mute); white-space: nowrap;
+}
+.ci-highlight {
+  display: inline-block; padding: 2px 9px;
+  background: var(--accent-soft); border: 1px solid var(--accent);
+  color: var(--accent-dark); border-radius: 999px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; line-height: 1.3; white-space: nowrap;
+}
+.ci-desc { font-size: 13.5px; line-height: 1.5; color: var(--text); margin-top: 6px; }
+
+/* ---------- getting here / info cards ---------- */
+.info-card {
+  background: var(--bg); border-radius: 8px;
+  padding: 12px 14px; margin: 0 0 10px;
+  border-left: 3px solid var(--gold);
+}
+.info-card.pending { border-left-color: var(--text-mute); }
+.info-title { font-size: 14.5px; font-weight: 700; color: var(--wood); margin-bottom: 3px; }
+.info-body { font-size: 13.5px; line-height: 1.55; color: var(--text); white-space: pre-line; }
+.info-body a { color: var(--accent-dark); }
+.route-note {
+  background: var(--rust-soft); border-left: 3px solid var(--rust);
+  border-radius: 8px; padding: 12px 14px; margin: 0 0 10px;
+  font-size: 13.5px; line-height: 1.55; color: var(--text);
+}
+.map-wrap {
+  border: 0.5px solid var(--border); border-radius: 8px;
+  overflow: hidden; background: var(--card); margin: 0 0 10px;
+}
+.map-wrap img { display: block; width: 100%; height: auto; }
+.map-caption {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute); text-align: center;
+  padding: 8px 10px 10px;
+}
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 600px) { .faq-grid { grid-template-columns: 1fr; } }
+.faq-card {
+  background: var(--bg); border: 0.5px solid var(--border);
+  border-radius: 8px; padding: 12px 14px;
+}
+.faq-q { font-size: 13.5px; font-weight: 700; color: var(--wood); margin-bottom: 4px; }
+.faq-a { font-size: 13px; line-height: 1.5; color: var(--text-soft); }
+
+.dietary {
+  background: var(--gold-soft); border-left: 3px solid var(--gold);
+  border-radius: 8px; padding: 14px 16px;
+  font-size: 14px; line-height: 1.6; color: var(--text);
+}
+
+.footer { text-align: center; margin-top: 34px; }
+.footer-tagline {
+  font-size: 13.5px; font-style: italic; color: var(--text-soft);
+  max-width: 440px; margin: 0 auto 14px; line-height: 1.6;
+}
+.footer-fine {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute);
+}
+.footer-fine a { color: var(--text-mute); }
+
+/* ---------- edit mode ---------- */
+.edit-bar {
+  display: none; position: sticky; top: 0; z-index: 50;
+  background: var(--wood); color: #fff; border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+}
+body.editing .edit-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.edit-bar button {
+  font-family: inherit; font-size: 12.5px; font-weight: 700;
+  border: none; border-radius: 999px; padding: 7px 16px; cursor: pointer;
+}
+.edit-save { background: var(--gold); color: #fff; }
+.edit-cancel { background: rgba(255,255,255,0.18); color: #fff; }
+.edit-status { font-size: 12px; opacity: 0.85; }
+.editable-field { display: none; width: 100%; margin-top: 8px; }
+body.editing .editable-field { display: block; }
+.editable-field label {
+  display: block; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gold); margin-bottom: 4px;
+}
+.editable-field textarea, .editable-field input {
+  width: 100%; font-family: 'Caladea', 'Cambria', Georgia, serif;
+  font-size: 14px; color: var(--text); background: #fff;
+  border: 1px solid var(--gold); border-radius: 6px; padding: 8px 10px;
+}
+.editable-field textarea { min-height: 84px; resize: vertical; }
+</style>
+</head>
+<body>
+
+<div class="bubble">
+
+  <div class="edit-bar">
+    <span style="font-weight:700;">Host edit mode</span>
+    <span class="edit-status" id="edit-status">Editing the guest welcome package. Changes go live the moment you save.</span>
+    <button class="edit-save" onclick="saveEdits()">Save &amp; publish</button>
+    <button class="edit-cancel" onclick="exitEditMode()">Cancel</button>
+  </div>
+
+  <!-- header -->
+  <div class="hdr">
+    <div class="hdr-eyebrow">Swan House Farm · Skagit Valley</div>
+    <div class="hdr-title">Farm Dinners</div>
+    <div class="hdr-sub" id="hdr-sub">June 2026 · A five-course evening at the farm</div>
+    <div class="hdr-dates" id="hdr-dates"></div>
+  </div>
+
+  <!-- welcome -->
+  <div class="section">
+    <p class="prose">We can't wait to see you up on the farm. We're a family farm on the North Fork of the Skagit River outside La Conner, and these dinners are our favorite nights of the year: everything Skagit Valley and Swan House have to offer, cooked by the San Fermo team and served in the garden pergola as the evening comes on.</p>
+    <p class="prose" id="host-note-display" style="display:none;"></p>
+    <div class="editable-field">
+      <label>A note from the hosts (optional, shows under the welcome)</label>
+      <textarea id="edit-host-note"></textarea>
+    </div>
+  </div>
+
+  <!-- getting here -->
+  <div class="section">
+    <div class="section-label">Getting here</div>
+    <div class="info-card">
+      <div class="info-title">Swan House Farm</div>
+      <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
+Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.
+<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps →</a></div>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Driving directions</div>
+      <div class="info-body">Weekend traffic from Seattle can be heavy, so give yourself a little extra time.
+
+Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head west toward La Conner. Just past the North Fork bridge, turn left onto Dodge Valley Rd. In about 0.6 miles, turn left onto Landing Rd — it's a bit of a blind turn, so take it slow. Follow the bends and continue past the private road sign.</div>
+    </div>
+    <div class="info-card" id="parking-card">
+      <div class="info-title">Parking</div>
+      <div class="info-body" id="parking-body"></div>
+      <div class="editable-field">
+        <label>Parking instructions</label>
+        <textarea id="edit-parking"></textarea>
+      </div>
+    </div>
+    <div class="route-note" id="route-note"></div>
+    <div class="editable-field">
+      <label>Day-of traffic note (rust card above — auto-filled the morning of each dinner; leave blank to hide)</label>
+      <textarea id="edit-route"></textarea>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Staying the night</div>
+      <div class="info-body">For guests who'd like to stay nearby, we recommend the Channel Lodge in La Conner, about four miles away.</div>
+    </div>
+    <div class="map-wrap">
+      <img src="../property-map.jpg" alt="Swan House Farm property map" loading="lazy">
+      <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
+    </div>
+  </div>
+
+  <!-- your evening -->
+  <div class="section">
+    <div class="section-label">Your evening</div>
+    <div class="evening">
+      <div class="ev-step">
+        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
+        <div class="ev-body">
+          <div class="ev-time">3:30 – 4:30 pm</div>
+          <div class="ev-name">Arrival &amp; farm tours</div>
+          <div class="ev-desc">Arrive any time after 3:30 for welcome drinks, hors d'oeuvres, and a walk through the farm.</div>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
+        <div class="ev-body">
+          <div class="ev-time">4:30 pm</div>
+          <div class="ev-name">Dinner in the garden</div>
+          <div class="ev-desc">We sit down together at three communal tables under the pergola for a five-course paired wine dinner. Running behind? Give us a call at 206.551.3328 and we'll make sure you're set.</div>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
+        <div class="ev-body">
+          <div class="ev-time">Wraps up around 8 pm</div>
+          <div class="ev-name">Dessert &amp; coffee</div>
+          <div class="ev-desc">The evening closes with dessert and Cafe Umbria coffee.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- menu -->
+  <div class="section">
+    <div class="section-label">The menu</div>
+    <p class="tap-hint">tap any dish for the story behind it</p>
+    <div id="menu"></div>
+  </div>
+
+  <!-- dietary -->
+  <div class="section">
+    <div class="section-label">Allergies &amp; dietary needs</div>
+    <div class="dietary">All food allergies and dietary needs were sent to the chef before the menu was built. If you have any last-minute concerns, please email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>
+  </div>
+
+  <!-- wine -->
+  <div class="section">
+    <div class="section-label">Wine pairings</div>
+    <p class="tap-hint">tap any pour to meet the producer</p>
+    <div id="wines"></div>
+  </div>
+
+  <!-- cocktail -->
+  <div class="section">
+    <div class="section-label">From the bar</div>
+    <div id="cocktails"></div>
+  </div>
+
+  <!-- good to know -->
+  <div class="section">
+    <div class="section-label">Good to know</div>
+    <div class="faq-grid">
+      <div class="faq-card"><div class="faq-q">Dress for the farm</div><div class="faq-a">Dinner is under a covered garden pergola, open to the evening air. Comfortable walking shoes, a warm layer for after sunset, and sun protection on bright days.</div></div>
+      <div class="faq-card"><div class="faq-q">The terrain</div><div class="faq-a">Farm tours follow walking paths over uneven ground — another vote for sturdy shoes.</div></div>
+      <div class="faq-card"><div class="faq-q">Seating</div><div class="faq-a">All 26 guests share three communal tables. Joining a larger group? Reach out and we'll seat you together.</div></div>
+      <div class="faq-card"><div class="faq-q">Wine &amp; zero-proof</div><div class="faq-a">Paired wine and bubbles are included, and we pour excellent non-alcoholic wines for anyone who prefers them.</div></div>
+      <div class="faq-card"><div class="faq-q">Out by the river</div><div class="faq-a">We sit right along the Skagit River, so bees, wasps, and mosquitos come with the setting. We suggest bringing a little bug spray — and if anyone has a serious sting allergy, please weigh that carefully.</div></div>
+      <div class="faq-card"><div class="faq-q">The animals</div><div class="faq-a">Tours offer a chance to visit the livestock. Say hello — gently, and at your own discretion.</div></div>
+      <div class="faq-card"><div class="faq-q">Restrooms</div><div class="faq-a">The farm septic system is modest, so we provide comfortable temporary restrooms for the evening.</div></div>
+      <div class="faq-card"><div class="faq-q">Dogs</div><div class="faq-a">We love them, but the livestock don't — please leave pups at home.</div></div>
+      <div class="faq-card"><div class="faq-q">Photos</div><div class="faq-a">Please take pictures and share the evening. We appreciate the support!</div></div>
+      <div class="faq-card"><div class="faq-q">Tickets</div><div class="faq-a">Bookings are final, but tickets are transferable — if plans change, contact us and we'll help hand them to new guests. Severe weather is the one exception: we'll cancel and make it right.</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-tagline" id="footer-tagline"></div>
+    <div class="footer-fine">Swan House Farm, LLC · <a href="https://www.swanhousefarm.com" target="_blank" rel="noopener">swanhousefarm.com</a></div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   DATA — embedded at deploy time.
+   Menu/wines/cocktails mirror checkin-app/data/reference/2026-06.json
+   (guest-tone edits applied; plateware/BOH detail stripped).
+   GUEST_INFO defaults are overridden live by Firestore guestContent/<series>.
+   ============================================================ */
+const SERIES_ID = "2026-06";
+
+const GUEST_INFO_DEFAULTS = {
+  parking: "At the end of Landing Rd you'll see the Swan House Farm sign. Head up the drive and the parking area is on your right.",
+  route_note: "",   /* day-of I-5 traffic note, auto-filled the morning of each dinner; blank = hidden */
+  host_note: ""
+};
+
+const REF = {
+  header: { tagline: "thank you so much for joining us on this humble journey through everything skagit and swan house has to offer" },
+  courses: [
+    { label: "Antipasti", subtitle: "welcome bites", dishes: [
+      { name: "Beef Tenderloin Tartare", pronunciation: "tar-TAR",
+        components: "grilled breadfarm focaccia, calabrian, giardiniera, lovage, lemon",
+        story: "Raw beef tenderloin from Pure Country Beef, hand-mixed with Calabrian chili aioli, pickled vegetables, lovage, and lemon. Spooned onto a slice of grilled rosemary focaccia from Breadfarm in Edison. Topped with a microplane of meyer lemon zest and a lovage leaf.",
+        ingredients: [
+          { term: "Calabrian", pronunciation: "kah-LAH-bree-ahn", note: "a spicy red chili paste from the Calabria region of southern Italy; it gives the aioli heat and depth" },
+          { term: "Giardiniera", pronunciation: "jar-din-YEH-rah", note: "Italian pickled vegetables (peppers, cauliflower, carrots, celery) brined in vinegar; mixed straight into the tartare" },
+          { term: "Lovage", pronunciation: "LUH-vij", note: "leafy herb with a flavor like celery and parsley combined, more intense" },
+          { term: "Pure Country Beef", pronunciation: null, note: "Moses Lake, WA — the Pacific Northwest's premier dry-age beef program" }
+        ] },
+      { name: "Asparagus on Endive", pronunciation: "ON-deev",
+        components: "sorrel, crème fraîche, turnip, chive blossom, lovage honey",
+        story: "Inner endive leaves used as a small vessel. Filled with sliced asparagus folded into sorrel chiffonade, crème fraîche, olive oil, and Maldon salt. Topped with turnip batons, a chive blossom, an asparagus tip, and a drizzle of lovage honey.",
+        ingredients: [
+          { term: "Endive", pronunciation: "ON-deev", note: "crisp leafy vegetable with a slight pleasant bitterness; the smaller inner leaves make a one-bite vessel" },
+          { term: "Sorrel", pronunciation: "SOR-rel", note: "leafy herb with bright lemony tartness, like spinach with a citrus punch" },
+          { term: "Lovage honey", pronunciation: null, note: "local honey infused with lovage; herbaceous and floral" }
+        ] }
+    ]},
+    { label: "Insalata", subtitle: "course one", dishes: [
+      { name: "Spring Salad", pronunciation: null,
+        components: "salanova lettuces, sorrel, fennel, mint, lovage, snow peas, fire cider vinaigrette",
+        story: "A composed plate of Kelly's spring garden at Swan House. Farm-grown salanova lettuces — red and green varieties of summer crisp, oakleaf, and butter — layered with whole young sorrel leaves, fennel fronds, mint, and a careful touch of lovage. Shaved snow peas across the top for sweetness and crunch. Dressed with Kelly's homemade fire cider vinaigrette.",
+        ingredients: [
+          { term: "Salanova", pronunciation: "sah-lah-NOH-vah", note: "a lettuce cultivar grown in red and green varieties across several leaf types, prized for tender leaves and excellent texture" },
+          { term: "Fire cider", pronunciation: null, note: "a folk tonic Kelly makes at the farm: apple cider vinegar infused with horseradish, garlic, ginger, hot pepper, onion, and turmeric — softened into a vinaigrette with olive oil and a touch of honey" }
+        ] }
+    ]},
+    { label: "Primi", subtitle: "course two", dishes: [
+      { name: "Paccheri", pronunciation: "pah-KEH-ree",
+        components: "sea bean pesto, smoked lamb sausage, black morels, lemon balm, parmigiano",
+        story: "Tube-shaped pasta from southern Italy, extruded fresh at San Fermo. A vibrant sea bean pesto goes down on the plate first, then smoked lamb sausage from Tim's smoker, black morels, and paccheri tossed in a butter sauce with fresh lemon balm. Finished with shaved Parmigiano and raw fresh sea beans.",
+        ingredients: [
+          { term: "Paccheri", pronunciation: "pah-KEH-ree", note: "large tube pasta, Neapolitan in origin; the name comes from the slapping sound the wide tubes make as they're tossed in sauce" },
+          { term: "Sea beans", pronunciation: null, note: "a wild succulent from coastal salt marshes, also called samphire; naturally briny, crisp, vivid green" },
+          { term: "Smoked lamb sausage", pronunciation: null, note: "sweet-spicy Italian-style sausage smoked at the farm from Tim's lamb" },
+          { term: "Black morels", pronunciation: null, note: "prized wild mushroom with a honeycomb cap and deep, earthy, nutty flavor; in season only in spring" }
+        ] }
+    ]},
+    { label: "Secondi", subtitle: "course three", dishes: [
+      { name: "Smoked Swan House Pork Belly", pronunciation: null,
+        components: "green garlic & lovage salsa verde, grilled cabbage, oregano oil, sorrel",
+        story: "Pork belly from Swan House Farm. Braised low and slow in an aromatic stock, lightly smoked on the Big Green Egg, then roasted to finish for crisp edges. Plated with a green garlic and lovage salsa verde, grilled cabbage in oregano oil, a sauce built from the reduced braising liquid, and a finishing chiffonade of sorrel.",
+        ingredients: [
+          { term: "Salsa verde", pronunciation: "SAHL-sah VEHR-day", note: "Italian green sauce, herb-based, bright with lemon and capers; this version uses farm green garlic, lovage, and parsley" },
+          { term: "Green garlic", pronunciation: null, note: "young garlic harvested in spring before the bulb fully forms; mild, grassy, less sharp than mature garlic" },
+          { term: "Big Green Egg", pronunciation: null, note: "a kamado-style ceramic smoker we use for live-fire cooking at the farm" }
+        ] }
+    ]},
+    { label: "Dolce", subtitle: "course four", dishes: [
+      { name: "Strawberry Pavlova", pronunciation: "pav-LOH-vah",
+        components: "lemon balm pastry cream, rose, honeysuckle, edible flowers",
+        story: "A meringue dessert named for the ballerina Anna Pavlova — crisp outside, marshmallow-soft inside. Ours is baked from rose sugar: rose petals from the farm are processed into the sugar itself, so the floral note lives inside the meringue. Topped with macerated strawberries folded with honeysuckle syrup, lemon balm pastry cream, and a scatter of fresh rose petals, honeysuckle blossoms, and edible flowers.",
+        ingredients: [
+          { term: "Rose sugar", pronunciation: null, note: "caster sugar processed with farm rose petals, then sifted; look for the faint pink tint" },
+          { term: "Honeysuckle", pronunciation: null, note: "sweet floral edible flower from Kelly's garden; mild, like a soft elderflower" },
+          { term: "Pastry cream", pronunciation: null, note: "French custard infused with lemon balm via a 24-hour cold steep" }
+        ] }
+    ]},
+    { label: "Caffé", subtitle: "to close", dishes: [
+      { name: "Cafe Umbria", pronunciation: null, components: null,
+        story: "Locally roasted coffee from Seattle's Cafe Umbria, served to close the meal.",
+        ingredients: [] }
+    ]}
+  ],
+  wines: [
+    { name: "Antica Tenuta Pietramore Passerina", vintage: null, type: "white", region: "Abruzzo, Italy", grapes: "100% Passerina", alcohol_pct: null,
+      pour_notes: "A salty, mineral Italian white from the Abruzzo coast. Pear, yellow peach, white flowers. Indigenous grape, biodynamic estate, stainless-aged on the lees.",
+      specs: [ {label:"Body",rating:3,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:4,low:"soft",high:"bright"},{label:"Tannins",rating:1,low:"none",high:"grippy"} ],
+      producer: "Antica Tenuta Pietramore was started in 2011 by Maria Pia Leone and her partner Massimiliano. The name reflects Maria's reverence for the soil — pietra (stone) + amore (love). The 70-hectare estate is certified organic and biodynamic, nestled between the Maiella mountains and the Adriatic Sea. Maria works exclusively with indigenous Abruzzo grape varieties.",
+      winemaking: "Hand-harvested at deliberately low yields on chalk and limestone soils with south-east exposure. The fruit is gently pressed under dry-ice protection to preserve aromatics — free-run juice only. Aged on its fine lees in stainless steel, which gives it body and a saline, mineral signature." },
+    { name: "Corte Scaletta Valpolicella", vintage: "2022", type: "red", region: "Marcellise, Veneto, Italy", grapes: "40% Corvina · 30% Corvinone · 30% Rondinella", alcohol_pct: null,
+      pour_notes: "Light, pretty Valpolicella from a family estate near Verona. Tart cherry, raspberry preserves, a flicker of green peppercorn. Hand-harvested, stainless-aged, solar-powered cellar.",
+      specs: [ {label:"Body",rating:2,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:4,low:"soft",high:"bright"},{label:"Tannins",rating:2,low:"none",high:"grippy"} ],
+      producer: "Corte Scaletta was founded in 2011 by the Cavedini family, winemakers for generations in the Valley of Marcellise a few kilometers from Verona, where the surrounding mountains and hills moderate the climate. The cellar runs entirely on solar power.",
+      winemaking: "Wild grasses are left long between rows to keep the soil alive — no chemical herbicides. Hand-harvested grapes see a cold maceration and a slow, spontaneous, temperature-controlled fermentation with no inoculated yeasts. The result reads lifted and red-fruited rather than dark and brooding." },
+    { name: "Les Marées Non-Alcoholic Sparkling Blanc de Blancs", vintage: null, type: "sparkling NA", region: "Southern France", grapes: "100% organic Chardonnay", alcohol_pct: 0,
+      pour_notes: "A real sparkling wine with the alcohol removed — not a soda. Organic Chardonnay from Southern France. Green apple, mineral, bright. Chill it, pour it tall, toast with it.",
+      specs: [ {label:"Body",rating:2,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:5,low:"soft",high:"bright"},{label:"Tannins",rating:1,low:"none",high:"grippy"} ],
+      producer: "Les Marées is made from organic Chardonnay grown on the sunlit shores of Southern France — the Blanc de Blancs idea (Chardonnay-only sparkling, the same backbone as Champagne) with the alcohol removed and the structure kept.",
+      winemaking: "Made in the spirit of a true sparkling wine: bright, refined, structured around green apple and mineral. For slow afternoons, easy celebrations, and any moment that calls for sparkle without alcohol." },
+    { name: "Cantina Zaccagnini Alcohol-Removed White", vintage: null, type: "white NA", region: "Abruzzo, Italy", grapes: "Italian white grapes", alcohol_pct: 0,
+      pour_notes: "A premium alcohol-removed Italian white from Abruzzo. Bright straw color, yellow fruits, white flowers, delicate and balanced — a real wine that's had the alcohol gently distilled out.",
+      specs: [ {label:"Body",rating:3,low:"light",high:"full"},{label:"Dryness",rating:4,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:3,low:"soft",high:"bright"},{label:"Tannins",rating:1,low:"none",high:"grippy"} ],
+      producer: "The Ciccio Zaccagnini estate sits on 500 acres in Bolognano, between the Adriatic coast and the Maiella mountains. Marcello Zaccagnini and winemaker Concezio Marulli are central figures in the modern Abruzzo wine renaissance — every bottle carries a small piece of tralcetto (grape vine) as the estate's signature.",
+      winemaking: "A first-class wine is the starting point. The alcohol is removed in a two-step vacuum distillation: the first pass captures the volatile aromas and holds them aside; the second evaporates the ethanol; then the preserved aromas are returned, so the finished bottle keeps the original wine's character." }
+  ],
+  cocktails: [
+    { name: "In Fair Verona", tagline: "a spring Manhattan",
+      pour_notes: "Whiskey-forward but lighter than the classic — Westland's malty depth softened with rhubarb-infused Bianco vermouth, lifted by gentian, Cocchi Americano, and a finishing whisper of lavender.",
+      ingredients: [
+        { name: "Westland flagship whiskey", amount: "2 oz", highlight: "Skagit local",
+          description: "Made right here in Skagit Valley — Westland's flagship is an American single malt: 100% malted barley, aged in new American oak. Notes of malt, cocoa, dried fruit, and a touch of smoke." },
+        { name: "Rhubarb-infused Bianco vermouth", amount: "0.75 oz",
+          description: "House-made infusion. Bianco vermouth is a sweet white vermouth — floral, vanilla-tinged, lightly herbal. Steeped with fresh rhubarb stalks, it picks up rhubarb's tart-sweet brightness, giving the cocktail a distinctly spring character." },
+        { name: "Genziana Fernanda", amount: "0.25 oz",
+          description: "An Italian gentian liqueur from Abruzzo, made from the bitter root of the yellow gentian plant. Earthy, herbal, intensely bitter — a small dose grounds the cocktail and pulls everything into focus." },
+        { name: "Cocchi Americano", amount: "0.25 oz",
+          description: "A Piedmontese aperitivo wine flavored with cinchona bark, gentian, and herbs. Light, citrusy, gently bitter. It brightens the cocktail without sweetening it." },
+        { name: "Lavender bitters", amount: "2 dashes",
+          description: "Aromatic bitters infused with dried lavender. A few dashes carry the spring-garden aroma across every sip and tie the rhubarb to the gentian." }
+      ] }
+  ]
+};
+
+const DATES = [
+  { date: "2026-06-06", display: "Sat, June 6" },
+  { date: "2026-06-07", display: "Sun, June 7" },
+  { date: "2026-06-13", display: "Sat, June 13" },
+  { date: "2026-06-14", display: "Sun, June 14" }
+];
+
+/* ============================================================ RENDER */
+let guestInfo = { ...GUEST_INFO_DEFAULTS };
+const expanded = new Set();
+const esc = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+function renderDates() {
+  document.getElementById("hdr-dates").innerHTML =
+    DATES.map(d => `<span class="hdr-date">${esc(d.display)}</span>`).join("");
+}
+
+function dishHTML(d, idx) {
+  const key = "d" + idx;
+  const pron = d.pronunciation ? ` <span class="dish-pron">${esc(d.pronunciation)}</span>` : "";
+  const comp = d.components ? `<div class="dish-comp">${esc(d.components)}</div>` : "";
+  const ings = (d.ingredients || []).map(i =>
+    `<div class="ing"><span class="ing-bullet">·</span><span class="ing-term">${esc(i.term)}</span>${i.pronunciation ? ` <span class="ing-pron">${esc(i.pronunciation)}</span>` : ""} — ${esc(i.note)}</div>`).join("");
+  return `<div class="dish ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
+    <div class="dish-head" onclick="toggle('${key}')">
+      <div class="dish-name">${esc(d.name)}${pron}</div>${comp}
+    </div>
+    <div class="dish-details">
+      <div class="dish-story">${esc(d.story)}</div>
+      ${ings ? `<div class="ing-label">Ingredients to know</div>${ings}` : ""}
+    </div>
+  </div>`;
+}
+
+function renderMenu() {
+  let i = 0;
+  document.getElementById("menu").innerHTML = REF.courses.map(c => `
+    <div class="course">
+      <div class="course-label">${esc(c.label)}</div>
+      <div class="course-sub">${esc(c.subtitle)}</div>
+      ${c.dishes.map(d => dishHTML(d, i++)).join("")}
+    </div>`).join("");
+}
+
+function typePill(t) {
+  const cls = t === "red" ? "wine-type-red" : t.includes("sparkling") ? "wine-type-sparkling" : t.includes("NA") ? "wine-type-na" : "wine-type-white";
+  return `<span class="wine-type ${cls}">${esc(t)}</span>`;
+}
+
+function wineHTML(w, idx) {
+  const key = "w" + idx;
+  const na = w.alcohol_pct === 0 ? `<span class="wine-type wine-type-na">NA · 0%</span>` : "";
+  const specs = (w.specs || []).map(s => `
+    <div class="wine-spec">
+      <div class="wine-spec-label">${esc(s.label)}</div>
+      <div class="wine-dots">${[1,2,3,4,5].map(n => `<span class="wine-dot ${n <= s.rating ? "on" : ""}"></span>`).join("")}</div>
+      <div class="wine-spec-range">${esc(s.low)} · ${esc(s.high)}</div>
+    </div>`).join("");
+  return `<div class="wine ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
+    <div class="wine-head" onclick="toggle('${key}')">
+      <div class="wine-pills">${typePill(w.type)}${na}</div>
+      <div class="wine-name">${esc(w.name)}${w.vintage ? `&nbsp;<span class="wine-vint">${esc(w.vintage)}</span>` : ""}</div>
+      <div class="wine-sub">${esc(w.region)} · ${esc(w.grapes)}</div>
+      <div class="wine-notes">${esc(w.pour_notes)}</div>
+      <div class="wine-specs">${specs}</div>
+    </div>
+    <div class="wine-details">
+      <div class="detail-label">Producer</div><div class="detail-body">${esc(w.producer)}</div>
+      <div class="detail-label">Winemaking</div><div class="detail-body">${esc(w.winemaking)}</div>
+    </div>
+  </div>`;
+}
+
+function renderWines() {
+  document.getElementById("wines").innerHTML = REF.wines.map((w, i) => wineHTML(w, i)).join("");
+}
+
+function cocktailHTML(c, idx) {
+  const key = "c" + idx;
+  const ings = (c.ingredients || []).map((i, n) => {
+    const ikey = key + "i" + n;
+    return `<div class="cocktail-ing ${i.highlight ? "has-highlight" : ""}">
+      <div class="ci-row" onclick="toggle('${ikey}'); event.stopPropagation();" style="cursor:pointer;">
+        <span class="ci-name">${esc(i.name)}</span>
+        ${i.highlight ? `<span class="ci-highlight">${esc(i.highlight)}</span>` : ""}
+        <span class="ci-amount">${esc(i.amount)}</span>
+      </div>
+      <div class="ci-desc" style="display:${expanded.has(ikey) ? "block" : "none"};">${esc(i.description)}</div>
+    </div>`;
+  }).join("");
+  return `<div class="cocktail ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
+    <div class="cocktail-head" onclick="toggle('${key}')">
+      <div class="wine-pills"><span class="wine-type wine-type-white">cocktail</span></div>
+      <div class="wine-name">${esc(c.name)}</div>
+      <div class="cocktail-tag">${esc(c.tagline)}</div>
+      <div class="wine-notes">${esc(c.pour_notes)}</div>
+    </div>
+    <div class="cocktail-details">
+      <div class="detail-label">What's in it · tap each for more</div>
+      ${ings}
+    </div>
+  </div>`;
+}
+
+function renderCocktails() {
+  document.getElementById("cocktails").innerHTML = REF.cocktails.map((c, i) => cocktailHTML(c, i)).join("");
+}
+
+function toggle(key) {
+  expanded.has(key) ? expanded.delete(key) : expanded.add(key);
+  renderMenu(); renderWines(); renderCocktails();
+}
+
+function renderGuestInfo() {
+  const pb = document.getElementById("parking-body");
+  const pc = document.getElementById("parking-card");
+  const parking = (guestInfo.parking && guestInfo.parking.trim()) ? guestInfo.parking : GUEST_INFO_DEFAULTS.parking;
+  pb.textContent = parking;
+  pc.classList.remove("pending");
+  const rn = document.getElementById("route-note");
+  if (guestInfo.route_note && guestInfo.route_note.trim()) {
+    rn.textContent = guestInfo.route_note; rn.style.display = "block";
+  } else { rn.style.display = "none"; }
+  const hn = document.getElementById("host-note-display");
+  if (guestInfo.host_note && guestInfo.host_note.trim()) {
+    hn.textContent = guestInfo.host_note; hn.style.display = "block";
+  } else { hn.style.display = "none"; }
+  document.getElementById("footer-tagline").textContent = REF.header.tagline;
+}
+
+/* ============================================================ FIREBASE (live host edits) */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
+  authDomain: "swan-house-checkin.firebaseapp.com",
+  projectId: "swan-house-checkin",
+  storageBucket: "swan-house-checkin.firebasestorage.app",
+  messagingSenderId: "743743999844",
+  appId: "1:743743999844:web:e124dd6fa5f791f87b7471"
+};
+const EDIT_PIN = "1936"; /* change me — share only with Tim & Kelly */
+let fbDb = null, fbMod = null;
+
+async function fbInit() {
+  if (fbDb) return fbDb;
+  const appMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+  fbMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+  const app = appMod.initializeApp(FIREBASE_CONFIG);
+  fbDb = fbMod.getFirestore(app);
+  return fbDb;
+}
+
+async function loadGuestContent() {
+  try {
+    const db = await fbInit();
+    const snap = await fbMod.getDoc(fbMod.doc(db, "guestContent", SERIES_ID));
+    if (snap.exists()) {
+      guestInfo = { ...GUEST_INFO_DEFAULTS, ...snap.data() };
+      renderGuestInfo();
+    }
+  } catch (e) { /* offline or rules not yet published — defaults stand */ }
+}
+
+/* ============================================================ EDIT MODE */
+function enterEditMode() {
+  const pin = prompt("Host PIN:");
+  if (pin !== EDIT_PIN) { if (pin !== null) alert("That's not it."); return; }
+  document.body.classList.add("editing");
+  document.getElementById("edit-parking").value = guestInfo.parking || "";
+  document.getElementById("edit-route").value = guestInfo.route_note || "";
+  document.getElementById("edit-host-note").value = guestInfo.host_note || "";
+}
+function exitEditMode() { document.body.classList.remove("editing"); }
+
+async function saveEdits() {
+  const status = document.getElementById("edit-status");
+  status.textContent = "Publishing…";
+  const payload = {
+    parking: document.getElementById("edit-parking").value.trim(),
+    route_note: document.getElementById("edit-route").value.trim(),
+    host_note: document.getElementById("edit-host-note").value.trim(),
+    updated_at: new Date().toISOString()
+  };
+  try {
+    const db = await fbInit();
+    const authMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+    const auth = authMod.getAuth();
+    if (!auth.currentUser) await authMod.signInAnonymously(auth);
+    await fbMod.setDoc(fbMod.doc(db, "guestContent", SERIES_ID), payload, { merge: true });
+    guestInfo = { ...GUEST_INFO_DEFAULTS, ...payload };
+    renderGuestInfo();
+    status.textContent = "Published — guests see this now.";
+    setTimeout(exitEditMode, 1200);
+  } catch (e) {
+    status.textContent = "Couldn't publish (" + (e.code || e.message) + "). Try again or text Sam.";
+  }
+}
+
+/* ============================================================ INIT */
+renderDates(); renderMenu(); renderWines(); renderCocktails(); renderGuestInfo();
+loadGuestContent();
+if (new URLSearchParams(location.search).get("edit") === "1") enterEditMode();
+</script>
+</body>
+</html>
