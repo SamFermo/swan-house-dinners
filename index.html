@@ -710,7 +710,7 @@ async function fbInit() {
   try {
     const acMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js");
     acMod.initializeAppCheck(app, {
-      provider: new acMod.ReCaptchaEnterpriseProvider('6LfG7C8tAAAAAMVadtceT9OwpexLQ5OTKE7vpAjl'),
+      provider: new acMod.ReCaptchaEnterpriseProvider('6LeCgjAtAAAAABX8x9jbb3tkOXmmQ5UvNZD1RL2_'),
       isTokenAutoRefreshEnabled: true,
     });
   } catch (e) { console.error('App Check init failed (non-blocking):', e); }
