@@ -549,8 +549,38 @@ const REF = {
         ingredients: [] }
     ]}
   ],
-  wines: [],
-  cocktails: []
+  wines: [
+    { name: "Valle dell'Acate Thymbra Vermentino", vintage: "2023", type: "white", region: "Terre Siciliane IGT, Sicily", grapes: "100% Vermentino (organic)", alcohol_pct: 12.5,
+      pour_notes: "An organic Sicilian Vermentino off poor, chalky 'Terra Bianca' soil. Bright straw flecked green and gold; peach, citrus, and a saline snap with a whisper of vanilla on the finish. High-acid and textural, made to carry the herbs, the stracciatella, and the cultured-butter-and-cured-yolk pasta.",
+      specs: [ {label:"Body",rating:3,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:4,low:"soft",high:"bright"},{label:"Tannins",rating:1,low:"none",high:"grippy"} ],
+      producer: "Valle dell'Acate is a historic family estate in the Acate valley of southeastern Sicily, in the Cerasuolo di Vittoria heartland. Thymbra comes from Contrada Biddine Soprana, a small upland plot at about 250 meters on 'Terra Bianca' — very poor but deep chalky-limestone soil. The vines stay low in vigor there, which concentrates the fruit, while steady ventilation keeps it from over-ripening.",
+      winemaking: "Organically farmed Vermentino, hand-harvested in late August. Fermented and aged in stainless steel about four months, then three months in bottle — no oak, so the fruit, salinity, and acid stay front and center. Best served cool." },
+    { name: "Murgo Etna Rosso", vintage: "2023", type: "red", region: "Etna DOC, Sicily", grapes: "90% Nerello Mascalese · 10% Nerello Cappuccio", alcohol_pct: 13,
+      pour_notes: "Nerello Mascalese off the eastern slope of Mount Etna, poured with a slight chill for July. Ruby and lifted — red fruit with a spice edge of black pepper and clove, a mineral, saline core, and fine, elegant tannins. Medium-bodied and high-acid, it plays off the apple-wood beef and the sweet-tart agrodolce without weighing the table down.",
+      specs: [ {label:"Body",rating:3,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:5,low:"soft",high:"bright"},{label:"Tannins",rating:3,low:"none",high:"grippy"} ],
+      producer: "Cantine Murgo has farmed the eastern flank of Mount Etna since 1860, based at Tenuta San Michele in Santa Venerina. The vineyards sit on volcanic soil, with a microclimate shaped by the nearby Ionian Sea that lends the reds finesse and elegant complexity. Murgo has bottled this Etna Rosso since the 1980 harvest.",
+      winemaking: "Nerello Mascalese with a little Nerello Cappuccio, grown on Etna's volcanic slopes. A restrained, traditional vinification lets the site speak: ruby, sapid, and mineral, built around bright acidity and fine tannins rather than weight or oak. Lovely with a light chill in warm weather." }
+  ],
+  cocktails: [
+    { name: "Verdant Fields Forever", tagline: "a farm-garden gin cooler",
+      pour_notes: "A summer cooler: Terramar gin and a Bianco vermouth infused with Swan House dill, lengthened with fresh-pressed cucumber, lime, and soda. Bright, herbal, and garden-green, finished with a nasturtium flower and a frond of dill.",
+      ingredients: [
+        { name: "Terramar gin", highlight: "Skagit local", description: "Gin from Terramar, a Skagit Valley distillery just down the road — the local backbone of the drink." },
+        { name: "Dill-infused Bianco vermouth", highlight: "Swan House", description: "Sweet white vermouth infused with dill grown at Swan House. Floral and lightly herbal, the dill ties the glass to the garden." },
+        { name: "Fresh-pressed cucumber", description: "Pressed to order for a clean, cooling green note." },
+        { name: "Lime", description: "Fresh lime for brightness and acid." },
+        { name: "Simple syrup", description: "A touch of sweetness to balance." },
+        { name: "Soda", description: "Topped with soda for length, then a nasturtium flower and dill to finish." }
+      ] },
+    { name: "Stone Fruit & Honeysuckle Lemonade", tagline: "zero-proof · the farm mocktail",
+      pour_notes: "A no-proof cooler: ripe nectarine and apricot pressed into a lemonade sweetened with honeysuckle syrup from the Swan House garden. Bright, floral, and just tart enough — a real drink for anyone pouring zero-proof.",
+      ingredients: [
+        { name: "Nectarine", description: "Ripe summer nectarine, pressed into the lemonade." },
+        { name: "Apricot", description: "Local apricot for stone-fruit depth and color." },
+        { name: "Swan House honeysuckle", highlight: "From the farm", description: "Honeysuckle blossoms from the garden steeped into a floral syrup that sweetens the drink." },
+        { name: "Lemonade", description: "Fresh lemon and water, the tart backbone." }
+      ] }
+  ]
 };
 
 const DATES = [
