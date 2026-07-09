@@ -552,12 +552,12 @@ const REF = {
   wines: [
     { name: "Valle dell'Acate Thymbra Vermentino", vintage: "2023", type: "white", region: "Terre Siciliane IGT, Sicily", grapes: "100% Vermentino (organic)", alcohol_pct: 12.5,
       pour_notes: "An organic Sicilian Vermentino off poor, chalky 'Terra Bianca' soil. Bright straw flecked green and gold; peach, citrus, and a saline snap with a whisper of vanilla on the finish. High-acid and textural, made to carry the herbs, the stracciatella, and the cultured-butter-and-cured-yolk pasta.",
-      specs: [ {label:"Body",rating:3,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:4,low:"soft",high:"bright"},{label:"Tannins",rating:1,low:"none",high:"grippy"} ],
+      specs: [ {label:"Body",rating:3,low:"light",high:"full",lands:"medium-bodied"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry",lands:"bone dry"},{label:"Acidity",rating:4,low:"soft",high:"bright",lands:"crisp, high acid"},{label:"Tannins",rating:1,low:"none",high:"grippy",lands:"no tannins"} ],
       producer: "Valle dell'Acate is a historic family estate in the Acate valley of southeastern Sicily, in the Cerasuolo di Vittoria heartland. Thymbra comes from Contrada Biddine Soprana, a small upland plot at about 250 meters on 'Terra Bianca' — very poor but deep chalky-limestone soil. The vines stay low in vigor there, which concentrates the fruit, while steady ventilation keeps it from over-ripening.",
       winemaking: "Organically farmed Vermentino, hand-harvested in late August. Fermented and aged in stainless steel about four months, then three months in bottle — no oak, so the fruit, salinity, and acid stay front and center. Best served cool." },
     { name: "Murgo Etna Rosso", vintage: "2023", type: "red", region: "Etna DOC, Sicily", grapes: "90% Nerello Mascalese · 10% Nerello Cappuccio", alcohol_pct: 13,
       pour_notes: "Nerello Mascalese off the eastern slope of Mount Etna, poured with a slight chill for July. Ruby and lifted — red fruit with a spice edge of black pepper and clove, a mineral, saline core, and fine, elegant tannins. Medium-bodied and high-acid, it plays off the apple-wood beef and the sweet-tart agrodolce without weighing the table down.",
-      specs: [ {label:"Body",rating:3,low:"light",high:"full"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry"},{label:"Acidity",rating:5,low:"soft",high:"bright"},{label:"Tannins",rating:3,low:"none",high:"grippy"} ],
+      specs: [ {label:"Body",rating:3,low:"light",high:"full",lands:"medium-bodied"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry",lands:"bone dry"},{label:"Acidity",rating:5,low:"soft",high:"bright",lands:"high, racy acid"},{label:"Tannins",rating:3,low:"none",high:"grippy",lands:"fine, moderate tannins"} ],
       producer: "Cantine Murgo has farmed the eastern flank of Mount Etna since 1860, based at Tenuta San Michele in Santa Venerina. The vineyards sit on volcanic soil, with a microclimate shaped by the nearby Ionian Sea that lends the reds finesse and elegant complexity. Murgo has bottled this Etna Rosso since the 1980 harvest.",
       winemaking: "Nerello Mascalese with a little Nerello Cappuccio, grown on Etna's volcanic slopes. A restrained, traditional vinification lets the site speak: ruby, sapid, and mineral, built around bright acidity and fine tannins rather than weight or oak. Lovely with a light chill in warm weather." }
   ],
@@ -639,7 +639,7 @@ function wineHTML(w, idx) {
     <div class="wine-spec">
       <div class="wine-spec-label">${esc(s.label)}</div>
       <div class="wine-dots">${[1,2,3,4,5].map(n => `<span class="wine-dot ${n <= s.rating ? "on" : ""}"></span>`).join("")}</div>
-      <div class="wine-spec-range">${esc(s.low)} · ${esc(s.high)}</div>
+      <div class="wine-spec-range">${esc(s.lands || (s.low + ' · ' + s.high))}</div>
     </div>`).join("");
   return `<div class="wine ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
     <div class="wine-head" onclick="toggle('${key}')">
