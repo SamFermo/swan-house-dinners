@@ -39,7 +39,7 @@ body {
   background-color: var(--bg);
   background-image:
     linear-gradient(rgba(244, 237, 224, 0.52), rgba(244, 237, 224, 0.62)),
-    url('dinner-hero.jpg');
+    url('../dinner-hero.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -333,7 +333,7 @@ body.editing .editable-field { display: block; }
   <div class="hdr">
     <div class="hdr-eyebrow">Swan House Farm · Skagit Valley</div>
     <div class="hdr-title">Farm Dinners</div>
-    <div class="hdr-sub" id="hdr-sub">August 2026 · A peak-summer evening at the farm</div>
+    <div class="hdr-sub" id="hdr-sub">July 2026 · A high-summer evening at the farm</div>
     <div class="hdr-dates" id="hdr-dates"></div>
   </div>
 
@@ -380,7 +380,7 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
       <div class="info-body">For guests who'd like to stay nearby, we recommend the Channel Lodge in La Conner, about four miles away.</div>
     </div>
     <div class="map-wrap">
-      <img src="property-map.jpg" alt="Swan House Farm property map" loading="lazy">
+      <img src="../property-map.jpg" alt="Swan House Farm property map" loading="lazy">
       <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
     </div>
   </div>
@@ -463,7 +463,7 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
     <div class="footer-tagline" id="footer-tagline"></div>
     <div class="footer-past">
       <div class="eyebrow">Past dinners at Swan House</div>
-      <div class="links"><a href="/swan-house-dinners/2026-05/">May 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-06/">June 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-07/">July 2026</a></div>
+      <div class="links"><a href="/swan-house-dinners/2026-05/">May 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-06/">June 2026</a></div>
     </div>
     <div class="footer-fine">Swan House Farm, LLC · <a href="https://www.swanhousefarm.com" target="_blank" rel="noopener">swanhousefarm.com</a></div>
   </div>
@@ -473,17 +473,13 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
 <script>
 /* ============================================================
    DATA — embedded at deploy time.
-   Menu mirrors checkin-app/data/reference/2026-08.json (guest-tone edits applied; BOH detail stripped).
-   Published 2026-07-29 ahead of full menu lock so guests have it in hand.
-   COURSE 3 IS DELIBERATELY UNSPECIFIC — the lamb is locked, the cuts and the cooking are still in
-   test. The copy names only what holds across every route (farm lamb, salmoriglio, charred onion
-   agrodolce, grilled cabbage in lamb jus, kitchen-finished) and tells guests the cuts settle closer
-   to the date. Tighten this dish on all three surfaces once the test lands.
+   Menu mirrors checkin-app/data/reference/2026-07.json (guest-tone edits applied; BOH detail stripped).
    Wines + cocktails are HELD: pairings pending Adrian, bar pending Katie. Both render a friendly
-   "being finalized" placeholder until they land.
+   "being finalized" placeholder until they land. Page is built but NOT sent to guests until the
+   app-design PII fix lands (Sam's 6/5 call).
    GUEST_INFO defaults are overridden live by Firestore guestContent/<series>.
    ============================================================ */
-const SERIES_ID = "2026-08";
+const SERIES_ID = "2026-07";
 
 const GUEST_INFO_DEFAULTS = {
   parking: "At the end of Landing Rd you'll see the Swan House Farm sign. Head up the drive and the parking area is on your right.",
@@ -492,190 +488,108 @@ const GUEST_INFO_DEFAULTS = {
 };
 
 const REF = {
-  "header": {
-    "tagline": "thank you so much for joining us on this humble journey through everything skagit and swan house has to offer"
-  },
-  "courses": [
-    {
-      "label": "Antipasti",
-      "subtitle": "passed welcome bites at sit-down",
-      "dishes": [
-        {
-          "name": "Squash Panelle",
-          "pronunciation": "pah-NEL-leh",
-          "components": "chickpea and farm squash, ricotta salata, lemon, chili",
-          "story": "Panelle are Palermo street food: chickpea flour cooked down into a thick batter, set firm, cut, and fried. Ours are folded with grated Swan House squash and oregano and mint off the herb wall, set in trays at San Fermo, then cut and fried here at the farm so they hit the tray crisp. Shaved ricotta salata, lemon zest, a little chili. Naturally gluten free.",
-          "ingredients": [
-            {
-              "term": "Panelle",
-              "pronunciation": "pah-NEL-leh",
-              "note": "Sicilian chickpea fritters, a Palermo street-food staple usually eaten in a roll; crisp outside and almost custardy in the middle"
-            },
-            {
-              "term": "Ricotta salata",
-              "pronunciation": "ree-KOT-tah sah-LAH-tah",
-              "note": "ricotta that has been pressed, salted and aged until firm enough to shave; dry, milky and salty rather than creamy"
-            },
-            {
-              "term": "Summer squash",
-              "pronunciation": null,
-              "note": "Kelly's squash, picked young; grated into the batter so it steams from the inside as the panelle fries"
-            }
-          ]
-        },
-        {
-          "name": "Chilled Dungeness Crab",
-          "pronunciation": null,
-          "components": "lemon, Calabrian chili, mint, on a cucumber round",
-          "story": "Dungeness crab, cooked and picked at the farm the day of your dinner, dressed simply with lemon, a whisper of Calabrian chili and torn mint, and served cold on a round of Kelly's cucumber. Nothing gets wasted: the shells go straight into a roasting pan and become the brodo the risotto cooks in two courses later. The first time shellfish has appeared at one of these dinners.",
-          "ingredients": [
-            {
-              "term": "Dungeness crab",
-              "pronunciation": null,
-              "note": "the Pacific Northwest's own crab, sweet and clean; cooked whole and picked by hand here rather than bought as picked meat"
-            },
-            {
-              "term": "Calabrian chili",
-              "pronunciation": null,
-              "note": "a fruity, moderately hot southern Italian chili packed in oil; used here as a whisper, not a heat move"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Insalata",
-      "subtitle": "course one",
-      "dishes": [
-        {
-          "name": "Summer Squash, Two Ways",
-          "pronunciation": null,
-          "components": "raw ribbons and charred scapece, sweet peppers, sunflower gremolata, herbs and flowers",
-          "story": "The crop the farm gives most generously in August, read two ways on one plate. Half is shaved raw into ribbons with lemon, olive oil and mint. Half is charred over live fire and marinated scapece-style in vinegar, chili and more mint. Kelly's sweet peppers get the same char-and-marinate treatment, there is a toasted sunflower-seed gremolata for crunch, and the herb wall and edible flowers go over the top. Squash blossoms are torn in when the morning's picking allows, and if the heirloom tomatoes have finally colored up by your weekend they fill in around the edges. Vegan and gluten free as written.",
-          "ingredients": [
-            {
-              "term": "Scapece",
-              "pronunciation": "skah-PEH-cheh",
-              "note": "a southern Italian method of cooking vegetables and then steeping them in vinegar, mint and chili; sharp, cool and a little sweet"
-            },
-            {
-              "term": "Gremolata",
-              "pronunciation": "greh-moh-LAH-tah",
-              "note": "traditionally lemon zest, garlic and parsley chopped together as a finishing condiment; ours is built on toasted sunflower seeds for texture"
-            },
-            {
-              "term": "Squash blossom",
-              "pronunciation": null,
-              "note": "the edible golden flower of the squash plant, delicate and faintly sweet; picked the morning of service, garnish scale only"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Primi",
-      "subtitle": "course two",
-      "dishes": [
-        {
-          "name": "Crab Brodo Risotto",
-          "pronunciation": null,
-          "components": "spicy crab brodo, sweet corn crema, charred corn, basil, lemon",
-          "story": "The other half of the crab. The shells from the welcome bite are roasted with aromatics and Calabrian chili into a deep, gently spicy brodo, and the rice cooks in it. Where a risotto usually finishes with a lot of cold butter beaten in, this one finishes with a crema of peak Skagit sweet corn instead, so the sweetness and the body come from the corn and the depth and the warmth come from the crab. Charred kernels, torn basil, lemon zest. There is chili oil at the pass if you want more heat. Naturally gluten free.",
-          "ingredients": [
-            {
-              "term": "Brodo",
-              "pronunciation": "BROH-doh",
-              "note": "Italian for broth; here the crab shells roasted hard with aromatics and chili, then simmered down until it tastes like the whole crab rather than just the meat"
-            },
-            {
-              "term": "Mantecatura",
-              "pronunciation": "mahn-teh-kah-TOO-rah",
-              "note": "the final beating of fat into a risotto off the heat that makes it creamy; ours is sweet corn crema in place of the usual butter"
-            },
-            {
-              "term": "Sweet corn",
-              "pronunciation": null,
-              "note": "bi-color corn at its short August peak, from the valley; half becomes the crema, half is charred and folded through"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Secondi",
-      "subtitle": "course three",
-      "dishes": [
-        {
-          "name": "Swan House Farm Lamb",
-          "pronunciation": null,
-          "components": "charred onion agrodolce, salmoriglio, grilled cabbage in lamb jus",
-          "story": "The first time the farm's own lamb has been the center of one of these dinners. Tim raises the flock here at Swan House, and the whole course is built around it: herbs and lemon worked through and over the meat, slow heat and live fire to get it where it needs to go, and everything sliced and finished in the kitchen so it reaches the table hot rather than carved in front of you. Salmoriglio goes over the top, a sweet-tart agrodolce of Kelly's charred farm onions goes alongside, and grilled cabbage wedges are finished in the lamb's own jus. We settle the final cuts and the cooking with Tim in the last weeks before your dinner, around what the flock and the season actually give us.",
-          "ingredients": [
-            {
-              "term": "Salmoriglio",
-              "pronunciation": "sahl-moh-REE-lyoh",
-              "note": "a Sicilian sauce of lemon, olive oil, oregano and garlic emulsified warm; sharp and herbal, the traditional partner to grilled lamb"
-            },
-            {
-              "term": "Agrodolce",
-              "pronunciation": "ah-groh-DOHL-cheh",
-              "note": "Italian sweet-and-sour; here farm onions charred and cooked down with vinegar and honey until glossy, to cut the richness"
-            },
-            {
-              "term": "Swan House lamb",
-              "pronunciation": null,
-              "note": "raised on the farm you are sitting on, a few hundred yards from the pergola; the reason this course exists at all"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Dolce",
-      "subtitle": "course four",
-      "dishes": [
-        {
-          "name": "Olive Oil Cake",
-          "pronunciation": null,
-          "components": "macerated berries, honey mascarpone, mint and farm flowers",
-          "story": "Olive oil in place of butter makes a cake that is tender, faintly fruity and less sweet than you expect, which is the point at the end of a long evening. Kelly's loganberries lead the berries, macerated in their own syrup, with blackberries underneath for depth and huckleberries joining as they come in later in the month. Honey-whipped mascarpone, torn mint, and a scatter of farm flowers.",
-          "ingredients": [
-            {
-              "term": "Loganberry",
-              "pronunciation": null,
-              "note": "a raspberry-blackberry cross that grows beautifully in the Skagit Valley; darker and more tart than a raspberry, from Kelly's canes"
-            },
-            {
-              "term": "Mascarpone",
-              "pronunciation": "mah-skar-POH-neh",
-              "note": "the soft, barely sweet Italian cream cheese behind tiramisu; whipped here with honey and left loose"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Caffé",
-      "subtitle": "to close",
-      "dishes": [
-        {
-          "name": "Cafe Umbria",
-          "pronunciation": null,
-          "components": null,
-          "story": "Locally roasted coffee from Seattle's Cafe Umbria, served to close the meal.",
-          "ingredients": []
-        }
-      ]
-    }
+  header: { tagline: "thank you so much for joining us on this humble journey through everything skagit and swan house has to offer" },
+  courses: [
+    { label: "Antipasti", subtitle: "welcome bites", dishes: [
+      { name: "Stuffed Squash Blossom", pronunciation: null,
+        components: "goat cheese & guanciale, balsamic, garden herbs",
+        story: "A squash blossom from Kelly's garden, stuffed with a goat cheese and guanciale filling, blistered over live fire on the Big Green Egg, and finished with aged balsamic and garden herbs. Warm and savory, the deep counterpoint to the bright pepper toast it's passed alongside.",
+        ingredients: [
+          { term: "Squash blossom", pronunciation: null, note: "the edible golden flower of the summer squash plant; delicate and faintly sweet, picked the morning of your dinner" },
+          { term: "Guanciale", pronunciation: "gwahn-CHAH-leh", note: "Italian cured pork jowl, richer and silkier than pancetta; house-cured by Tim at the farm" }
+        ] },
+      { name: "Sweet Pepper Toast", pronunciation: null,
+        components: "whipped ricotta, marinated pepper, mint, preserved lemon, honey",
+        story: "Grilled Breadfarm focaccia under whipped ricotta, marinated farm sweet peppers, torn mint, a little preserved lemon, and a drizzle of lavender-infused honey. Cool, bright, and sweet-tart against the warm squash blossom.",
+        ingredients: [
+          { term: "Preserved lemon", pronunciation: null, note: "lemons cured in salt for several weeks until the rind turns silky and intensely citrusy; we cure ours at San Fermo" },
+          { term: "Lavender honey", pronunciation: null, note: "honey infused with lavender from the farm's flower wall; floral and gently sweet" }
+        ] }
+    ]},
+    { label: "Insalata", subtitle: "course one", dishes: [
+      { name: "Summer Stone Fruit & Stracciatella", pronunciation: null,
+        components: "grilled and fresh stone fruit, garden greens, stracciatella, tomato-leaf oil",
+        story: "High-summer stone fruit from Snow Goose Produce just up the road — peach, nectarine, and cherries — some grilled for a little smoke and caramel, some left fresh and bright, over a pillow of stracciatella with Kelly's garden greens and a finish of tomato-leaf oil.",
+        ingredients: [
+          { term: "Stone fruit", pronunciation: null, note: "peach, nectarine, and cherries from Snow Goose Produce nearby, a mix of grilled and fresh across the plate" },
+          { term: "Garden greens", pronunciation: null, note: "Kelly's lettuces, whatever variety is at its peak this week; tender and delicate" },
+          { term: "Stracciatella", pronunciation: "strah-chah-TEL-lah", note: "the soft, creamy interior of burrata: torn fresh mozzarella curds folded with cream" },
+          { term: "Tomato-leaf oil", pronunciation: null, note: "oil infused with farm tomato leaves; it smells unmistakably of the vine, the one 'tomato' the farm gives us in July" }
+        ] }
+    ]},
+    { label: "Primi", subtitle: "course two", dishes: [
+      { name: "Fazzoletti", pronunciation: "fah-tsoh-LEH-tee",
+        components: "cultured brown butter, cured egg yolk, focaccia crumb, parmesan",
+        story: "Fazzoletti means 'little handkerchiefs': thin squares of fresh pasta with farm herbs and flowers laminated between two sheets so the petals show through. Joe builds the sheets at San Fermo and they're cut day-of here at the farm. Dressed in cultured brown butter, grated cured egg yolk, a toasted focaccia crumb, parmesan, and lemon.",
+        ingredients: [
+          { term: "Fazzoletti", pronunciation: "fah-tsoh-LEH-tee", note: "Italian for 'little handkerchiefs'; thin squares of pasta with herbs and edible flowers laminated between two sheets so the leaves show through, a Ligurian form" },
+          { term: "Cured egg yolk", pronunciation: null, note: "farm egg yolks cured in salt and sugar, then dried and grated; deep and savory, it makes the farm's own eggs the luxury of the plate" }
+        ] }
+    ]},
+    { label: "Secondi", subtitle: "course three", dishes: [
+      { name: "Swan House Farm Primal Roast", pronunciation: null,
+        components: "rib eye and top sirloin, green garlic crust, charred apricot agrodolce, walla walla onions, grilled kale",
+        story: "Swan House Farm's primal roast: the prime middle of Tim's steer in a green garlic and herb crust, grilled over apple wood on the Big Green Egg, rested, and carved into rib eye and top sirloin to share family-style. A charred apricot agrodolce goes alongside, with coal-roasted Walla Walla onions and grilled kale.",
+        ingredients: [
+          { term: "Apple wood", pronunciation: null, note: "the roast is grilled over apple wood; fruitwood smoke, milder and sweeter than oak or hickory" },
+          { term: "Green garlic", pronunciation: null, note: "young garlic pulled before the bulb fully forms; mild and grassy, it is the crust on the roast" },
+          { term: "Agrodolce", pronunciation: "ah-groh-DOHL-cheh", note: "Italian sweet-and-sour sauce; here charred apricot cooked down sweet-tart to cut the richness of the beef" }
+        ] }
+    ]},
+    { label: "Dolce", subtitle: "course four", dishes: [
+      { name: "Lemon Verbena Panna Cotta", pronunciation: "PAH-nah KOH-tah",
+        components: "macerated cherries, farm flowers",
+        story: "A silky set cream steeped with lemon verbena from Kelly's garden, with macerated Rainier cherries and their own syrup spooned over and a scatter of farm flowers.",
+        ingredients: [
+          { term: "Panna cotta", pronunciation: "PAH-nah KOH-tah", note: "Italian for 'cooked cream'; a lightly set custard, silky and just barely wobbly" },
+          { term: "Lemon verbena", pronunciation: null, note: "a lemon-scented herb from Kelly's garden, brighter and more perfumed than lemon balm" }
+        ] }
+    ]},
+    { label: "Caffé", subtitle: "to close", dishes: [
+      { name: "Cafe Umbria", pronunciation: null, components: null,
+        story: "Locally roasted coffee from Seattle's Cafe Umbria, served to close the meal.",
+        ingredients: [] }
+    ]}
   ],
-  "wines": [],
-  "cocktails": []
+  wines: [
+    { name: "Valle dell'Acate Thymbra Vermentino", vintage: "2023", type: "white", region: "Terre Siciliane IGT, Sicily", grapes: "100% Vermentino (organic)", alcohol_pct: 12.5,
+      pour_notes: "An organic Sicilian Vermentino off poor, chalky 'Terra Bianca' soil. Bright straw flecked green and gold; peach, citrus, and a saline snap with a whisper of vanilla on the finish. High-acid and textural, made to carry the herbs, the stracciatella, and the cultured-butter-and-cured-yolk pasta.",
+      specs: [ {label:"Body",rating:3,low:"light",high:"full",lands:"medium-bodied"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry",lands:"bone dry"},{label:"Acidity",rating:4,low:"soft",high:"bright",lands:"crisp, high acid"},{label:"Tannins",rating:1,low:"none",high:"grippy",lands:"no tannins"} ],
+      producer: "Valle dell'Acate is a historic family estate in the Acate valley of southeastern Sicily, in the Cerasuolo di Vittoria heartland. Thymbra comes from Contrada Biddine Soprana, a small upland plot at about 250 meters on 'Terra Bianca' — very poor but deep chalky-limestone soil. The vines stay low in vigor there, which concentrates the fruit, while steady ventilation keeps it from over-ripening.",
+      winemaking: "Organically farmed Vermentino, hand-harvested in late August. Fermented and aged in stainless steel about four months, then three months in bottle — no oak, so the fruit, salinity, and acid stay front and center. Best served cool." },
+    { name: "Murgo Etna Rosso", vintage: "2023", type: "red", region: "Etna DOC, Sicily", grapes: "90% Nerello Mascalese · 10% Nerello Cappuccio", alcohol_pct: 13,
+      pour_notes: "Nerello Mascalese off the eastern slope of Mount Etna, poured with a slight chill for July. Ruby and lifted — red fruit with a spice edge of black pepper and clove, a mineral, saline core, and fine, elegant tannins. Medium-bodied and high-acid, it plays off the apple-wood beef and the sweet-tart agrodolce without weighing the table down.",
+      specs: [ {label:"Body",rating:3,low:"light",high:"full",lands:"medium-bodied"},{label:"Dryness",rating:5,low:"off-dry",high:"bone dry",lands:"bone dry"},{label:"Acidity",rating:5,low:"soft",high:"bright",lands:"high, racy acid"},{label:"Tannins",rating:3,low:"none",high:"grippy",lands:"fine, moderate tannins"} ],
+      producer: "Cantine Murgo has farmed the eastern flank of Mount Etna since 1860, based at Tenuta San Michele in Santa Venerina. The vineyards sit on volcanic soil, with a microclimate shaped by the nearby Ionian Sea that lends the reds finesse and elegant complexity. Murgo has bottled this Etna Rosso since the 1980 harvest.",
+      winemaking: "Nerello Mascalese with a little Nerello Cappuccio, grown on Etna's volcanic slopes. A restrained, traditional vinification lets the site speak: ruby, sapid, and mineral, built around bright acidity and fine tannins rather than weight or oak. Lovely with a light chill in warm weather." }
+  ],
+  cocktails: [
+    { name: "Verdant Fields Forever", tagline: "a farm-garden gin cooler",
+      pour_notes: "A summer cooler: Terramar gin and a Bianco vermouth infused with Swan House dill, lengthened with fresh-pressed cucumber, lime, and soda. Bright, herbal, and garden-green, finished with a nasturtium flower and a frond of dill.",
+      ingredients: [
+        { name: "Terramar gin", highlight: "Skagit local", description: "Gin from Terramar Brewstillery in nearby Edison — an award-winning Skagit Valley brewery and distillery on the old Edison Slough oxbow. It's distilled grain-to-glass from Washington-grown, craft-malted barley, the same base as their beer, and they're growing their own juniper and botanicals on the property." },
+        { name: "Dill-infused Bianco vermouth", highlight: "Swan House", description: "Sweet white vermouth infused with dill grown at Swan House. Floral and lightly herbal, the dill ties the glass to the garden." },
+        { name: "Fresh-pressed cucumber", description: "Pressed to order for a clean, cooling green note." },
+        { name: "Lime", description: "Fresh lime for brightness and acid." },
+        { name: "Simple syrup", description: "A touch of sweetness to balance." },
+        { name: "Soda", description: "Topped with soda for length, then a nasturtium flower and dill to finish." }
+      ] },
+    { name: "Stone Fruit & Honeysuckle Lemonade", tagline: "zero-proof · the farm mocktail",
+      pour_notes: "A no-proof cooler: ripe nectarine and apricot pressed into a lemonade sweetened with honeysuckle syrup from the Swan House garden. Bright, floral, and just tart enough — a real drink for anyone pouring zero-proof.",
+      ingredients: [
+        { name: "Nectarine", description: "Ripe summer nectarine, pressed into the lemonade." },
+        { name: "Apricot", description: "Local apricot for stone-fruit depth and color." },
+        { name: "Swan House honeysuckle", highlight: "From the farm", description: "Honeysuckle blossoms from the garden steeped into a floral syrup that sweetens the drink." },
+        { name: "Lemonade", description: "Fresh lemon and water, the tart backbone." }
+      ] }
+  ]
 };
+
 const DATES = [
-  { date: "2026-08-08", display: "Sat, August 8" },
-  { date: "2026-08-09", display: "Sun, August 9" },
-  { date: "2026-08-15", display: "Sat, August 15" },
-  { date: "2026-08-16", display: "Sun, August 16" }
+  { date: "2026-07-11", display: "Sat, July 11" },
+  { date: "2026-07-12", display: "Sun, July 12" },
+  { date: "2026-07-18", display: "Sat, July 18" },
+  { date: "2026-07-19", display: "Sun, July 19" }
 ];
 
 /* ============================================================ RENDER */
