@@ -479,8 +479,14 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
    test. The copy names only what holds across every route (farm lamb, salmoriglio, charred onion
    agrodolce, grilled cabbage in lamb jus, kitchen-finished) and tells guests the cuts settle closer
    to the date. Tighten this dish on all three surfaces once the test lands.
-   Wines + cocktails are HELD: pairings pending Adrian, bar pending Katie. Both render a friendly
-   "being finalized" placeholder until they land.
+   Wines + cocktails POPULATED 2026-08-07, NOT YET DEPLOYED.
+   WINES are confirmed off the bottles: Schiopetto Sauvignon 'del Pompiere' 2024 (white) and
+   Fabrizio Pratesi 'Locorosso' 2023 (red). Both unoaked, both 13.5%.
+   COCKTAILS ARE DRAFT COPY written against Sam's verbal brief and NOT confirmed by Katie.
+   Before this deploys she has to sign off on: both drink names, the wine used in the sangria,
+   the actual build of each, and whether the lavender lemonade is zero-proof or spiked.
+   Regenerate from the app reference with _patch_2026_08_bev.py rather than editing by hand,
+   so this file and checkin-app/data/reference/2026-08.json cannot drift apart.
    GUEST_INFO defaults are overridden live by Firestore guestContent/<series>.
    ============================================================ */
 const SERIES_ID = "2026-08";
@@ -668,8 +674,153 @@ const REF = {
       ]
     }
   ],
-  "wines": [],
-  "cocktails": []
+  "wines": [
+  {
+    "name": "Schiopetto Sauvignon ‘del Pompiere’",
+    "vintage": "2024",
+    "type": "white",
+    "region": "Venezia Giulia IGT, Friuli-Venezia Giulia",
+    "grapes": "100% Sauvignon Blanc",
+    "alcohol_pct": 13.5,
+    "pour_notes": "A Friulian Sauvignon with no oak on it at all — straw-gold with a green cast, smelling of wild herbs, field flowers and summer fruit, with a tropical lift underneath. Floral and mineral on the palate with real acid and a long, citrus-edged finish. It is built for the first half of the table: the chilled Dungeness bite, the raw squash ribbons and the scapece, and the crab-brodo risotto. The herbs on this menu run through almost every course, and this is a wine that meets herbs instead of fighting them. Pour it cold, 10-12°C.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 2,
+        "low": "light",
+        "high": "full",
+        "lands": "light to medium-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 5,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "bone dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 4,
+        "low": "soft",
+        "high": "bright",
+        "lands": "crisp, high acid"
+      },
+      {
+        "label": "Tannins",
+        "rating": 1,
+        "low": "none",
+        "high": "grippy",
+        "lands": "no tannins"
+      }
+    ],
+    "producer": "Schiopetto sits in Capriva del Friuli, in the Collio hills hard against the Slovenian border. The house is one of the most important names in Italian white wine: founder Mario Schiopetto is widely credited with dragging Italian whites into the modern era in the 1960s and 70s by bringing in temperature control, stainless steel and clean, reductive winemaking that let the fruit and the site show through. The estate still farms those marly Eocene hillsides, where steady wind off the Adriatic and the Alps keeps the grapes fresh. ‘del Pompiere’ — ‘the fireman’s’ — is the house’s approachable line, and the label is a small red fire engine hauling a wine barrel and a ladder. Estate bottled by Soc. Agr. Terre Friulane; brought into Washington by Elliott Bay Distributing in Seattle.",
+    "winemaking": "Hand-harvested and gently pressed, then fermented in temperature-controlled stainless steel. Rested roughly four months in steel and two more in bottle before release. No wood anywhere in the process, which is the whole point — the aromatics, the salinity and the acid stay in front."
+  },
+  {
+    "name": "Fabrizio Pratesi ‘Locorosso’",
+    "vintage": "2023",
+    "type": "red",
+    "region": "Toscana IGT, Carmignano, Tuscany",
+    "grapes": "100% Sangiovese (organic)",
+    "alcohol_pct": 13.5,
+    "pour_notes": "Pure Sangiovese from Carmignano, and — like the white — no oak on it. Deep ruby, with strawberry, cherry and black currant, a dark spice edge and a faint note of chocolate. Ample on the palate but soft, with ripe tannins and the fresh acid Sangiovese is built on. That acid is the reason it works here: it cuts the fat on the crisped lamb shoulder and stands up to the sweet-tart charred onion agrodolce without turning heavy or jammy against it. Good with a light chill on a warm evening under the pergola.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 3,
+        "low": "light",
+        "high": "full",
+        "lands": "medium-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 5,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "bone dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 4,
+        "low": "soft",
+        "high": "bright",
+        "lands": "fresh, lifted acid"
+      },
+      {
+        "label": "Tannins",
+        "rating": 3,
+        "low": "none",
+        "high": "grippy",
+        "lands": "soft, well-integrated"
+      }
+    ],
+    "producer": "Fabrizio Pratesi farms in Carmignano, the small hill zone northwest of Florence that has been growing wine since well before it was fashionable. The family has held the Lolocco estate since 1875, and this wine takes its name from it. Ten hectares, farmed organically, on stony medium-textured ground built from alberese marly limestone, clay schist and sandstone — poor, well-drained soil that keeps the vines honest. Imported by Vinifera Imports.",
+    "winemaking": "Guyot-trained at 6,250 vines per hectare, organically farmed. Fermented about twenty days in temperature-controlled stainless steel, then roughly six months in steel and a rest in bottle before release. No oak, deliberately — Pratesi makes oak-aged Carmignano too, and this bottling is the one meant to show the fruit and the site straight."
+  }
+],
+  "cocktails": [
+  {
+    "name": "Rhubarb & Raspberry Sangria",
+    "tagline": "gin · rhubarb · raspberry",
+    "pour_notes": "Katie’s summer sangria, built on gin instead of brandy: Terramar gin with rhubarb and raspberry, long and fruit-forward, tart at the front and dry at the back. Deep pink in the glass and made to be drunk cold in the early evening while the fire is still coming up.",
+    "ingredients": [
+      {
+        "name": "Terramar gin",
+        "amount": "",
+        "highlight": "Skagit local",
+        "description": "Gin from Terramar Brewstillery in Edison, just down the road — an award-winning brewery and distillery set in a former slaughterhouse on the old Edison Slough oxbow. They distill it grain-to-glass from Washington-grown, craft-malted barley (the same base as their beer) and are growing their own juniper and botanicals on the property. A true neighbor pour."
+      },
+      {
+        "name": "Rhubarb",
+        "amount": "",
+        "description": "Rhubarb for the tart, faintly vegetal backbone the drink is built around, and for the color."
+      },
+      {
+        "name": "Raspberry",
+        "amount": "",
+        "description": "Summer raspberries for sweetness and depth against the rhubarb."
+      },
+      {
+        "name": "Wine",
+        "amount": "",
+        "description": "The sangria element, lengthening the drink and carrying the fruit."
+      },
+      {
+        "name": "Citrus",
+        "amount": "",
+        "description": "Fresh citrus for lift and acid."
+      }
+    ]
+  },
+  {
+    "name": "Lavender Lemonade",
+    "tagline": "zero-proof · the farm mocktail",
+    "pour_notes": "Lavender cut fresh at Swan House, steeped and folded into a proper lemonade — floral and cooling, tart enough to be a real drink rather than a consolation. This is the zero-proof pour for the evening, and it drinks well straight through the crab bite and the squash.",
+    "ingredients": [
+      {
+        "name": "Swan House lavender",
+        "amount": "",
+        "highlight": "From the farm",
+        "description": "Lavender grown and cut at Swan House, steeped for its perfume without letting it go soapy. The most direct farm-to-glass line on the drink list."
+      },
+      {
+        "name": "Lemon",
+        "amount": "",
+        "description": "Fresh lemon, the tart backbone."
+      },
+      {
+        "name": "Simple syrup",
+        "amount": "",
+        "description": "Sweetened just enough to balance the acid and carry the lavender."
+      },
+      {
+        "name": "Water or soda",
+        "amount": "",
+        "description": "Lengthened and served cold over ice."
+      }
+    ]
+  }
+]
 };
 const DATES = [
   { date: "2026-08-08", display: "Sat, August 8" },
