@@ -316,9 +316,277 @@ body.editing .editable-field { display: block; }
   border: 1px solid var(--gold); border-radius: 6px; padding: 8px 10px;
 }
 .editable-field textarea { min-height: 84px; resize: vertical; }
+
+/* ---------- landing cards (2026-08-10 restructure) ---------- */
+.lander { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 8px; }
+@media (max-width: 560px) { .lander { grid-template-columns: 1fr; } }
+.lcard {
+  background: var(--bg); border: 0.5px solid var(--border); border-radius: 10px;
+  padding: 16px 16px 15px; cursor: pointer; text-align: left;
+  box-shadow: var(--shadow); transition: box-shadow .15s ease, transform .12s ease;
+  display: flex; flex-direction: column; min-height: 96px;
+}
+.lcard:hover, .lcard:focus-visible { box-shadow: var(--shadow-lift); transform: translateY(-1px); outline: none; }
+.lcard:focus-visible { border-color: var(--gold); }
+.lcard-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.13em; color: var(--gold); margin-bottom: 6px;
+}
+.lcard-title { font-size: 19px; font-weight: 700; color: var(--wood); line-height: 1.2; }
+.lcard-sub { font-size: 13px; line-height: 1.45; color: var(--text-soft); margin-top: 5px; flex: 1; }
+.lcard-go {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; font-weight: 600; color: var(--accent); margin-top: 10px;
+}
+
+/* ---------- view routing ---------- */
+.view { display: none; }
+.view.on { display: block; }
+.backbar { margin: 0 0 20px; }
+.backbtn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  background: none; border: none; cursor: pointer; padding: 6px 0;
+}
+.backbtn:hover { color: var(--accent-dark); }
+.view-title { font-size: 26px; font-weight: 700; color: var(--wood); margin: 2px 0 18px; line-height: 1.15; }
+
+/* ---------- traffic banner ---------- */
+.traffic {
+  background: var(--rust-soft); border: 0.5px solid var(--rust);
+  border-radius: 10px; padding: 13px 15px; margin: 0 0 20px;
+}
+.traffic-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.13em; color: var(--rust); margin-bottom: 5px;
+}
+.traffic-body { font-size: 14px; line-height: 1.55; color: var(--text); }
+.traffic-back {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; color: var(--text-soft); margin-top: 7px; font-style: italic;
+}
+
+/* ---------- your night ---------- */
+.night-pick { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.night-opt {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13px; font-weight: 600; color: var(--wood);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 999px; padding: 8px 15px; cursor: pointer;
+}
+.night-opt.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-dark); }
+.wx { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
+.wx-tile {
+  background: var(--bg); border: 0.5px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; flex: 1 1 130px;
+}
+.wx-k {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.11em; color: var(--gold);
+}
+.wx-v { font-size: 21px; font-weight: 700; color: var(--wood); margin-top: 3px; }
+.wx-note { font-size: 12.5px; color: var(--text-soft); margin-top: 2px; line-height: 1.4; }
+
+/* ---------- allergen capture ---------- */
+.alg-gate {
+  background: var(--gold-soft); border: 0.5px solid var(--gold);
+  border-radius: 10px; padding: 16px 16px 15px; margin: 0 0 22px;
+}
+.alg-gate-title { font-size: 18px; font-weight: 700; color: var(--wood); margin-bottom: 5px; }
+.alg-gate-body { font-size: 13.5px; line-height: 1.55; color: var(--text-soft); margin-bottom: 13px; }
+.alg-strip {
+  background: var(--gold-soft); border: 0.5px solid var(--gold);
+  border-radius: 10px; padding: 11px 14px; margin: 0 0 20px; cursor: pointer;
+}
+.alg-strip-line { font-size: 13.5px; line-height: 1.5; color: var(--text); }
+.alg-strip-line strong { color: var(--wood); font-weight: 700; }
+.alg-strip-cta {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12.5px; font-weight: 600; color: var(--accent); margin-top: 4px;
+}
+.alg-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.alg-chip {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13px; font-weight: 600; color: var(--text-soft);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 999px; padding: 7px 14px; cursor: pointer; user-select: none;
+}
+.alg-chip.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-dark); }
+.alg-field {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  width: 100%; font-size: 14px; color: var(--text); background: var(--card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 9px 11px; margin-bottom: 9px;
+}
+.alg-field:focus { outline: none; border-color: var(--gold); }
+.alg-row { display: flex; gap: 9px; flex-wrap: wrap; }
+.alg-row .alg-field { flex: 1 1 150px; }
+.alg-send {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 700; color: #fff; background: var(--accent);
+  border: none; border-radius: var(--radius); padding: 11px 20px; cursor: pointer;
+}
+.alg-send:hover { background: var(--accent-dark); }
+.alg-send:disabled { background: var(--text-mute); cursor: default; }
+.alg-skip {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13px; color: var(--text-soft); background: none; border: none;
+  cursor: pointer; padding: 10px 6px; text-decoration: underline;
+}
+.alg-status { font-size: 13px; line-height: 1.5; color: var(--accent-dark); margin-top: 9px; }
+.alg-done {
+  background: var(--accent-soft); border: 0.5px solid var(--accent);
+  border-radius: 10px; padding: 11px 14px; margin: 0 0 20px;
+  font-size: 13.5px; line-height: 1.5; color: var(--accent-dark);
+}
+.alg-fallback { font-size: 12.5px; color: var(--text-soft); margin-top: 10px; line-height: 1.5; }
+
+/* ---------- past dinners ---------- */
+.past-list { display: flex; flex-direction: column; gap: 10px; }
+.past-item {
+  display: block; background: var(--bg); border: 0.5px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; text-decoration: none; color: inherit;
+}
+.past-item:hover { box-shadow: var(--shadow-lift); }
+.past-when { font-size: 17px; font-weight: 700; color: var(--wood); }
+.past-what { font-size: 13px; color: var(--text-soft); margin-top: 3px; line-height: 1.45; }
+
+.wine-type-rose { background: #f7dde4; border-color: #c98ea4; color: #8a3a52; }
+
+
+/* ---------- hero intro: zoom-back morph, ported from Remy (2026-08-10) ---------- */
+/* The gate class is set by an inline script at the top of the document, so the page is
+   hidden before first paint rather than flashing its final state and then hiding. */
+html.shf-intro-running .bubble { opacity: 0; }
+/* Deliberately NOT a transition. The wordmark lands exactly on top of the real title,
+   so the handoff has to be an instant swap. Fading the page up here is what let it
+   paint over the wordmark mid-flight. */
+html.shf-intro-running .bubble.intro-in { opacity: 1; }
+
+#intro {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+/* Separate layer so the photo can dissolve while the wordmark is still travelling. */
+#intro-bg {
+  position: absolute; inset: 0; opacity: 1;
+  transition: opacity .55s ease;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(244, 237, 224, 0.34), rgba(244, 237, 224, 0.46)),
+    url('dinner-hero.jpg');
+  background-size: cover; background-position: center;
+}
+#intro-bg.out { opacity: 0; }
+.intro-eyebrow {
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.22em; color: var(--gold); opacity: 0;
+  margin-bottom: 14px; text-shadow: 0 1px 10px rgba(251, 246, 234, 0.9);
+  animation: introFadeIn .35s ease .05s forwards;
+}
+.intro-eyebrow.out { animation: none; opacity: 0; transition: opacity .3s ease; }
+.intro-word {
+  position: relative;
+  font-family: 'Caladea', 'Cambria', Georgia, serif;
+  font-size: 54px; font-weight: 700; line-height: 1.15; text-align: center;
+  color: var(--wood); opacity: 0; transform-origin: center center;
+  text-shadow: 0 2px 22px rgba(251, 246, 234, 0.95), 0 1px 5px rgba(251, 246, 234, 1);
+  animation: introFadeIn .35s ease .05s forwards;
+  will-change: transform, opacity;
+}
+@media (max-width: 560px) { .intro-word { font-size: 40px; } }
+.intro-word.morph {
+  transition: transform 650ms cubic-bezier(0.55, 0, 0.2, 1), text-shadow 650ms ease;
+}
+/* Glow shrinks as it lands, so it matches the real title's flat rendering on arrival. */
+.intro-word.morph.landed { text-shadow: 0 1px 3px rgba(251, 246, 234, 0.45); }
+@keyframes introFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Anyone who asks for less motion gets the page, not the show. */
+@media (prefers-reduced-motion: reduce) {
+  #intro { display: none !important; }
+  html.shf-intro-running .bubble { opacity: 1 !important; }
+  .intro-word, .intro-eyebrow { animation: none; }
+}
+
+
+/* ---------- guest identification (2026-08-10) ---------- */
+.alg-found {
+  background: var(--accent-soft); border: 0.5px solid var(--accent);
+  border-radius: var(--radius); padding: 10px 12px; margin-bottom: 10px;
+  font-size: 13.5px; line-height: 1.5; color: var(--accent-dark);
+}
+.alg-found strong { font-weight: 700; }
+.alg-hint { font-size: 12.5px; color: var(--text-soft); margin: -2px 0 9px; line-height: 1.45; }
+.alg-looking { font-size: 12.5px; color: var(--text-mute); margin: -2px 0 9px; font-style: italic; }
+.alg-change {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12.5px; color: var(--accent); background: none; border: none;
+  cursor: pointer; padding: 2px 0; text-decoration: underline;
+}
+
+
+/* ---------- full-width header card (2026-08-10) ---------- */
+/* Seven cards in two columns leaves an orphan. One spanning card leaves six below,
+   which is three even rows. */
+.lcard-hero { grid-column: 1 / -1; }
+.lcard-hero .lcard-title { font-size: 24px; }
+.lcard-hero .lcard-sub { font-size: 14px; }
+@media (min-width: 561px) {
+  .lcard-hero { flex-direction: row; align-items: center; gap: 20px; min-height: 104px; }
+  .lcard-hero .lcard-main { flex: 1; }
+  .lcard-hero .lcard-go { margin-top: 0; white-space: nowrap; }
+}
+.lcard-state {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12.5px; font-weight: 600; color: var(--accent-dark);
+  background: var(--accent-soft); border-radius: 999px;
+  padding: 4px 11px; display: inline-block; margin-top: 8px;
+}
+
 </style>
 </head>
 <body>
+<script>
+/* Decide before first paint whether the hero intro runs, so the page never flashes its
+   final state and then hides it. Mirrors Remy's remy-embed-early pattern. */
+(function(){
+  var SCOPE = "session";
+  var KEY = "shf_intro_" + "2026-08";
+  var reduced = false;
+  try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){}
+  /* ?intro=1 replays it on demand. Session scope otherwise means a reload in the same
+     tab never shows it again, which makes it impossible to review. */
+  var forced = /[?&]intro=1/.test(location.search || "");
+  var seen = false;
+  try {
+    seen = SCOPE === "session"   ? sessionStorage.getItem(KEY) === "1"
+         : SCOPE === "once-ever" ? localStorage.getItem(KEY) === "1"
+         : false;
+  } catch(e){}
+  window.__shfIntro = forced ? !reduced : !(reduced || seen);
+  if (window.__shfIntro) {
+    document.documentElement.classList.add("shf-intro-running");
+    try {
+      if (SCOPE === "session") sessionStorage.setItem(KEY, "1");
+      else if (SCOPE === "once-ever") localStorage.setItem(KEY, "1");
+    } catch(e){}
+  }
+})();
+</script>
+
+<div id="intro">
+  <div id="intro-bg"></div>
+  <div class="intro-eyebrow">Swan House Farm &middot; Skagit Valley</div>
+  <div class="intro-word">Farm Dinners</div>
+</div>
+
 
 <div class="bubble">
 
@@ -329,38 +597,131 @@ body.editing .editable-field { display: block; }
     <button class="edit-cancel" onclick="exitEditMode()">Cancel</button>
   </div>
 
-  <!-- header -->
   <div class="hdr">
-    <div class="hdr-eyebrow">Swan House Farm · Skagit Valley</div>
+    <div class="hdr-eyebrow">Swan House Farm &middot; Skagit Valley</div>
     <div class="hdr-title">Farm Dinners</div>
-    <div class="hdr-sub" id="hdr-sub">August 2026 · A peak-summer evening at the farm</div>
+    <div class="hdr-sub" id="hdr-sub">August 2026 &middot; A peak-summer evening at the farm</div>
     <div class="hdr-dates" id="hdr-dates"></div>
   </div>
 
-  <!-- welcome -->
-  <div class="section">
-    <p class="prose">We can't wait to see you up on the farm. We're a family farm on the North Fork of the Skagit River outside La Conner, and these dinners are our favorite nights of the year: everything Skagit Valley and Swan House have to offer, cooked by the San Fermo team and served in the garden pergola as the evening comes on.</p>
-    <p class="prose" id="host-note-display" style="display:none;"></p>
+  <!-- ===== LANDING ===== -->
+  <div class="view on" id="view-home">
+
+    <div class="section">
+      <p class="prose">We can't wait to see you up on the farm. We're a family farm on the North Fork of the Skagit River outside La Conner, and these dinners are our favorite nights of the year: everything Skagit Valley and Swan House have to offer, cooked by the San Fermo team and served in the garden pergola as the evening comes on.</p>
+      <p class="prose" id="host-note-display" style="display:none;"></p>
+      <div class="editable-field">
+        <label>A note from the hosts (optional, shows under the welcome)</label>
+        <textarea id="edit-host-note"></textarea>
+      </div>
+    </div>
+
+    <div class="traffic" id="traffic-banner" style="display:none;">
+      <div class="traffic-label">Current traffic notice</div>
+      <div class="traffic-body" id="traffic-body"></div>
+      <div class="traffic-back" id="traffic-back"></div>
+    </div>
     <div class="editable-field">
-      <label>A note from the hosts (optional, shows under the welcome)</label>
-      <textarea id="edit-host-note"></textarea>
+      <label>Day-of traffic note (rust banner above — auto-filled the morning of each dinner; leave blank to hide)</label>
+      <textarea id="edit-route"></textarea>
+    </div>
+
+    <div class="lander">
+      <div class="lcard lcard-hero" tabindex="0" role="button" data-go="night">
+        <div class="lcard-main">
+          <div class="lcard-eyebrow">Start here</div>
+          <div class="lcard-title">Your night</div>
+          <div class="lcard-sub" id="night-teaser">Tell us which dinner is yours and we'll tailor the rest of this page to it.</div>
+          <div id="night-state"></div>
+        </div>
+        <div class="lcard-go" id="night-cta">Pick your date &rarr;</div>
+      </div>
+      <div class="lcard" tabindex="0" role="button" data-go="menu">
+        <div class="lcard-eyebrow">Six courses</div>
+        <div class="lcard-title">The menu</div>
+        <div class="lcard-sub">Two passed bites and four courses, with the story behind every dish.</div>
+        <div class="lcard-go">Read the menu &rarr;</div>
+      </div>
+      <div class="lcard" tabindex="0" role="button" data-go="directions">
+        <div class="lcard-eyebrow">19479 Landing Rd</div>
+        <div class="lcard-title">Getting here</div>
+        <div class="lcard-sub">Directions, parking, the property map, and where to stay nearby.</div>
+        <div class="lcard-go">Find the farm &rarr;</div>
+      </div>
+      <div class="lcard" tabindex="0" role="button" data-go="evening">
+        <div class="lcard-eyebrow">4:30 to 9 pm</div>
+        <div class="lcard-title">Your evening</div>
+        <div class="lcard-sub">Arrival, farm tours, dinner under the pergola, and how the night runs.</div>
+        <div class="lcard-go">See the timeline &rarr;</div>
+      </div>
+      <div class="lcard" tabindex="0" role="button" data-go="drinks">
+        <div class="lcard-eyebrow">Included</div>
+        <div class="lcard-title">Wine and bar</div>
+        <div class="lcard-sub">The pairings for your dinner, the producers behind them, and what's on the bar.</div>
+        <div class="lcard-go">Meet the pours &rarr;</div>
+      </div>
+      <div class="lcard" tabindex="0" role="button" data-go="faq">
+        <div class="lcard-eyebrow">Before you come</div>
+        <div class="lcard-title">Good to know</div>
+        <div class="lcard-sub">What to wear, the terrain, seating, the animals, and everything else.</div>
+        <div class="lcard-go">Read up &rarr;</div>
+      </div>
+      <div class="lcard" tabindex="0" role="button" data-go="past">
+        <div class="lcard-eyebrow">The archive</div>
+        <div class="lcard-title">Past dinners</div>
+        <div class="lcard-sub">Every menu we've served at Swan House this season, kept as a memento.</div>
+        <div class="lcard-go">Look back &rarr;</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== YOUR NIGHT ===== -->
+  <div class="view" id="view-night">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">Your night</div>
+    <p class="prose" style="margin-bottom:14px;">Which dinner are you joining us for? We'll remember it on this device.</p>
+    <div class="night-pick" id="night-pick"></div>
+    <div id="night-detail"></div>
+    <div class="info-card" style="margin-top:16px;">
+      <div class="info-title">Swan House Farm</div>
+      <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
+Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.</div>
     </div>
   </div>
 
-  <!-- getting here -->
-  <div class="section">
-    <div class="section-label">Getting here</div>
+  <!-- ===== MENU ===== -->
+  <div class="view" id="view-menu">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">The menu</div>
+    <div id="alg-mount"></div>
+    <p class="tap-hint">tap any dish for the story behind it</p>
+    <div id="menu"></div>
+    <div class="section" style="margin-top:26px;">
+      <div class="section-label">Allergies &amp; dietary needs</div>
+      <div class="dietary">All food allergies and dietary needs were sent to the chef before the menu was built. If anything has changed, or if something above is new to us, tell us using the panel at the top of this page or email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>
+    </div>
+  </div>
+
+  <!-- ===== GETTING HERE ===== -->
+  <div class="view" id="view-directions">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">Getting here</div>
     <div class="info-card">
       <div class="info-title">Swan House Farm</div>
       <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
 Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.
-<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps →</a></div>
+<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps &rarr;</a></div>
     </div>
     <div class="info-card">
       <div class="info-title">Driving directions</div>
       <div class="info-body">Weekend traffic from Seattle can be heavy, so give yourself a little extra time.
 
-Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head west toward La Conner. Just past the North Fork bridge, turn left onto Dodge Valley Rd. In about 0.6 miles, turn left onto Landing Rd — it's a bit of a blind turn, so take it slow. Follow the bends and continue past the private road sign.</div>
+Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head west toward La Conner. Just past the North Fork bridge, turn left onto Dodge Valley Rd. In about 0.6 miles, turn left onto Landing Rd &mdash; it's a bit of a blind turn, so take it slow. Follow the bends and continue past the private road sign.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Traffic on the day</div>
+      <div class="info-body" id="traffic-standing">We post a current traffic notice on the home screen of this page on the morning of each dinner. Check back before you set out.</div>
     </div>
     <div class="info-card" id="parking-card">
       <div class="info-title">Parking</div>
@@ -370,29 +731,25 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
         <textarea id="edit-parking"></textarea>
       </div>
     </div>
-    <div class="route-note" id="route-note"></div>
-    <div class="editable-field">
-      <label>Day-of traffic note (rust card above — auto-filled the morning of each dinner; leave blank to hide)</label>
-      <textarea id="edit-route"></textarea>
-    </div>
     <div class="info-card">
       <div class="info-title">Staying the night</div>
       <div class="info-body">For guests who'd like to stay nearby, we recommend the Channel Lodge in La Conner, about four miles away.</div>
     </div>
     <div class="map-wrap">
       <img src="property-map.jpg" alt="Swan House Farm property map" loading="lazy">
-      <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
+      <div class="map-caption">The lay of the land &mdash; parking, pergola, and the walk between.</div>
     </div>
   </div>
 
-  <!-- your evening -->
-  <div class="section">
-    <div class="section-label">Your evening</div>
+  <!-- ===== YOUR EVENING ===== -->
+  <div class="view" id="view-evening">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">Your evening</div>
     <div class="evening">
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time">4:30 – 5:30 pm</div>
+          <div class="ev-time">4:30 &ndash; 5:30 pm</div>
           <div class="ev-name">Arrival &amp; farm tours</div>
           <div class="ev-desc">Arrive any time after 4:30 for welcome drinks, hors d'oeuvres, and a walk through the farm.</div>
         </div>
@@ -416,56 +773,63 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
     </div>
   </div>
 
-  <!-- menu -->
-  <div class="section">
-    <div class="section-label">The menu</div>
-    <p class="tap-hint">tap any dish for the story behind it</p>
-    <div id="menu"></div>
+  <!-- ===== WINE AND BAR ===== -->
+  <div class="view" id="view-drinks">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">Wine and bar</div>
+    <div class="section">
+      <div class="section-label">Wine pairings</div>
+      <p class="tap-hint" id="wine-hint">tap any pour to meet the producer</p>
+      <div id="wines"></div>
+    </div>
+    <div class="section" id="bar-section">
+      <div class="section-label">From the bar</div>
+      <div id="cocktails"></div>
+    </div>
   </div>
 
-  <!-- dietary -->
-  <div class="section">
-    <div class="section-label">Allergies &amp; dietary needs</div>
-    <div class="dietary">All food allergies and dietary needs were sent to the chef before the menu was built. If you have any last-minute concerns, please email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>
-  </div>
-
-  <!-- wine -->
-  <div class="section">
-    <div class="section-label">Wine pairings</div>
-    <p class="tap-hint" id="wine-hint">tap any pour to meet the producer</p>
-    <div id="wines"></div>
-  </div>
-
-  <!-- cocktail -->
-  <div class="section" id="bar-section">
-    <div class="section-label">From the bar</div>
-    <div id="cocktails"></div>
-  </div>
-
-  <!-- good to know -->
-  <div class="section">
-    <div class="section-label">Good to know</div>
+  <!-- ===== GOOD TO KNOW ===== -->
+  <div class="view" id="view-faq">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">Good to know</div>
     <div class="faq-grid">
       <div class="faq-card"><div class="faq-q">Dress for the farm</div><div class="faq-a">Dinner is under a covered garden pergola, open to the evening air. Comfortable walking shoes, a warm layer for after sunset, and sun protection on bright days.</div></div>
-      <div class="faq-card"><div class="faq-q">The terrain</div><div class="faq-a">Farm tours follow walking paths over uneven ground — another vote for sturdy shoes.</div></div>
+      <div class="faq-card"><div class="faq-q">The terrain</div><div class="faq-a">Farm tours follow walking paths over uneven ground &mdash; another vote for sturdy shoes.</div></div>
       <div class="faq-card"><div class="faq-q">Seating</div><div class="faq-a">All 26 guests share three communal tables. Joining a larger group? Reach out and we'll seat you together.</div></div>
       <div class="faq-card"><div class="faq-q">Wine &amp; zero-proof</div><div class="faq-a">Paired wine and bubbles are included, and we pour excellent non-alcoholic wines for anyone who prefers them.</div></div>
-      <div class="faq-card"><div class="faq-q">Out by the river</div><div class="faq-a">We sit right along the Skagit River, so bees, wasps, and mosquitos come with the setting. We suggest bringing a little bug spray — and if anyone has a serious sting allergy, please weigh that carefully.</div></div>
-      <div class="faq-card"><div class="faq-q">The animals</div><div class="faq-a">Tours offer a chance to visit the livestock. Say hello — gently, and at your own discretion.</div></div>
+      <div class="faq-card"><div class="faq-q">Out by the river</div><div class="faq-a">We sit right along the Skagit River, so bees, wasps, and mosquitos come with the setting. We suggest bringing a little bug spray &mdash; and if anyone has a serious sting allergy, please weigh that carefully.</div></div>
+      <div class="faq-card"><div class="faq-q">The animals</div><div class="faq-a">Tours offer a chance to visit the livestock. Say hello &mdash; gently, and at your own discretion.</div></div>
       <div class="faq-card"><div class="faq-q">Restrooms</div><div class="faq-a">The farm septic system is modest, so we provide comfortable temporary restrooms for the evening.</div></div>
-      <div class="faq-card"><div class="faq-q">Dogs</div><div class="faq-a">We love them, but the livestock don't — please leave pups at home.</div></div>
+      <div class="faq-card"><div class="faq-q">Dogs</div><div class="faq-a">We love them, but the livestock don't &mdash; please leave pups at home.</div></div>
       <div class="faq-card"><div class="faq-q">Photos</div><div class="faq-a">Please take pictures and share the evening. We appreciate the support!</div></div>
-      <div class="faq-card"><div class="faq-q">Tickets</div><div class="faq-a">Bookings are final, but tickets are transferable — if plans change, contact us and we'll help hand them to new guests. Severe weather is the one exception: we'll cancel and make it right.</div></div>
+      <div class="faq-card"><div class="faq-q">Tickets</div><div class="faq-a">Bookings are final, but tickets are transferable &mdash; if plans change, contact us and we'll help hand them to new guests. Severe weather is the one exception: we'll cancel and make it right.</div></div>
+    </div>
+  </div>
+
+  <!-- ===== PAST DINNERS ===== -->
+  <div class="view" id="view-past">
+    <div class="backbar"><button class="backbtn" data-go="home">&larr; Back</button></div>
+    <div class="view-title">Past dinners</div>
+    <p class="prose" style="margin-bottom:16px;">Every dinner we've served at Swan House this season, kept exactly as it went out to the guests who were there.</p>
+    <div class="past-list">
+      <a class="past-item" href="/swan-house-dinners/2026-07/">
+        <div class="past-when">July 2026</div>
+        <div class="past-what">July 11, 12, 18 and 19 &mdash; high summer, the family-style primal roast, and the first stone fruit.</div>
+      </a>
+      <a class="past-item" href="/swan-house-dinners/2026-06/">
+        <div class="past-when">June 2026</div>
+        <div class="past-what">June 6 and 7 &mdash; early summer, the first real heat on the farm.</div>
+      </a>
+      <a class="past-item" href="/swan-house-dinners/2026-05/">
+        <div class="past-when">May 2026</div>
+        <div class="past-what">May 16 and 17 &mdash; the first dinners of the season, with the herb wall just coming in.</div>
+      </a>
     </div>
   </div>
 
   <div class="footer">
     <div class="footer-tagline" id="footer-tagline"></div>
-    <div class="footer-past">
-      <div class="eyebrow">Past dinners at Swan House</div>
-      <div class="links"><a href="/swan-house-dinners/2026-05/">May 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-06/">June 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-07/">July 2026</a></div>
-    </div>
-    <div class="footer-fine">Swan House Farm, LLC · <a href="https://www.swanhousefarm.com" target="_blank" rel="noopener">swanhousefarm.com</a></div>
+    <div class="footer-fine">Swan House Farm, LLC &middot; <a href="https://www.swanhousefarm.com" target="_blank" rel="noopener">swanhousefarm.com</a></div>
   </div>
 
 </div>
@@ -908,22 +1272,381 @@ const DATES = [
   { date: "2026-08-16", display: "Sun, August 16" }
 ];
 
+
 /* ============================================================ RENDER */
 let guestInfo = { ...GUEST_INFO_DEFAULTS };
 const expanded = new Set();
 const esc = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 
-function renderDates() {
-  document.getElementById("hdr-dates").innerHTML =
-    DATES.map(d => `<span class="hdr-date">${esc(d.display)}</span>`).join("");
+/* Farm coordinates, for the forecast on Your night. */
+const FARM_LAT = 48.42, FARM_LON = -122.47;
+
+/* Allergens present on this series' menu. HAND-DERIVED AND CHEF-CONFIRMED — do not
+   auto-parse this from REF. "Egg-charred scapece" means the Big Green Egg, not eggs. */
+const MENU_ALLERGENS = ["Shellfish", "Tree nut", "Dairy", "Gluten", "Egg", "Sunflower seed"];
+
+const LS_DATE = "shf_date_" + SERIES_ID;
+const LS_ALG  = "shf_alg_" + SERIES_ID;
+
+function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+
+/* ---------------------------------------------- view routing */
+const VIEWS = ["home","night","menu","directions","evening","drinks","faq","past"];
+function showView(name, push){
+  if (VIEWS.indexOf(name) < 0) name = "home";
+  VIEWS.forEach(function(v){
+    const el = document.getElementById("view-" + v);
+    if (el) el.classList.toggle("on", v === name);
+  });
+  document.getElementById("hdr-dates").style.display = (name === "home") ? "" : "none";
+  document.getElementById("hdr-sub").style.display = (name === "home") ? "" : "none";
+  if (push !== false) {
+    const h = (name === "home") ? " " : "#" + name;
+    if (location.hash !== ("#" + name) || name === "home") history.pushState({v:name}, "", h);
+  }
+  window.scrollTo(0, 0);
+  if (name === "menu") renderAllergenPanel();
+  if (name === "night") renderNight();
+}
+function wireNav(){
+  document.querySelectorAll("[data-go]").forEach(function(el){
+    el.addEventListener("click", function(){ showView(el.getAttribute("data-go")); });
+    el.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showView(el.getAttribute("data-go")); }
+    });
+  });
+  window.addEventListener("popstate", function(){
+    showView((location.hash || "#home").slice(1), false);
+  });
 }
 
+/* ---------------------------------------------- header dates */
+function renderDates() {
+  const chosen = lsGet(LS_DATE);
+  const list = chosen ? DATES.filter(d => d.date === chosen) : DATES;
+  document.getElementById("hdr-dates").innerHTML =
+    (list.length ? list : DATES).map(d => `<span class="hdr-date">${esc(d.display)}</span>`).join("");
+}
+
+/* ---------------------------------------------- your night */
+function renderNight(){
+  const chosen = lsGet(LS_DATE);
+  document.getElementById("night-pick").innerHTML = DATES.map(function(d){
+    return `<button class="night-opt ${d.date === chosen ? "on" : ""}" data-date="${esc(d.date)}">${esc(d.display)}</button>`;
+  }).join("");
+  document.querySelectorAll("#night-pick .night-opt").forEach(function(b){
+    b.onclick = function(){
+      const v = b.getAttribute("data-date");
+      lsSet(LS_DATE, v === lsGet(LS_DATE) ? "" : v);
+      renderNight(); renderDates(); renderTeaser();
+    };
+  });
+  const box = document.getElementById("night-detail");
+  if (!chosen) { box.innerHTML = ""; return; }
+  const d = DATES.filter(x => x.date === chosen)[0];
+  const days = Math.round((new Date(chosen + "T17:30:00") - new Date()) / 86400000);
+  const when = days > 1 ? days + " days away" : days === 1 ? "Tomorrow" : days === 0 ? "Tonight" : "That's a wrap";
+  box.innerHTML = `<div class="wx">
+      <div class="wx-tile"><div class="wx-k">Your dinner</div><div class="wx-v">${esc(d.display)}</div><div class="wx-note">Doors from 4:30, we sit at 5:30</div></div>
+      <div class="wx-tile"><div class="wx-k">Countdown</div><div class="wx-v">${esc(when)}</div><div class="wx-note">&nbsp;</div></div>
+    </div>
+    <div class="wx" id="wx-box"><div class="wx-tile"><div class="wx-k">Forecast</div><div class="wx-v">&mdash;</div><div class="wx-note">Checking the forecast for the farm&hellip;</div></div></div>`;
+  loadWeather(chosen);
+}
+function renderTeaser(){
+  const chosen = lsGet(LS_DATE);
+  const t = document.getElementById("night-teaser");
+  const st = document.getElementById("night-state");
+  const cta = document.getElementById("night-cta");
+  if (!t) return;
+  if (!chosen) {
+    t.textContent = "Tell us which dinner is yours and we'll tailor the rest of this page to it.";
+    if (st) st.innerHTML = "";
+    if (cta) cta.innerHTML = "Pick your date &rarr;";
+    return;
+  }
+  const d = DATES.filter(x => x.date === chosen)[0];
+  t.textContent = "Your forecast, the timings and everything else, set to your evening.";
+  if (cta) cta.innerHTML = "Open &rarr;";
+  if (st && d) {
+    const days = Math.round((new Date(chosen + "T17:30:00") - new Date()) / 86400000);
+    const when = days > 1 ? days + " days away" : days === 1 ? "Tomorrow" : days === 0 ? "Tonight" : "";
+    st.innerHTML = '<span class="lcard-state">' + esc(d.display) + (when ? " &middot; " + esc(when) : "") + '</span>';
+  }
+}
+async function loadWeather(dateStr){
+  const box = document.getElementById("wx-box");
+  if (!box) return;
+  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + FARM_LAT + "&longitude=" + FARM_LON +
+    "&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,precipitation_probability_max,sunset" +
+    "&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles&start_date=" + dateStr + "&end_date=" + dateStr;
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error("http " + r.status);
+    const j = await r.json();
+    const hrs = (j.hourly && j.hourly.time) || [];
+    const i18 = hrs.indexOf(dateStr + "T18:00");
+    const i21 = hrs.indexOf(dateStr + "T21:00");
+    const t18 = i18 >= 0 ? Math.round(j.hourly.temperature_2m[i18]) : null;
+    const t21 = i21 >= 0 ? Math.round(j.hourly.temperature_2m[i21]) : null;
+    const rain = (j.daily && j.daily.precipitation_probability_max) ? j.daily.precipitation_probability_max[0] : null;
+    const sunset = (j.daily && j.daily.sunset) ? String(j.daily.sunset[0]).slice(11,16) : null;
+    if (t18 === null) throw new Error("no hourly");
+    let layer = "";
+    if (t21 !== null) layer = t21 < 58 ? "Bring a real layer, it cools off fast by the river."
+                                       : t21 < 66 ? "A light layer for after sunset is a good idea."
+                                                  : "Warm through the evening, a light layer is plenty.";
+    box.innerHTML =
+      `<div class="wx-tile"><div class="wx-k">At the table</div><div class="wx-v">${t18}&deg;</div><div class="wx-note">6 pm${t21 !== null ? ", " + t21 + "&deg; by 9 pm" : ""}</div></div>` +
+      (rain !== null ? `<div class="wx-tile"><div class="wx-k">Rain</div><div class="wx-v">${Math.round(rain)}%</div><div class="wx-note">Dinner is under cover either way</div></div>` : "") +
+      (sunset ? `<div class="wx-tile"><div class="wx-k">Sunset</div><div class="wx-v">${esc(sunset)}</div><div class="wx-note">${esc(layer)}</div></div>` : "");
+  } catch (e) {
+    box.innerHTML = `<div class="wx-tile"><div class="wx-k">Forecast</div><div class="wx-v">&mdash;</div><div class="wx-note">We couldn't reach the forecast just now. It's an outdoor evening by the river, so plan on a layer after sunset.</div></div>`;
+  }
+}
+
+/* ---------------------------------------------- allergen capture */
+/* CHEF-CONFIRMED 2026-08-10. Two different lists, on purpose:
+   MENU_CONTAINS is a claim about the food and has to stay true.
+   ALLERGY_OPTIONS is what a guest can tell us they have, and is deliberately wider —
+   peanut is a cross-contact risk rather than an ingredient, and tree nut came off the
+   menu (no pistachio, no almond) but a guest who has one still needs to say so. */
+const MENU_CONTAINS = ["shellfish", "gluten", "dairy"];
+const ALLERGY_OPTIONS = ["Shellfish", "Dairy", "Gluten", "Peanut", "Tree nut", "Egg"];
+
+const algPicked = new Set();
+let algBusy = false;
+/* Set once the guest is resolved to a real booking by email hash. */
+let algIdentity = null;   /* { party_id, date, purchaser, party_size } */
+let algLookupSeq = 0;
+
+function algContainsSentence(){
+  const n = MENU_CONTAINS.length;
+  if (!n) return "";
+  if (n === 1) return MENU_CONTAINS[0];
+  return MENU_CONTAINS.slice(0, n - 1).join(", ") + " and " + MENU_CONTAINS[n - 1];
+}
+
+/* One place that guarantees an anonymous session. Was duplicated inline in saveEdits and
+   again here; an inline dynamic import also cannot be stubbed, which made the submit path
+   untestable. */
+async function ensureAnonAuth(){
+  const authMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+  const auth = authMod.getAuth();
+  if (!auth.currentUser) await authMod.signInAnonymously(auth);
+  return auth;
+}
+
+async function sha256Hex(s){
+  const buf = new TextEncoder().encode(s);
+  const d = await crypto.subtle.digest("SHA-256", buf);
+  return Array.from(new Uint8Array(d)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* Fetch exactly one document, named by the hash of the email the guest typed. Rules
+   allow get and deny list, so this reveals nothing about anyone else and there is no
+   collection to enumerate. */
+async function lookupByEmail(email){
+  const clean = (email || "").trim().toLowerCase();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clean)) return null;
+  const db = await fbInit();
+  const snap = await fbMod.getDoc(fbMod.doc(db, "guestLookup", await sha256Hex(clean)));
+  if (!snap.exists()) return null;
+  const bookings = (snap.data() || {}).bookings || [];
+  if (!bookings.length) return null;
+  const chosen = lsGet(LS_DATE);
+  return bookings.filter(b => b.date === chosen)[0] || bookings[0];
+}
+
+function algFormHTML(){
+  const chosen = lsGet(LS_DATE);
+  const dateOpts = DATES.map(d =>
+    `<option value="${esc(d.date)}" ${d.date === chosen ? "selected" : ""}>${esc(d.display)}</option>`).join("");
+  return `<div class="alg-chips" id="alg-chips"></div>
+    <input class="alg-field" id="alg-other" placeholder="Anything else we should know about" maxlength="300">
+    <div id="alg-ident">
+      <input class="alg-field" id="alg-email" type="email" autocomplete="email"
+             placeholder="Email you booked with" maxlength="160">
+      <div class="alg-hint" id="alg-email-hint">We'll find your table from this. Nothing else needed.</div>
+      <div id="alg-found"></div>
+      <div id="alg-manual" style="display:none;">
+        <div class="alg-row">
+          <input class="alg-field" id="alg-name" placeholder="Name on the booking" maxlength="120">
+          <select class="alg-field" id="alg-date">${dateOpts}</select>
+        </div>
+        <div class="alg-hint">If someone else booked for you, use their name.</div>
+      </div>
+    </div>
+    <button class="alg-send" id="alg-send">Send to the kitchen</button>
+    <div class="alg-status" id="alg-status"></div>
+    <div class="alg-fallback">Prefer email? Write to <a href="mailto:tim@sanfermoseattle.com?subject=Dietary%20needs%20for%20our%20farm%20dinner">tim@sanfermoseattle.com</a> and we'll pick it up there.</div>`;
+}
+
+function renderAllergenPanel(){
+  const mount = document.getElementById("alg-mount");
+  if (!mount) return;
+  const state = lsGet(LS_ALG);
+  if (state === "sent") {
+    mount.innerHTML = `<div class="alg-done">Thanks, the kitchen has your note. If anything changes, email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>`;
+    return;
+  }
+  if (state === "seen") {
+    mount.innerHTML = `<div class="alg-strip" id="alg-strip">
+        <div class="alg-strip-line">This menu contains <strong>${esc(algContainsSentence())}</strong>.</div>
+        <div class="alg-strip-cta">Any allergies or dietary needs? Tell us &rarr;</div>
+      </div><div id="alg-expand"></div>`;
+    document.getElementById("alg-strip").onclick = function(){
+      const box = document.getElementById("alg-expand");
+      if (box.innerHTML) { box.innerHTML = ""; return; }
+      box.innerHTML = `<div class="alg-gate" style="margin-top:10px;">` + algFormHTML() + `</div>`;
+      wireAlgForm();
+    };
+    return;
+  }
+  mount.innerHTML = `<div class="alg-gate" id="alg-gate">
+      <div class="alg-gate-title">Before you read on</div>
+      <div class="alg-gate-body">This menu contains ${esc(algContainsSentence())}. Tap anything that affects you and we'll build around it, even if you told us when you booked. Telling us twice costs nothing.</div>
+      ` + algFormHTML() + `
+      <div style="text-align:center;"><button class="alg-skip" id="alg-skip">Nothing to tell us, show me the menu</button></div>
+    </div>`;
+  wireAlgForm();
+  document.getElementById("alg-skip").onclick = function(){
+    lsSet(LS_ALG, "seen");
+    renderAllergenPanel();
+  };
+}
+
+function algSetIdentity(b){
+  algIdentity = b;
+  const found = document.getElementById("alg-found");
+  const manual = document.getElementById("alg-manual");
+  const hint = document.getElementById("alg-email-hint");
+  if (!found) return;
+  if (b) {
+    const d = DATES.filter(x => x.date === b.date)[0];
+    found.innerHTML = `<div class="alg-found">Found you, the <strong>${esc((b.purchaser || "").split(" ").slice(-1)[0])}</strong> party${d ? " on " + esc(d.display) : ""}.
+      <button class="alg-change" id="alg-change">Not you?</button></div>`;
+    if (manual) manual.style.display = "none";
+    if (hint) hint.style.display = "none";
+    if (b.date) { lsSet(LS_DATE, b.date); renderDates(); renderTeaser(); }
+    const ch = document.getElementById("alg-change");
+    if (ch) ch.onclick = function(){
+      algIdentity = null;
+      const em = document.getElementById("alg-email");
+      if (em) em.value = "";
+      found.innerHTML = "";
+      if (manual) manual.style.display = "";
+      if (hint) hint.style.display = "";
+    };
+  } else {
+    found.innerHTML = "";
+    if (manual) manual.style.display = "";
+  }
+}
+
+function wireAlgForm(){
+  const host = document.getElementById("alg-chips");
+  if (!host) return;
+  host.innerHTML = ALLERGY_OPTIONS.map(a =>
+    `<span class="alg-chip ${algPicked.has(a) ? "on" : ""}" data-a="${esc(a)}">${algPicked.has(a) ? "&check; " : ""}${esc(a)}</span>`).join("");
+  host.querySelectorAll(".alg-chip").forEach(function(el){
+    el.onclick = function(){
+      const a = el.getAttribute("data-a");
+      algPicked.has(a) ? algPicked.delete(a) : algPicked.add(a);
+      wireAlgForm();
+    };
+  });
+
+  const em = document.getElementById("alg-email");
+  if (em) {
+    let timer = null;
+    const run = async function(){
+      const seq = ++algLookupSeq;
+      const hint = document.getElementById("alg-email-hint");
+      const v = em.value.trim();
+      if (!v) { algSetIdentity(null); return; }
+      if (hint) { hint.className = "alg-looking"; hint.textContent = "Looking you up…"; }
+      let b = null;
+      try { b = await lookupByEmail(v); } catch (e) { b = null; }
+      /* A slower earlier lookup must never overwrite a newer one. */
+      if (seq !== algLookupSeq) return;
+      if (hint) hint.className = "alg-hint";
+      if (b) { algSetIdentity(b); }
+      else {
+        algSetIdentity(null);
+        if (hint) hint.textContent = "We couldn't match that email, so just tell us the name below.";
+      }
+    };
+    em.addEventListener("blur", run);
+    em.addEventListener("input", function(){ clearTimeout(timer); timer = setTimeout(run, 600); });
+  }
+
+  const btn = document.getElementById("alg-send");
+  if (btn) btn.onclick = sendAllergens;
+}
+
+async function sendAllergens(){
+  if (algBusy) return;
+  const status = document.getElementById("alg-status");
+  const other = (document.getElementById("alg-other").value || "").trim();
+  const nameEl = document.getElementById("alg-name");
+  const dateEl = document.getElementById("alg-date");
+  const name = algIdentity ? (algIdentity.purchaser || "") : ((nameEl && nameEl.value || "").trim());
+  const dateSel = algIdentity ? algIdentity.date : (dateEl && dateEl.value);
+
+  if (!algPicked.size && !other) {
+    status.textContent = "Tap an allergy above, or type one in, and we'll pass it along.";
+    return;
+  }
+  if (!name) {
+    status.textContent = "Add the email you booked with, or the name on the booking, so we can match this to your table.";
+    return;
+  }
+
+  algBusy = true;
+  const btn = document.getElementById("alg-send");
+  btn.disabled = true; status.textContent = "Sending…";
+
+  const payload = {
+    series: SERIES_ID,
+    date: dateSel,
+    party_name: name.slice(0, 120),
+    allergens: Array.from(algPicked),
+    other: other.slice(0, 300),
+    submitted_at: new Date().toISOString(),
+    source: "guest-portal",
+    /* Present only when the email hash resolved. The matcher trusts this and skips
+       scoring entirely. */
+    party_id: algIdentity ? (algIdentity.party_id || null) : null,
+    resolved_by: algIdentity ? "email" : "typed_name"
+  };
+
+  try {
+    const db = await fbInit();
+    await ensureAnonAuth();
+    await fbMod.addDoc(fbMod.collection(db, "guestAllergens"), payload);
+    lsSet(LS_ALG, "sent");
+    if (dateSel) lsSet(LS_DATE, dateSel);
+    renderDates(); renderTeaser(); renderAllergenPanel();
+  } catch (e) {
+    algBusy = false; btn.disabled = false;
+    const body = encodeURIComponent(
+      "Name on booking: " + name + "\nDinner: " + (dateSel || "not given") +
+      "\nAllergies: " + (Array.from(algPicked).join(", ") || "none listed") +
+      "\nAlso: " + (other || "nothing further"));
+    status.innerHTML = "We couldn't send that from here (" + esc(e.code || e.message) + "). " +
+      "<a href=\"mailto:tim@sanfermoseattle.com?subject=Dietary%20needs%20for%20our%20farm%20dinner&body=" + body + "\">Send it by email instead</a> and we'll get it.";
+  }
+}
+
+/* ---------------------------------------------- menu, wine, bar */
 function dishHTML(d, idx) {
   const key = "d" + idx;
   const pron = d.pronunciation ? ` <span class="dish-pron">${esc(d.pronunciation)}</span>` : "";
   const comp = d.components ? `<div class="dish-comp">${esc(d.components)}</div>` : "";
   const ings = (d.ingredients || []).map(i =>
-    `<div class="ing"><span class="ing-bullet">·</span><span class="ing-term">${esc(i.term)}</span>${i.pronunciation ? ` <span class="ing-pron">${esc(i.pronunciation)}</span>` : ""} — ${esc(i.note)}</div>`).join("");
+    `<div class="ing"><span class="ing-bullet">&middot;</span><span class="ing-term">${esc(i.term)}</span>${i.pronunciation ? ` <span class="ing-pron">${esc(i.pronunciation)}</span>` : ""} &mdash; ${esc(i.note)}</div>`).join("");
   return `<div class="dish ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
     <div class="dish-head" onclick="toggle('${key}')">
       <div class="dish-name">${esc(d.name)}${pron}</div>${comp}
@@ -946,13 +1669,16 @@ function renderMenu() {
 }
 
 function typePill(t) {
-  const cls = t === "red" ? "wine-type-red" : t.includes("sparkling") ? "wine-type-sparkling" : t.includes("NA") ? "wine-type-na" : "wine-type-white";
+  const cls = t === "red" ? "wine-type-red"
+            : t.includes("sparkling") ? "wine-type-sparkling"
+            : t.includes("NA") ? "wine-type-na"
+            : (t.includes("ros") ? "wine-type-rose" : "wine-type-white");
   return `<span class="wine-type ${cls}">${esc(t)}</span>`;
 }
 
 function wineHTML(w, idx) {
   const key = "w" + idx;
-  const na = w.alcohol_pct === 0 ? `<span class="wine-type wine-type-na">NA · 0%</span>` : "";
+  const na = w.alcohol_pct === 0 ? `<span class="wine-type wine-type-na">NA &middot; 0%</span>` : "";
   const specs = (w.specs || []).map(s => `
     <div class="wine-spec">
       <div class="wine-spec-label">${esc(s.label)}</div>
@@ -963,7 +1689,7 @@ function wineHTML(w, idx) {
     <div class="wine-head" onclick="toggle('${key}')">
       <div class="wine-pills">${typePill(w.type)}${na}</div>
       <div class="wine-name">${esc(w.name)}${w.vintage ? `&nbsp;<span class="wine-vint">${esc(w.vintage)}</span>` : ""}</div>
-      <div class="wine-sub">${esc(w.region)} · ${esc(w.grapes)}</div>
+      <div class="wine-sub">${esc(w.region)} &middot; ${esc(w.grapes)}</div>
       <div class="wine-notes">${esc(w.pour_notes)}</div>
       <div class="wine-specs">${specs}</div>
     </div>
@@ -1007,7 +1733,7 @@ function cocktailHTML(c, idx) {
       <div class="wine-notes">${esc(c.pour_notes)}</div>
     </div>
     <div class="cocktail-details">
-      <div class="detail-label">What's in it · tap each for more</div>
+      <div class="detail-label">What's in it &middot; tap each for more</div>
       ${ings}
     </div>
   </div>`;
@@ -1016,7 +1742,6 @@ function cocktailHTML(c, idx) {
 function renderCocktails() {
   const sec = document.getElementById("bar-section");
   if (!REF.cocktails || !REF.cocktails.length) {
-    // Bar is pending Katie — hide the section entirely until a cocktail lands.
     if (sec) sec.style.display = "none";
     return;
   }
@@ -1029,24 +1754,43 @@ function toggle(key) {
   renderMenu(); renderWines(); renderCocktails();
 }
 
+/* ---------------------------------------------- host-editable content */
 function renderGuestInfo() {
   const pb = document.getElementById("parking-body");
   const pc = document.getElementById("parking-card");
   const parking = (guestInfo.parking && guestInfo.parking.trim()) ? guestInfo.parking : GUEST_INFO_DEFAULTS.parking;
   pb.textContent = parking;
   pc.classList.remove("pending");
-  const rn = document.getElementById("route-note");
+
+  const banner = document.getElementById("traffic-banner");
+  const tb = document.getElementById("traffic-body");
+  const tback = document.getElementById("traffic-back");
   if (guestInfo.route_note && guestInfo.route_note.trim()) {
-    rn.textContent = guestInfo.route_note; rn.style.display = "block";
-  } else { rn.style.display = "none"; }
+    tb.textContent = guestInfo.route_note;
+    const stamp = guestInfo.route_note_at || guestInfo.updated_at;
+    let posted = "";
+    if (stamp) {
+      const dt = new Date(stamp);
+      if (!isNaN(dt)) posted = "Posted " + dt.toLocaleString("en-US", {
+        weekday: "short", month: "short", day: "numeric",
+        hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles"
+      }) + ". ";
+    }
+    tback.textContent = posted + "Traffic changes fast on a summer weekend, so check back here the morning you travel.";
+    banner.style.display = "";
+  } else {
+    banner.style.display = "none";
+  }
+
   const hn = document.getElementById("host-note-display");
   if (guestInfo.host_note && guestInfo.host_note.trim()) {
     hn.textContent = guestInfo.host_note; hn.style.display = "block";
   } else { hn.style.display = "none"; }
-  document.getElementById("footer-tagline").textContent = REF.header.tagline;
+
+  const ft = document.getElementById("footer-tagline");
+  if (ft && REF.header && REF.header.tagline) ft.textContent = REF.header.tagline;
 }
 
-/* ============================================================ FIREBASE (live host edits) */
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
   authDomain: "swan-house-checkin.firebaseapp.com",
@@ -1105,6 +1849,7 @@ async function saveEdits() {
   const payload = {
     parking: document.getElementById("edit-parking").value.trim(),
     route_note: document.getElementById("edit-route").value.trim(),
+    route_note_at: new Date().toISOString(),
     host_note: document.getElementById("edit-host-note").value.trim(),
     updated_at: new Date().toISOString()
   };
@@ -1123,10 +1868,101 @@ async function saveEdits() {
   }
 }
 
+
+/* ============================================================ HERO INTRO
+   Zoom-back morph ported from Remy's runIntroMorph. The wordmark holds at centre, the
+   hero photo dissolves as it flies, and it lands exactly on the real .hdr-title, which
+   then takes over in a single frame. */
+function runIntroMorph(){
+  const HOLD = 550, FLIGHT = 650;
+  const intro   = document.getElementById("intro");
+  const bg      = document.getElementById("intro-bg");
+  const word    = document.querySelector(".intro-word");
+  const eyebrow = document.querySelector(".intro-eyebrow");
+  const target  = document.querySelector(".hdr-title");
+  const bubble  = document.querySelector(".bubble");
+
+  let done = false;
+  const reveal = function(){
+    if (done) return; done = true;
+    if (bubble) bubble.classList.add("intro-in");
+    if (intro) intro.style.display = "none";
+    document.documentElement.classList.remove("shf-intro-running");
+  };
+
+  if (!window.__shfIntro) { reveal(); return; }
+  /* Safety: anything missing and the page still has to be usable. */
+  if (!intro || !word || !target || !bubble) { reveal(); return; }
+
+  /* HARD FAILSAFE. The intro hides the whole page while it runs, so anything throwing in
+     here would strand a guest on a blank screen. Fires unconditionally; reveal() is
+     idempotent, so the worst case is the page arriving without the show. */
+  setTimeout(reveal, 3000);
+
+  /* rAF does NOT fire in a background tab. Race it against a timeout so a page loaded in
+     the background still animates when it comes forward, instead of sitting on the
+     failsafe. Whichever wins, measure once. */
+  let measured = false;
+  const whenReady = function(fn){
+    const once = function(){ if (measured) return; measured = true; fn(); };
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(function(){ requestAnimationFrame(once); });
+    }
+    setTimeout(once, 120);
+  };
+
+  let ran = false;
+  const go = function(){
+    if (ran) return; ran = true;
+    try {
+      whenReady(function(){
+        try {
+          const t = target.getBoundingClientRect();
+          const w = word.getBoundingClientRect();
+          if (!w.height || !t.height) { reveal(); return; }
+          /* Same font, weight and line-height top and bottom, so height is a sound
+             scale anchor and the landing is exact. */
+          const scale = t.height / w.height;
+          const tx = (t.left + t.width / 2) - (w.left + w.width / 2);
+          const ty = (t.top + t.height / 2) - (w.top + w.height / 2);
+
+          setTimeout(function(){
+            word.classList.add("morph");
+            /* Force a reflow so the browser registers .morph and its transition BEFORE
+               the transform write. Without this Safari treats the write as initial
+               state and skips the transition, which reads as a pop, not a pull-back. */
+            void word.offsetHeight;
+            word.style.transform = "translate(" + tx + "px, " + ty + "px) scale(" + scale + ")";
+            word.classList.add("landed");
+            /* Hero dissolves during the flight, not after it. */
+            if (bg) bg.classList.add("out");
+            if (eyebrow) eyebrow.classList.add("out");
+          }, HOLD);
+
+          /* Instant handoff the moment it lands. No crossfade: the real title is already
+             at exactly this position and size, so the swap is invisible. Fading either
+             layer here is what let the page paint over the wordmark. */
+          setTimeout(reveal, HOLD + FLIGHT);
+        } catch (e) { reveal(); }
+      });
+    } catch (e) { reveal(); }
+  };
+
+  if (document.fonts && document.fonts.ready) {
+    /* Measuring mid font-swap gives fallback-serif metrics and the title visibly resizes
+       on landing. The timeout is the backstop if fonts.ready never settles. */
+    document.fonts.ready.then(go);
+    setTimeout(go, 900);
+  } else { go(); }
+}
+
 /* ============================================================ INIT */
-renderDates(); renderMenu(); renderWines(); renderCocktails(); renderGuestInfo();
+wireNav();
+renderDates(); renderTeaser(); renderMenu(); renderWines(); renderCocktails(); renderGuestInfo();
 loadGuestContent();
+showView((location.hash || "#home").slice(1), false);
 if (new URLSearchParams(location.search).get("edit") === "1") enterEditMode();
+runIntroMorph();
 </script>
 </body>
 </html>
