@@ -1358,6 +1358,8 @@ const DATES = [
 
 /* ============================================================ RENDER */
 let guestInfo = { ...GUEST_INFO_DEFAULTS };
+/* submission_id -> { status, updated_at }. Populated from guestContent/<series>. */
+let guestAcks = {};
 const expanded = new Set();
 const esc = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 
@@ -1370,6 +1372,11 @@ const MENU_ALLERGENS = ["Shellfish", "Tree nut", "Dairy", "Gluten", "Egg", "Sunf
 
 const LS_DATE = "shf_date_" + SERIES_ID;
 const LS_ALG  = "shf_alg_" + SERIES_ID;
+/* The id of THIS browser's submission. Without it there is nothing to look an
+   acknowledgement up by: guestAllergens is create-only with no client read, and the guest
+   has no account. The id is the capability. Lose it (cleared storage, different phone) and
+   the panel degrades to "Sent", which is the honest fallback rather than a wrong claim. */
+const LS_ALG_ID = "shf_algid_" + SERIES_ID;
 
 function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
 function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
@@ -1582,7 +1589,23 @@ function renderAllergenPanel(){
   if (!mount) return;
   const state = lsGet(LS_ALG);
   if (state === "sent") {
-    mount.innerHTML = `<div class="alg-done">Thanks, the kitchen has your note. If anything changes, email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>`;
+    /* Only a manager's confirm counts as acknowledgement. Everything else says "sent",
+       which is all we actually know, and still points the guest at a human. */
+    const ack = guestAcks[lsGet(LS_ALG_ID) || ""] || {};
+    const mail = `<a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>`;
+    let body;
+    if (ack.status === "confirmed") {
+      body = `<strong>The kitchen has this.</strong> Your note has been read and confirmed
+              against your table. If anything changes, email ${mail}.`;
+    } else if (ack.status === "unmatched" || ack.status === "ambiguous") {
+      body = `We have your note, but we couldn't match it to a booking, so it may not reach
+              the kitchen on its own. Please email ${mail} with the name your table was
+              booked under, and mention it to your server when you arrive.`;
+    } else {
+      body = `Thanks, we have your note. The kitchen reviews these before service, so please
+              mention it to your server when you arrive too. If anything changes, email ${mail}.`;
+    }
+    mount.innerHTML = `<div class="alg-done">${body}</div>`;
     return;
   }
   if (state === "seen") {
@@ -1731,8 +1754,9 @@ async function sendAllergens(){
   try {
     const db = await fbInit();
     await ensureAnonAuth();
-    await fbMod.addDoc(fbMod.collection(db, "guestAllergens"), payload);
+    const ref = await fbMod.addDoc(fbMod.collection(db, "guestAllergens"), payload);
     lsSet(LS_ALG, "sent");
+    if (ref && ref.id) lsSet(LS_ALG_ID, ref.id);
     if (dateSel) lsSet(LS_DATE, dateSel);
     renderDates(); renderTeaser(); renderAllergenPanel();
   } catch (e) {
@@ -1932,8 +1956,14 @@ async function loadGuestContent() {
     const db = await fbInit();
     const snap = await fbMod.getDoc(fbMod.doc(db, "guestContent", SERIES_ID));
     if (snap.exists()) {
-      guestInfo = { ...GUEST_INFO_DEFAULTS, ...snap.data() };
+      const d = snap.data();
+      guestInfo = { ...GUEST_INFO_DEFAULTS, ...d };
+      guestAcks = d.acks || {};
       renderGuestInfo();
+      /* The panel renders before this resolves, so it must re-render once the ack lands.
+         Cheap, and it is the only thing that turns "Sent" into "The kitchen has this"
+         without the guest reloading. */
+      renderAllergenPanel();
     }
   } catch (e) { /* offline or rules not yet published — defaults stand */ }
 }
