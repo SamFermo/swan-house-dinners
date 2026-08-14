@@ -1544,8 +1544,19 @@ async function lookupByEmail(email){
 
 function algFormHTML(){
   const chosen = lsGet(LS_DATE);
-  const dateOpts = DATES.map(d =>
-    `<option value="${esc(d.date)}" ${d.date === chosen ? "selected" : ""}>${esc(d.display)}</option>`).join("");
+  /* No silent default. With no `selected` anywhere the browser picks the FIRST option,
+     which sent a guest booked on 08-15 through as 08-08 on 2026-08-11 and lost the
+     submission at the matcher. The placeholder holds an empty value so sendAllergens()
+     can refuse it; past nights are dropped so a wrong-but-plausible date is not offered
+     at all. Today stays in the list, and if the whole series has passed we offer
+     everything rather than an empty selector. */
+  const todayISO = new Date().toLocaleDateString("en-CA");
+  const upcoming = DATES.filter(d => d.date >= todayISO);
+  const offer = upcoming.length ? upcoming : DATES;
+  const dateOpts =
+    `<option value="" disabled ${chosen ? "" : "selected"}>Which night are you coming?</option>` +
+    offer.map(d =>
+      `<option value="${esc(d.date)}" ${d.date === chosen ? "selected" : ""}>${esc(d.display)}</option>`).join("");
   return `<div class="alg-chips" id="alg-chips"></div>
     <input class="alg-field" id="alg-other" placeholder="Anything else we should know about" maxlength="300">
     <div id="alg-ident">
@@ -1684,6 +1695,18 @@ async function sendAllergens(){
   }
   if (!name) {
     status.textContent = "Add the email you booked with, or the name on the booking, so we can match this to your table.";
+    return;
+  }
+  /* Without this the empty placeholder would send `date: ""` and fail at the matcher just
+     as silently as the wrong date did. Refusing here is the whole point of the fix: the
+     guest is standing in front of the form and can answer, the matcher cannot.
+
+     Sits with the other pre-flight guards, ABOVE `algBusy = true` and above the `const btn`
+     declaration, so it must not touch either. A first draft reset `btn.disabled` here and
+     would have thrown a ReferenceError on the temporal dead zone every time a guest left
+     the night unpicked — turning a polite prompt into a dead button. */
+  if (!dateSel) {
+    status.textContent = "Pick which night you're coming, so this reaches the right service.";
     return;
   }
 
