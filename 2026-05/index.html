@@ -317,12 +317,7 @@ body.editing .editable-field { display: block; }
 
 <div class="bubble">
 
-  <div class="edit-bar">
-    <span style="font-weight:700;">Host edit mode</span>
-    <span class="edit-status" id="edit-status">Editing the guest welcome package. Changes go live the moment you save.</span>
-    <button class="edit-save" onclick="saveEdits()">Save &amp; publish</button>
-    <button class="edit-cancel" onclick="exitEditMode()">Cancel</button>
-  </div>
+  
 
   <!-- header -->
   <div class="hdr">
@@ -333,83 +328,13 @@ body.editing .editable-field { display: block; }
   </div>
 
   <!-- welcome -->
-  <div class="section">
-    <p class="prose">We can't wait to see you up on the farm. We're a family farm on the North Fork of the Skagit River outside La Conner, and these dinners are our favorite nights of the year: everything Skagit Valley and Swan House have to offer, cooked by the San Fermo team and served in the garden pergola as the evening comes on.</p>
-    <p class="prose" id="host-note-display" style="display:none;"></p>
-    <div class="editable-field">
-      <label>A note from the hosts (optional, shows under the welcome)</label>
-      <textarea id="edit-host-note"></textarea>
-    </div>
-  </div>
+  
 
   <!-- getting here -->
-  <div class="section">
-    <div class="section-label">Getting here</div>
-    <div class="info-card">
-      <div class="info-title">Swan House Farm</div>
-      <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
-Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.
-<a href="https://maps.google.com/?q=19479+Landing+Rd,+Mount+Vernon,+WA+98273" target="_blank" rel="noopener">Open in Google Maps →</a>&nbsp;&nbsp;<a href="https://maps.apple.com/?address=19479%20Landing%20Rd,%20Mount%20Vernon,%20WA%2098273" target="_blank" rel="noopener">Open in Apple Maps →</a></div>
-    </div>
-    <div class="info-card">
-      <div class="info-title">Driving directions</div>
-      <div class="info-body">Weekend traffic from Seattle can be heavy, so give yourself a little extra time.
-
-Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head west toward La Conner. Just past the North Fork bridge, turn left onto Dodge Valley Rd. In about 0.6 miles, turn left onto Landing Rd — it's a bit of a blind turn, so take it slow. Follow the bends and continue past the private road sign.</div>
-    </div>
-    <div class="info-card" id="parking-card">
-      <div class="info-title">Parking</div>
-      <div class="info-body" id="parking-body"></div>
-      <div class="editable-field">
-        <label>Parking instructions</label>
-        <textarea id="edit-parking"></textarea>
-      </div>
-    </div>
-    <div class="route-note" id="route-note"></div>
-    <div class="editable-field">
-      <label>Day-of traffic note (rust card above — auto-filled the morning of each dinner; leave blank to hide)</label>
-      <textarea id="edit-route"></textarea>
-    </div>
-    <div class="info-card">
-      <div class="info-title">Staying the night</div>
-      <div class="info-body">For guests who'd like to stay nearby, we recommend the Channel Lodge in La Conner, about four miles away.</div>
-    </div>
-    <div class="map-wrap">
-      <img src="../property-map.jpg" alt="Swan House Farm property map" loading="lazy">
-      <div class="map-caption">The lay of the land — parking, pergola, and the walk between.</div>
-    </div>
-  </div>
+  
 
   <!-- your evening -->
-  <div class="section">
-    <div class="section-label">Your evening</div>
-    <div class="evening">
-      <div class="ev-step">
-        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
-        <div class="ev-body">
-          <div class="ev-time">3:30 – 4:30 pm</div>
-          <div class="ev-name">Arrival &amp; farm tours</div>
-          <div class="ev-desc">Arrive any time after 3:30 for welcome drinks, hors d'oeuvres, and a walk through the farm.</div>
-        </div>
-      </div>
-      <div class="ev-step">
-        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
-        <div class="ev-body">
-          <div class="ev-time">4:30 pm</div>
-          <div class="ev-name">Dinner in the garden</div>
-          <div class="ev-desc">We sit down together at three communal tables under the pergola for a five-course paired wine dinner. Running behind? Give us a call at 206.551.3328 and we'll make sure you're set.</div>
-        </div>
-      </div>
-      <div class="ev-step">
-        <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
-        <div class="ev-body">
-          <div class="ev-time">Wraps up around 8 pm</div>
-          <div class="ev-name">Dessert &amp; coffee</div>
-          <div class="ev-desc">The evening closes with dessert and Cafe Umbria coffee.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- menu -->
   <div class="section">
@@ -419,10 +344,7 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
   </div>
 
   <!-- dietary -->
-  <div class="section">
-    <div class="section-label">Allergies &amp; dietary needs</div>
-    <div class="dietary">All food allergies and dietary needs were sent to the chef before the menu was built. If you have any last-minute concerns, please email <a href="mailto:tim@sanfermoseattle.com">tim@sanfermoseattle.com</a>.</div>
-  </div>
+  
 
   <!-- wine -->
   <div class="section">
@@ -438,21 +360,7 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
   </div>
 
   <!-- good to know -->
-  <div class="section">
-    <div class="section-label">Good to know</div>
-    <div class="faq-grid">
-      <div class="faq-card"><div class="faq-q">Dress for the farm</div><div class="faq-a">Dinner is under a covered garden pergola, open to the evening air. Comfortable walking shoes, a warm layer for after sunset, and sun protection on bright days.</div></div>
-      <div class="faq-card"><div class="faq-q">The terrain</div><div class="faq-a">Farm tours follow walking paths over uneven ground — another vote for sturdy shoes.</div></div>
-      <div class="faq-card"><div class="faq-q">Seating</div><div class="faq-a">All 26 guests share three communal tables. Joining a larger group? Reach out and we'll seat you together.</div></div>
-      <div class="faq-card"><div class="faq-q">Wine &amp; zero-proof</div><div class="faq-a">Paired wine and bubbles are included, and we pour excellent non-alcoholic wines for anyone who prefers them.</div></div>
-      <div class="faq-card"><div class="faq-q">Out by the river</div><div class="faq-a">We sit right along the Skagit River, so bees, wasps, and mosquitos come with the setting. We suggest bringing a little bug spray — and if anyone has a serious sting allergy, please weigh that carefully.</div></div>
-      <div class="faq-card"><div class="faq-q">The animals</div><div class="faq-a">Tours offer a chance to visit the livestock. Say hello — gently, and at your own discretion.</div></div>
-      <div class="faq-card"><div class="faq-q">Restrooms</div><div class="faq-a">The farm septic system is modest, so we provide comfortable temporary restrooms for the evening.</div></div>
-      <div class="faq-card"><div class="faq-q">Dogs</div><div class="faq-a">We love them, but the livestock don't — please leave pups at home.</div></div>
-      <div class="faq-card"><div class="faq-q">Photos</div><div class="faq-a">Please take pictures and share the evening. We appreciate the support!</div></div>
-      <div class="faq-card"><div class="faq-q">Tickets</div><div class="faq-a">Bookings are final, but tickets are transferable — if plans change, contact us and we'll help hand them to new guests. Severe weather is the one exception: we'll cancel and make it right.</div></div>
-    </div>
-  </div>
+  
 
   <div class="footer">
     <div class="footer-tagline" id="footer-tagline"></div>
@@ -470,7 +378,8 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
    DATA — embedded at deploy time.
    Menu/wines/cocktails mirror checkin-app/data/reference/2026-06.json
    (guest-tone edits applied; plateware/BOH detail stripped).
-   GUEST_INFO defaults are overridden live by Firestore guestContent/<series>.
+   Archive: static. GUEST_INFO is not read from Firestore here — the live
+   portal does that, an archived dinner does not change.
    ============================================================ */
 const SERIES_ID = "2026-05";
 
@@ -993,93 +902,29 @@ function toggle(key) {
 }
 
 function renderGuestInfo() {
-  const pb = document.getElementById("parking-body");
-  const pc = document.getElementById("parking-card");
-  const parking = (guestInfo.parking && guestInfo.parking.trim()) ? guestInfo.parking : GUEST_INFO_DEFAULTS.parking;
-  pb.textContent = parking;
-  pc.classList.remove("pending");
-  const rn = document.getElementById("route-note");
-  if (guestInfo.route_note && guestInfo.route_note.trim()) {
-    rn.textContent = guestInfo.route_note; rn.style.display = "block";
-  } else { rn.style.display = "none"; }
-  const hn = document.getElementById("host-note-display");
-  if (guestInfo.host_note && guestInfo.host_note.trim()) {
-    hn.textContent = guestInfo.host_note; hn.style.display = "block";
-  } else { hn.style.display = "none"; }
-  document.getElementById("footer-tagline").textContent = REF.header.tagline;
+  /* Archive: the parking, route-note and host-note cards are gone, so all that survives of
+     this function is the footer tagline. Kept as a function rather than inlined so the INIT
+     line below still reads the same as the live portal's. */
+  const ft = document.getElementById("footer-tagline");
+  if (ft) ft.textContent = REF.header.tagline;
 }
+
+
 
 /* ============================================================ FIREBASE (live host edits) */
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
-  authDomain: "swan-house-checkin.firebaseapp.com",
-  projectId: "swan-house-checkin",
-  storageBucket: "swan-house-checkin.firebasestorage.app",
-  messagingSenderId: "743743999844",
-  appId: "1:743743999844:web:e124dd6fa5f791f87b7471"
-};
-const EDIT_PIN = "1936"; /* change me — share only with Tim & Kelly */
-let fbDb = null, fbMod = null;
 
-async function fbInit() {
-  if (fbDb) return fbDb;
-  const appMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-  fbMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-  const app = appMod.initializeApp(FIREBASE_CONFIG);
-  fbDb = fbMod.getFirestore(app);
-  return fbDb;
-}
 
-async function loadGuestContent() {
-  try {
-    const db = await fbInit();
-    const snap = await fbMod.getDoc(fbMod.doc(db, "guestContent", SERIES_ID));
-    if (snap.exists()) {
-      guestInfo = { ...GUEST_INFO_DEFAULTS, ...snap.data() };
-      renderGuestInfo();
-    }
-  } catch (e) { /* offline or rules not yet published — defaults stand */ }
-}
+
+
 
 /* ============================================================ EDIT MODE */
-function enterEditMode() {
-  const pin = prompt("Host PIN:");
-  if (pin !== EDIT_PIN) { if (pin !== null) alert("That's not it."); return; }
-  document.body.classList.add("editing");
-  document.getElementById("edit-parking").value = guestInfo.parking || "";
-  document.getElementById("edit-route").value = guestInfo.route_note || "";
-  document.getElementById("edit-host-note").value = guestInfo.host_note || "";
-}
-function exitEditMode() { document.body.classList.remove("editing"); }
 
-async function saveEdits() {
-  const status = document.getElementById("edit-status");
-  status.textContent = "Publishing…";
-  const payload = {
-    parking: document.getElementById("edit-parking").value.trim(),
-    route_note: document.getElementById("edit-route").value.trim(),
-    host_note: document.getElementById("edit-host-note").value.trim(),
-    updated_at: new Date().toISOString()
-  };
-  try {
-    const db = await fbInit();
-    const authMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
-    const auth = authMod.getAuth();
-    if (!auth.currentUser) await authMod.signInAnonymously(auth);
-    await fbMod.setDoc(fbMod.doc(db, "guestContent", SERIES_ID), payload, { merge: true });
-    guestInfo = { ...GUEST_INFO_DEFAULTS, ...payload };
-    renderGuestInfo();
-    status.textContent = "Published — guests see this now.";
-    setTimeout(exitEditMode, 1200);
-  } catch (e) {
-    status.textContent = "Couldn't publish (" + (e.code || e.message) + "). Try again or text Sam.";
-  }
-}
+
+
+
 
 /* ============================================================ INIT */
 renderDates(); renderMenu(); renderWines(); renderCocktails(); renderGuestInfo();
-loadGuestContent();
-if (new URLSearchParams(location.search).get("edit") === "1") enterEditMode();
 </script>
 </body>
 </html>
