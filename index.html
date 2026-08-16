@@ -688,6 +688,15 @@ html.shf-intro-running .bubble.intro-in { opacity: 1; }
       <div class="info-body">19479 Landing Rd., Mount Vernon, WA 98273
 Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.</div>
     </div>
+
+    <!-- Traffic, directly under the address: this is the screen a guest opens before
+         they set out. Always populated on a dinner day, always stamped. -->
+    <div class="info-card" id="night-traffic" style="margin-top:12px;">
+      <div class="info-title">Traffic right now</div>
+      <div class="info-body" id="night-traffic-body"></div>
+      <div class="info-body" id="night-traffic-stamp"
+           style="margin-top:6px;font-size:12px;opacity:.72;"></div>
+    </div>
   </div>
 
   <!-- ===== MENU ===== -->
@@ -721,7 +730,7 @@ Coming from the south, take I-5 to Exit 221 (Conway / Lake McMurray) and head we
     </div>
     <div class="info-card">
       <div class="info-title">Traffic on the day</div>
-      <div class="info-body" id="traffic-standing">We post a current traffic notice on the home screen of this page on the morning of each dinner. Check back before you set out.</div>
+      <div class="info-body" id="traffic-standing">On the morning of each dinner we check I-5 in both directions and post what we find under <strong>Your Night</strong>, with the time we checked &mdash; including when the roads are clear. Have a look before you set out.</div>
     </div>
     <div class="info-card" id="parking-card">
       <div class="info-title">Parking</div>
@@ -1890,6 +1899,51 @@ function toggle(key) {
 }
 
 /* ---------------------------------------------- host-editable content */
+
+/* Traffic on Your Night: always says something on a dinner day, always stamped, and never
+   shows a stamp from a previous dinner. See _patch_2026_08_traffic.py for the reasoning. */
+function nightTrafficStamp(iso){
+  if (!iso) return null;
+  const dt = new Date(iso);
+  if (isNaN(dt)) return null;
+  const fmt = o => dt.toLocaleString("en-US", Object.assign({timeZone:"America/Los_Angeles"}, o));
+  /* en-CA gives YYYY-MM-DD, so "is this today in Pacific time" is a string compare. */
+  const onDay = dt.toLocaleDateString("en-CA", {timeZone:"America/Los_Angeles"});
+  const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Los_Angeles"});
+  return { fresh: onDay === today, label: fmt({hour:"numeric", minute:"2-digit"}),
+           dayLabel: fmt({weekday:"short", month:"short", day:"numeric"}) };
+}
+
+function renderNightTraffic(){
+  const card  = document.getElementById("night-traffic");
+  const body  = document.getElementById("night-traffic-body");
+  const stamp = document.getElementById("night-traffic-stamp");
+  if (!card || !body || !stamp) return;
+
+  const s = nightTrafficStamp(guestInfo.route_note_at);
+  const note = (guestInfo.route_note || "").trim();
+
+  if (!s || !s.fresh) {
+    /* No check today, or the newest check is from a previous dinner. Say exactly that rather
+       than replaying an old all-clear as though it were current. */
+    body.textContent = "We check I-5 in both directions on the morning of each dinner and post "
+                     + "what we find here, including when it's clear.";
+    stamp.textContent = s ? ("Last checked " + s.dayLabel + ", " + s.label + ".") : "";
+    card.classList.remove("traffic");
+    return;
+  }
+
+  if (guestInfo.route_status === "incident" || (note && guestInfo.route_status !== "clear")) {
+    body.textContent = note || "There's a delay on I-5 today, so allow extra time.";
+    card.classList.add("traffic");
+  } else {
+    body.textContent = note || "Roads were clear in both directions when we checked.";
+    card.classList.remove("traffic");
+  }
+  stamp.textContent = "Checked " + s.label + ". Traffic changes fast on a summer weekend, so "
+                    + "look again before you set out.";
+}
+
 function renderGuestInfo() {
   const pb = document.getElementById("parking-body");
   const pc = document.getElementById("parking-card");
@@ -1897,10 +1951,14 @@ function renderGuestInfo() {
   pb.textContent = parking;
   pc.classList.remove("pending");
 
+  renderNightTraffic();
+
   const banner = document.getElementById("traffic-banner");
   const tb = document.getElementById("traffic-body");
   const tback = document.getElementById("traffic-back");
-  if (guestInfo.route_note && guestInfo.route_note.trim()) {
+  /* The LOUD landing banner keeps its original contract: it appears only when there is
+     something to act on. An all-clear belongs on Your Night, not shouted on the home screen. */
+  if (guestInfo.route_status !== "clear" && guestInfo.route_note && guestInfo.route_note.trim()) {
     tb.textContent = guestInfo.route_note;
     const stamp = guestInfo.route_note_at || guestInfo.updated_at;
     let posted = "";
