@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Swan House Farm — Farm Dinners</title>
+<meta property="og:title" content="Swan House Farm — Farm Dinners">
+<meta property="og:description" content="Your evening at the farm: menu, wine pairings, and everything to know before you arrive.">
+<style>
+:root {
+  --bg:           #f4ede0;
+  --bg-deeper:    #ece2cc;
+  --card:         #fbf6ea;
+  --card-edge:    #d8c8a8;
+  --border:       #d8c8a8;
+  --border-soft:  #e6d8b8;
+  --text:         #2a2418;
+  --text-soft:    #6a5e48;
+  --text-mute:    #a89a78;
+  --accent:       #4a6a3a;
+  --accent-dark:  #2e4624;
+  --accent-soft:  #c8d6b8;
+  --rust:         #b04a1a;
+  --rust-soft:    #f4dec8;
+  --gold:         #a8842c;
+  --gold-soft:    #f0e4c4;
+  --wood:         #5a3a22;
+  --wood-soft:    #8a6a4a;
+  --shadow:       0 1px 2px rgba(58, 42, 22, 0.06);
+  --shadow-lift:  0 2px 6px rgba(58, 42, 22, 0.12);
+  --radius:       6px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'Caladea', 'Cambria', Georgia, serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(244, 237, 224, 0.52), rgba(244, 237, 224, 0.62)),
+    url('../dinner-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.sans { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; }
+
+.bubble {
+  background: rgba(251, 246, 234, 0.95);
+  max-width: 720px;
+  margin: 18px auto 24px;
+  border-radius: 14px;
+  padding: 26px 22px 34px;
+  box-shadow:
+    0 6px 22px rgba(58, 42, 22, 0.28),
+    0 0 0 1px rgba(216, 200, 168, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+@media (max-width: 760px) { .bubble { margin: 10px 10px 18px; padding: 22px 16px 28px; } }
+
+/* ---------- header ---------- */
+.hdr { text-align: center; margin-bottom: 26px; }
+.hdr-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--gold); margin-bottom: 8px;
+}
+.hdr-title { font-size: 30px; font-weight: 700; color: var(--wood); line-height: 1.15; }
+.hdr-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13.5px; color: var(--text-mute); margin-top: 8px;
+}
+.hdr-dates {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px;
+}
+.hdr-date {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; font-weight: 600; color: var(--wood);
+  background: var(--gold-soft); border: 1px solid var(--gold);
+  border-radius: 999px; padding: 4px 13px;
+}
+
+/* ---------- sections ---------- */
+.section { margin: 0 0 30px; }
+.section-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--gold);
+  margin: 0 0 12px; padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--border);
+}
+.prose { font-size: 14.5px; line-height: 1.6; color: var(--text); }
+.prose + .prose { margin-top: 10px; }
+.prose em { color: var(--text-soft); }
+
+/* ---------- evening timeline ---------- */
+.evening { display: flex; flex-direction: column; gap: 0; }
+.ev-step { display: flex; gap: 14px; }
+.ev-rail { display: flex; flex-direction: column; align-items: center; width: 14px; flex-shrink: 0; }
+.ev-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gold); margin-top: 6px; flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+.ev-line { width: 1px; flex: 1; background: var(--border); margin: 4px 0 2px; }
+.ev-step:last-child .ev-line { display: none; }
+.ev-body { padding-bottom: 18px; }
+.ev-time {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold);
+}
+.ev-name { font-size: 16px; font-weight: 700; color: var(--wood); margin: 2px 0 3px; }
+.ev-desc { font-size: 13.5px; line-height: 1.5; color: var(--text-soft); }
+
+/* ---------- course + dish cards ---------- */
+.course { margin: 0 0 22px; }
+.course-label { font-size: 22px; font-weight: 500; color: var(--wood); text-align: center; }
+.course-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; font-style: italic; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-mute); text-align: center; margin: 2px 0 12px;
+}
+.dish, .wine, .cocktail {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  margin: 0 0 10px;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.dish.expanded, .wine.expanded, .cocktail.expanded { border-color: var(--gold); }
+.dish-head, .wine-head, .cocktail-head { padding: 14px 16px; cursor: pointer; user-select: none; }
+.dish-details, .wine-details, .cocktail-details {
+  display: none; padding: 4px 18px 18px; border-top: 0.5px dashed var(--border);
+}
+.dish.expanded .dish-details, .wine.expanded .wine-details, .cocktail.expanded .cocktail-details { display: block; }
+
+.dish-name { font-size: 16.5px; font-weight: 700; color: var(--wood); text-align: center; }
+.dish-pron { font-size: 13px; font-style: italic; font-weight: 400; color: var(--gold); }
+.dish-comp { font-size: 14px; font-style: italic; color: var(--text-mute); text-align: center; margin-top: 4px; }
+.dish-story { font-size: 14.5px; line-height: 1.55; color: var(--text); margin-top: 10px; }
+.ing-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold); margin: 14px 0 6px;
+}
+.ing { font-size: 13.5px; line-height: 1.5; margin: 0 0 6px; }
+.ing-bullet { color: var(--gold); margin-right: 5px; }
+.ing-term { font-weight: 700; color: var(--wood); }
+.ing-pron { font-style: italic; color: var(--gold); }
+.tap-hint {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute); text-align: center; margin: 0 0 12px;
+}
+
+/* ---------- wine cards ---------- */
+.wine-pills { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; flex-wrap: wrap; }
+.wine-type {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; border-radius: 999px; padding: 3px 10px;
+}
+.wine-type-white     { background: #f5ead0; color: var(--wood); }
+.wine-type-red       { background: #e8d4cc; color: #6b2818; }
+.wine-type-sparkling { background: #e8e8d4; color: #5f5a2a; }
+.wine-type-na        { background: #e0e8de; color: #3a5a3a; }
+.wine-name { font-size: 16.5px; font-weight: 700; color: var(--wood); }
+.wine-vint { font-size: 13px; font-style: italic; font-weight: 400; color: var(--gold); }
+.wine-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12.5px; color: var(--text-mute); margin: 2px 0 8px;
+}
+.wine-notes { font-size: 14px; line-height: 1.5; color: var(--text); }
+.wine-specs {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  margin-top: 12px; padding-top: 10px; border-top: 0.5px dashed var(--border);
+}
+.wine-spec { text-align: center; }
+.wine-spec-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-mute); margin-bottom: 3px;
+}
+.wine-dots { display: inline-flex; gap: 3px; align-items: center; }
+.wine-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+.wine-dot.on { background: var(--gold); }
+.wine-spec-range {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 9.5px; color: var(--text-mute); margin-top: 2px;
+}
+.detail-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold); margin: 14px 0 5px;
+}
+.detail-body { font-size: 14px; line-height: 1.55; color: var(--text); }
+.held-note {
+  background: var(--bg); border: 0.5px dashed var(--border);
+  border-radius: 8px; padding: 14px 16px;
+  font-size: 13.5px; line-height: 1.55; color: var(--text-soft); font-style: italic;
+}
+
+/* ---------- cocktail ---------- */
+.cocktail-tag { font-size: 13px; font-style: italic; color: var(--gold); margin: 2px 0 8px; }
+.cocktail-ing { padding: 9px 0; border-bottom: 0.5px dashed var(--border-soft); }
+.cocktail-ing:last-child { border-bottom: none; }
+.cocktail-ing.has-highlight {
+  border-left: 3px solid var(--accent);
+  padding-left: 10px; margin-left: -10px;
+  background: linear-gradient(to right, rgba(200, 214, 184, 0.18), transparent 60%);
+  border-radius: 4px;
+}
+.ci-row { display: flex; align-items: baseline; gap: 8px; }
+.ci-name { font-size: 14px; font-weight: 700; color: var(--wood); }
+.ci-amount {
+  margin-left: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 12px; color: var(--text-mute); white-space: nowrap;
+}
+.ci-highlight {
+  display: inline-block; padding: 2px 9px;
+  background: var(--accent-soft); border: 1px solid var(--accent);
+  color: var(--accent-dark); border-radius: 999px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; line-height: 1.3; white-space: nowrap;
+}
+.ci-desc { font-size: 13.5px; line-height: 1.5; color: var(--text); margin-top: 6px; }
+
+/* ---------- getting here / info cards ---------- */
+.info-card {
+  background: var(--bg); border-radius: 8px;
+  padding: 12px 14px; margin: 0 0 10px;
+  border-left: 3px solid var(--gold);
+}
+.info-card.pending { border-left-color: var(--text-mute); }
+.info-title { font-size: 14.5px; font-weight: 700; color: var(--wood); margin-bottom: 3px; }
+.info-body { font-size: 13.5px; line-height: 1.55; color: var(--text); white-space: pre-line; }
+.info-body a { color: var(--accent-dark); }
+.route-note {
+  background: var(--rust-soft); border-left: 3px solid var(--rust);
+  border-radius: 8px; padding: 12px 14px; margin: 0 0 10px;
+  font-size: 13.5px; line-height: 1.55; color: var(--text);
+}
+.map-wrap {
+  border: 0.5px solid var(--border); border-radius: 8px;
+  overflow: hidden; background: var(--card); margin: 0 0 10px;
+}
+.map-wrap img { display: block; width: 100%; height: auto; }
+.map-caption {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute); text-align: center;
+  padding: 8px 10px 10px;
+}
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 600px) { .faq-grid { grid-template-columns: 1fr; } }
+.faq-card {
+  background: var(--bg); border: 0.5px solid var(--border);
+  border-radius: 8px; padding: 12px 14px;
+}
+.faq-q { font-size: 13.5px; font-weight: 700; color: var(--wood); margin-bottom: 4px; }
+.faq-a { font-size: 13px; line-height: 1.5; color: var(--text-soft); }
+
+.dietary {
+  background: var(--gold-soft); border-left: 3px solid var(--gold);
+  border-radius: 8px; padding: 14px 16px;
+  font-size: 14px; line-height: 1.6; color: var(--text);
+}
+
+.footer { text-align: center; margin-top: 34px; }
+.footer-tagline {
+  font-size: 13.5px; font-style: italic; color: var(--text-soft);
+  max-width: 440px; margin: 0 auto 14px; line-height: 1.6;
+}
+.footer-fine {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; color: var(--text-mute);
+}
+.footer-fine a { color: var(--text-mute); }
+.footer-past { margin: 8px auto 18px; line-height: 1.5; }
+.footer-past .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 10px; color: var(--text-mute); }
+.footer-past .links { margin-top: 7px; font-size: 14px; font-style: italic; color: var(--text-soft); }
+.footer-past a { color: var(--gold); text-decoration: none; }
+.footer-past a:hover { text-decoration: underline; }
+.footer-past .sep { color: var(--text-mute); margin: 0 9px; font-style: normal; }
+
+/* ---------- edit mode ---------- */
+.edit-bar {
+  display: none; position: sticky; top: 0; z-index: 50;
+  background: var(--wood); color: #fff; border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+}
+body.editing .edit-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.edit-bar button {
+  font-family: inherit; font-size: 12.5px; font-weight: 700;
+  border: none; border-radius: 999px; padding: 7px 16px; cursor: pointer;
+}
+.edit-save { background: var(--gold); color: #fff; }
+.edit-cancel { background: rgba(255,255,255,0.18); color: #fff; }
+.edit-status { font-size: 12px; opacity: 0.85; }
+.editable-field { display: none; width: 100%; margin-top: 8px; }
+body.editing .editable-field { display: block; }
+.editable-field label {
+  display: block; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gold); margin-bottom: 4px;
+}
+.editable-field textarea, .editable-field input {
+  width: 100%; font-family: 'Caladea', 'Cambria', Georgia, serif;
+  font-size: 14px; color: var(--text); background: #fff;
+  border: 1px solid var(--gold); border-radius: 6px; padding: 8px 10px;
+}
+.editable-field textarea { min-height: 84px; resize: vertical; }
+</style>
+</head>
+<body>
+
+<div class="bubble">
+
+  
+
+  <!-- header -->
+  <div class="hdr">
+    <div class="hdr-eyebrow">Swan House Farm · Skagit Valley</div>
+    <div class="hdr-title">Farm Dinners</div>
+    <div class="hdr-sub" id="hdr-sub">August 2026 · A peak-summer evening at the farm</div>
+    <div class="hdr-dates" id="hdr-dates"></div>
+  </div>
+
+  <!-- welcome -->
+  
+
+  <!-- getting here -->
+  
+
+  <!-- your evening -->
+  
+
+  <!-- menu -->
+  <div class="section">
+    <div class="section-label">The menu</div>
+    <p class="tap-hint">tap any dish for the story behind it</p>
+    <div id="menu"></div>
+  </div>
+
+  <!-- dietary -->
+  
+
+  <!-- wine -->
+  <div class="section">
+    <div class="section-label">Wine pairings</div>
+    <p class="tap-hint" id="wine-hint">tap any pour to meet the producer</p>
+    <div id="wines"></div>
+  </div>
+
+  <!-- cocktail -->
+  <div class="section" id="bar-section">
+    <div class="section-label">From the bar</div>
+    <div id="cocktails"></div>
+  </div>
+
+  <!-- good to know -->
+  
+
+  <div class="footer">
+    <div class="footer-tagline" id="footer-tagline"></div>
+    <div class="footer-past">
+      <div class="eyebrow">Past dinners at Swan House</div>
+      <div class="links"><a href="/swan-house-dinners/2026-05/">May 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-06/">June 2026</a><span class="sep">&middot;</span><a href="/swan-house-dinners/2026-07/">July 2026</a></div>
+    </div>
+    <div class="footer-fine">Swan House Farm, LLC · <a href="https://www.swanhousefarm.com" target="_blank" rel="noopener">swanhousefarm.com</a></div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   DATA — embedded at deploy time.
+   Menu mirrors checkin-app/data/reference/2026-08.json (as served 8/15-16 incl. the six 8/16 copy corrections) (guest-tone edits applied; BOH detail stripped).
+   Wines + cocktails are HELD: pairings pending Adrian, bar pending Katie. Both render a friendly
+   "being finalized" placeholder until they land. Page is built but NOT sent to guests until the
+   app-design PII fix lands (Sam's 6/5 call).
+   Archive: static. GUEST_INFO is not read from Firestore here — the live
+   portal does that, an archived dinner does not change.
+   ============================================================ */
+const SERIES_ID = "2026-08";
+
+const GUEST_INFO_DEFAULTS = {
+  parking: "At the end of Landing Rd you'll see the Swan House Farm sign. Head up the drive and the parking area is on your right.",
+  route_note: "",   /* day-of I-5 traffic note, auto-filled the morning of each dinner; blank = hidden */
+  host_note: ""
+};
+
+const REF = {
+  "header": {
+    "tagline": "thank you so much for joining us on this humble journey through everything skagit and swan house has to offer"
+  },
+  "courses": [
+    {
+      "label": "Antipasti",
+      "subtitle": "passed welcome bites at sit-down",
+      "dishes": [
+        {
+          "name": "Squash Panelle",
+          "pronunciation": "pah-NEL-leh",
+          "components": "chickpea and farm squash, ricotta salata, nasturtium, oregano and thyme blossoms",
+          "story": "Panelle are Palermo street food: chickpea flour cooked down into a thick batter, set firm, cut, and fried. Ours are folded with grated Swan House squash and oregano and mint, set in trays at San Fermo, then cut and fried here at the farm so they hit the tray crisp. Shaved ricotta salata over the top, and the whole tray comes out on a bed of nasturtium leaves scattered with oregano and thyme blossoms, all cut from the garden here. Naturally gluten free.",
+          "ingredients": [
+            {
+              "term": "Panelle",
+              "pronunciation": "pah-NEL-leh",
+              "note": "Sicilian chickpea fritters, a Palermo street-food staple usually eaten in a roll; crisp outside and almost custardy in the middle"
+            },
+            {
+              "term": "Ricotta salata",
+              "pronunciation": "ree-KOT-tah sah-LAH-tah",
+              "note": "ricotta that has been pressed, salted and aged until firm enough to shave; dry, milky and salty rather than creamy"
+            },
+            {
+              "term": "Summer squash",
+              "pronunciation": null,
+              "note": "Kelly's squash, picked young; grated into the batter so it steams from the inside as the panelle fries"
+            },
+            {
+              "term": "Nasturtium",
+              "pronunciation": "nuh-STUR-shum",
+              "note": "the round garden leaf the bite is served on; peppery and bright, like watercress, and edible if you want it"
+            }
+          ]
+        },
+        {
+          "name": "Chilled Dungeness Crab",
+          "pronunciation": null,
+          "components": "lemon, Calabrian chili, mint, on a cucumber round",
+          "story": "Dungeness crab, cooked and picked at the farm the day of your dinner, dressed simply with lemon, a whisper of Calabrian chili and torn mint, and served cold on a round of Kelly's cucumber. Nothing gets wasted: the shells go straight into a roasting pan and become the brodo the risotto cooks in two courses later. The first shellfish to appear at one of these dinners this summer.",
+          "ingredients": [
+            {
+              "term": "Dungeness crab",
+              "pronunciation": null,
+              "note": "the Pacific Northwest's own crab, sweet and clean; cooked whole and picked by hand here rather than bought as picked meat"
+            },
+            {
+              "term": "Calabrian chili",
+              "pronunciation": null,
+              "note": "a fruity, moderately hot southern Italian chili packed in oil; used here as a whisper, not a heat move"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Insalata",
+      "subtitle": "course one",
+      "dishes": [
+        {
+          "name": "Summer Squash, Two Ways",
+          "pronunciation": null,
+          "components": "raw ribbons and charred scapece, sunflower gremolata, herbs and flowers",
+          "story": "The crop the farm gives most generously in August, read two ways on one plate. Half is shaved raw into ribbons with lemon, olive oil and mint. Half is charred over live fire and marinated scapece-style in vinegar, chili and more mint. There is a sunflower-seed gremolata for crunch, and farm herbs and edible flowers go over the top. Squash blossoms are torn in when the morning's picking allows, and if the heirloom tomatoes have finally colored up by your weekend they fill in around the edges. Vegan and gluten free as written.",
+          "ingredients": [
+            {
+              "term": "Scapece",
+              "pronunciation": "skah-PEH-cheh",
+              "note": "a southern Italian method of cooking vegetables and then steeping them in vinegar, mint and chili; sharp, cool and a little sweet"
+            },
+            {
+              "term": "Gremolata",
+              "pronunciation": "greh-moh-LAH-tah",
+              "note": "traditionally lemon zest, garlic and parsley chopped together as a finishing condiment; ours is pure crunch instead — fried garlic, fried shallot, sunflower seeds and nigella seeds, and nothing else"
+            },
+            {
+              "term": "Squash blossom",
+              "pronunciation": null,
+              "note": "the edible golden flower of the squash plant, delicate and faintly sweet; picked the morning of service, garnish scale only"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Primi",
+      "subtitle": "course two",
+      "dishes": [
+        {
+          "name": "Crab Brodo Risotto",
+          "pronunciation": null,
+          "components": "crab brodo and picked crab, sweet corn crema, charred corn, basil, lemon",
+          "story": "The other half of the crab. The shells from the welcome bite are roasted with aromatics and Calabrian chili into a deep, gently spicy brodo, the rice cooks in it, and picked crab is folded through at the end. Where a risotto usually finishes with a lot of cold butter beaten in, this one finishes with a crema of peak Skagit sweet corn instead, so the sweetness and the body come from the corn and the depth and the warmth come from the crab. Charred kernels, torn basil, lemon zest. Naturally gluten free.",
+          "ingredients": [
+            {
+              "term": "Brodo",
+              "pronunciation": "BROH-doh",
+              "note": "Italian for broth; here the crab shells roasted hard with aromatics and chili, then simmered down until it tastes like the whole crab rather than just the meat"
+            },
+            {
+              "term": "Mantecatura",
+              "pronunciation": "mahn-teh-kah-TOO-rah",
+              "note": "the final beating of fat into a risotto off the heat that makes it creamy; ours is sweet corn crema in place of the usual butter"
+            },
+            {
+              "term": "Sweet corn",
+              "pronunciation": null,
+              "note": "bi-color corn at its short August peak, from the valley; half becomes the crema, half is charred and folded through"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Secondi",
+      "subtitle": "course three",
+      "dishes": [
+        {
+          "name": "Swan House Farm Lamb",
+          "pronunciation": null,
+          "components": "charred onion agrodolce, salmoriglio, grilled cabbage in lamb jus",
+          "story": "The first time this summer that the farm's own lamb has been the center of one of these dinners. Tim raises the flock here at Swan House, and the whole course is built around it: herbs and lemon worked through and over the meat, slow heat and live fire to get it where it needs to go, and everything sliced and finished in the kitchen so it reaches the table hot rather than carved in front of you. Salmoriglio goes over the top, a sweet-tart agrodolce of Kelly's charred farm onions goes alongside, and grilled cabbage wedges are finished in the lamb's own jus. We settle the final cuts and the cooking with Tim in the last weeks before your dinner, around what the flock and the season actually give us.",
+          "ingredients": [
+            {
+              "term": "Salmoriglio",
+              "pronunciation": "sahl-moh-REE-lyoh",
+              "note": "a Sicilian sauce of lemon, olive oil, oregano and garlic emulsified warm; sharp and herbal, the traditional partner to grilled lamb"
+            },
+            {
+              "term": "Agrodolce",
+              "pronunciation": "ah-groh-DOHL-cheh",
+              "note": "Italian sweet-and-sour; here farm onions charred and cooked down with vinegar and honey until glossy, to cut the richness"
+            },
+            {
+              "term": "Swan House lamb",
+              "pronunciation": null,
+              "note": "raised on the farm you are sitting on, a few hundred yards from the pergola; the reason this course exists at all"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Dolce",
+      "subtitle": "course four",
+      "dishes": [
+        {
+          "name": "Olive Oil Cake",
+          "pronunciation": null,
+          "components": "macerated berries and peaches, honey mascarpone, mint and farm flowers",
+          "story": "Olive oil in place of butter makes a cake that is tender, faintly fruity and less sweet than you expect, which is the point at the end of a long evening. Kelly's loganberries lead the berries, macerated in their own syrup, with blackberries, raspberries and sliced peaches alongside them. Honey-whipped mascarpone, torn mint, and a scatter of farm flowers.",
+          "ingredients": [
+            {
+              "term": "Loganberry",
+              "pronunciation": null,
+              "note": "a raspberry-blackberry cross that grows beautifully in the Skagit Valley; darker and more tart than a raspberry, from Kelly's canes"
+            },
+            {
+              "term": "Mascarpone",
+              "pronunciation": "mah-skar-POH-neh",
+              "note": "the soft, barely sweet Italian cream cheese behind tiramisu; whipped here with honey and left loose"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Caffé",
+      "subtitle": "to close",
+      "dishes": [
+        {
+          "name": "Cafe Umbria",
+          "pronunciation": null,
+          "components": null,
+          "story": "Locally roasted coffee from Seattle's Cafe Umbria, served to close the meal.",
+          "ingredients": []
+        }
+      ]
+    }
+  ],
+  "wines": [
+  {
+    "name": "Bellenda ‘San Fermo’ Valdobbiadene Prosecco Superiore DOCG",
+    "vintage": "2024 Millesimato",
+    "type": "sparkling",
+    "region": "Valdobbiadene Prosecco Superiore DOCG, Veneto",
+    "grapes": "100% Glera",
+    "alcohol_pct": 11.5,
+    "pour_notes": "The arrival pour, and the one with the best story on the list: the cuvée is called San Fermo, after the little country church that sits beside the vineyard the grapes come from. Same name as the restaurant, entirely by coincidence. A fine, dense, continuous bead; delicate and fragrant, with a vein of minerality and a crisp walnut-husk tang on the finish. Brut, so it comes in dry rather than sweet. Pour it properly cold, 6-8°C, in a big glass rather than a flute.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 2,
+        "low": "light",
+        "high": "full",
+        "lands": "light-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 4,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "brut, 7 g/L"
+      },
+      {
+        "label": "Acidity",
+        "rating": 4,
+        "low": "soft",
+        "high": "bright",
+        "lands": "crisp, lively"
+      },
+      {
+        "label": "Tannins",
+        "rating": 1,
+        "low": "none",
+        "high": "grippy",
+        "lands": "no tannins"
+      }
+    ],
+    "producer": "Bellenda works the steep Conegliano Valdobbiadene hills of the Veneto, the historic heart of Prosecco and the part of the zone that earns the Superiore designation. The San Fermo fruit comes off Carpesica, on limestone-clay soils full of morainic deposits left by the ancient Piave glacier, facing south-southwest at about 180 meters and planted at 4,000 vines per hectare. The name is the country church next to the vineyard.",
+    "winemaking": "Glera, second fermentation in the Italian (Charmat) method in 100hl stainless pressure tanks over roughly two months, with time on the lees. Millesimato means it is a single-vintage bottling rather than the usual multi-vintage blend. 7 g/L residual sugar puts it squarely in Brut."
+  },
+  {
+    "name": "Schiopetto Sauvignon ‘del Pompiere’",
+    "vintage": "2024",
+    "type": "white",
+    "region": "Venezia Giulia IGT, Friuli-Venezia Giulia",
+    "grapes": "100% Sauvignon Blanc",
+    "alcohol_pct": 13.5,
+    "pour_notes": "A Friulian Sauvignon with no oak on it at all — straw-gold with a green cast, smelling of wild herbs, field flowers and summer fruit, with a tropical lift underneath. Floral and mineral on the palate with real acid and a long, citrus-edged finish. It is built for the first half of the table: the chilled Dungeness bite, the raw squash ribbons and the scapece, and the crab-brodo risotto. The herbs on this menu run through almost every course, and this is a wine that meets herbs instead of fighting them. Pour it cold, 10-12°C.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 2,
+        "low": "light",
+        "high": "full",
+        "lands": "light to medium-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 5,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "bone dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 4,
+        "low": "soft",
+        "high": "bright",
+        "lands": "crisp, high acid"
+      },
+      {
+        "label": "Tannins",
+        "rating": 1,
+        "low": "none",
+        "high": "grippy",
+        "lands": "no tannins"
+      }
+    ],
+    "producer": "Schiopetto sits in Capriva del Friuli, in the Collio hills hard against the Slovenian border. The house is one of the most important names in Italian white wine: founder Mario Schiopetto is widely credited with dragging Italian whites into the modern era in the 1960s and 70s by bringing in temperature control, stainless steel and clean, reductive winemaking that let the fruit and the site show through. The estate still farms those marly Eocene hillsides, where steady wind off the Adriatic and the Alps keeps the grapes fresh. ‘del Pompiere’ — ‘the fireman’s’ — is the house’s approachable line, and the label is a small red fire engine hauling a wine barrel and a ladder. Estate bottled by Soc. Agr. Terre Friulane; brought into Washington by Elliott Bay Distributing in Seattle.",
+    "winemaking": "Hand-harvested and gently pressed, then fermented in temperature-controlled stainless steel. Rested roughly four months in steel and two more in bottle before release. No wood anywhere in the process, which is the whole point — the aromatics, the salinity and the acid stay in front."
+  },
+  {
+    "name": "La Spinetta ‘Il Rosé di Casanova’",
+    "vintage": "2025",
+    "type": "rosé",
+    "region": "Toscana IGT Rosato, Terricciola, Tuscany",
+    "grapes": "50% Sangiovese · 50% Prugnolo Gentile (organic)",
+    "alcohol_pct": 12.0,
+    "pour_notes": "Pale copper-pink in a frosted bottle with Dürer’s rhinoceros on the label — the rhino is La Spinetta’s house mark and turns up on all their serious bottlings. Floral and fruity, citrus over a Mediterranean-scrub herbal note, then fresh and delicate on the palate with a mineral core and acid that carries all the way through. It is the bridge pour: light enough to follow the crab and the squash, structured enough to sit next to the lamb for anyone who does not want a red on a warm evening. Serve at 12°C, and in a real wine glass rather than something small.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 2,
+        "low": "light",
+        "high": "full",
+        "lands": "light-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 5,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "bone dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 4,
+        "low": "soft",
+        "high": "bright",
+        "lands": "fresh, embracing acid"
+      },
+      {
+        "label": "Tannins",
+        "rating": 1,
+        "low": "none",
+        "high": "grippy",
+        "lands": "no tannins"
+      }
+    ],
+    "producer": "La Spinetta started in Piedmont and is best known there, but Casanova della Spinetta is their Tuscan estate at Terricciola, inland from Pisa. Roughly 57 acres at 250 meters on sandy ground rich in ancient oceanic sediment, facing southeast, with vines averaging about twenty years old. The grapes are certified organic (Valoritalia) and the estate carries a sustainable-farming certification. Produced by La Spinetta at Castagnole delle Lanze and bottled at Casanova della Spinetta in Terricciola.",
+    "winemaking": "Destemmed and softly pressed without pushing the fruit, with only brief skin contact to pull colour and not much else — which is why it stays pale and delicate rather than turning into a light red. Fermented about ten days, then roughly three months on its lees in stainless steel. No oak."
+  },
+  {
+    "name": "Fabrizio Pratesi ‘Locorosso’",
+    "vintage": "2023",
+    "type": "red",
+    "region": "Toscana IGT, Carmignano, Tuscany",
+    "grapes": "100% Sangiovese (organic)",
+    "alcohol_pct": 13.5,
+    "pour_notes": "Pure Sangiovese from Carmignano, and — like everything else on this list — no oak on it. Deep ruby, with strawberry, cherry and black currant, a dark spice edge and a faint note of chocolate. Ample on the palate but soft, with ripe tannins and the fresh acid Sangiovese is built on. That acid is the reason it works here: it cuts the fat on the crisped lamb shoulder and stands up to the sweet-tart charred onion agrodolce without turning heavy or jammy against it. Good with a light chill on a warm evening under the pergola.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 3,
+        "low": "light",
+        "high": "full",
+        "lands": "medium-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 5,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "bone dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 4,
+        "low": "soft",
+        "high": "bright",
+        "lands": "fresh, lifted acid"
+      },
+      {
+        "label": "Tannins",
+        "rating": 3,
+        "low": "none",
+        "high": "grippy",
+        "lands": "soft, well-integrated"
+      }
+    ],
+    "producer": "Fabrizio Pratesi farms in Carmignano, the small hill zone northwest of Florence that has been growing wine since well before it was fashionable. The family has held the Lolocco estate since 1875, and this wine takes its name from it. Ten hectares, farmed organically, on stony medium-textured ground built from alberese marly limestone, clay schist and sandstone — poor, well-drained soil that keeps the vines honest. Imported by Vinifera Imports.",
+    "winemaking": "Guyot-trained at 6,250 vines per hectare, organically farmed. Fermented about twenty days in temperature-controlled stainless steel, then roughly six months in steel and a rest in bottle before release. No oak, deliberately — Pratesi makes oak-aged Carmignano too, and this bottling is the one meant to show the fruit and the site straight."
+  },
+  {
+    "name": "Les Marées Non-Alcoholic Sparkling Blanc de Blancs",
+    "vintage": null,
+    "type": "sparkling NA",
+    "region": "Southern France",
+    "grapes": "100% organic Chardonnay",
+    "alcohol_pct": 0,
+    "pour_notes": "A real sparkling NA wine, not soda. Organic Chardonnay from Southern France. Green apple, mineral, bright. Treat it like a Blanc de Blancs — chill it, pour it tall, toast with it.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 2,
+        "low": "light",
+        "high": "full",
+        "lands": "light-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 5,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "bone dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 5,
+        "low": "soft",
+        "high": "bright",
+        "lands": "bright, lifted"
+      },
+      {
+        "label": "Tannins",
+        "rating": 1,
+        "low": "none",
+        "high": "grippy",
+        "lands": "no tannins"
+      }
+    ],
+    "producer": "Les Marées is made from organic Chardonnay grown on the sunlit shores of Southern France. The maker takes the Blanc de Blancs idea (Chardonnay-only sparkling, the same backbone as Champagne) and removes the alcohol while preserving the structure.",
+    "winemaking": "Made in the spirit of a real sparkling wine — bright, refined, structured around green apple and mineral. Aimed at slow café afternoons, easy celebrations, and any moment that calls for sparkle without alcohol."
+  },
+  {
+    "name": "Cantina Zaccagnini Alcohol-Removed White",
+    "vintage": null,
+    "type": "white NA",
+    "region": "Abruzzo, Italy",
+    "grapes": "Italian white grapes",
+    "alcohol_pct": 0,
+    "pour_notes": "A premium alcohol-removed Italian white from Abruzzo. Bright straw color, yellow fruits, white flowers, delicate and balanced. Made from a real wine that's had the alcohol gently distilled out — full character, zero buzz.",
+    "specs": [
+      {
+        "label": "Body",
+        "rating": 3,
+        "low": "light",
+        "high": "full",
+        "lands": "medium-bodied"
+      },
+      {
+        "label": "Dryness",
+        "rating": 4,
+        "low": "off-dry",
+        "high": "bone dry",
+        "lands": "dry"
+      },
+      {
+        "label": "Acidity",
+        "rating": 3,
+        "low": "soft",
+        "high": "bright",
+        "lands": "balanced"
+      },
+      {
+        "label": "Tannins",
+        "rating": 1,
+        "low": "none",
+        "high": "grippy",
+        "lands": "no tannins"
+      }
+    ],
+    "producer": "The Ciccio Zaccagnini estate sits on 500 acres in Bolognano, about 30 miles from the Adriatic coast and 8 miles from the Maiella mountains (which rise to 9,000 ft). The vineyards are in the cru section 'Colle Morto di Bolognano.' Marcello Zaccagnini and winemaker Concezio Marulli are central figures in the modern Abruzzo wine renaissance, and every bottle of this line carries a small piece of tralcetto — grape vine — as the estate's signature.",
+    "winemaking": "A first-class wine is the starting point — quality in, quality out. The alcohol is removed in a two-step distillation in a vacuum evaporator: the first pass captures the volatile aromas (which evaporate first), and those aromas are condensed and held aside. The second pass evaporates the ethanol. Finally the preserved aromas are returned to the dealcoholized wine, so the finished bottle retains the original wine's character without the alcohol."
+  }
+],
+  "cocktails": [
+  {
+    "name": "Strawberry & Raspberry Sangria",
+    "tagline": "gin · aperol · macerated berries",
+    "pour_notes": "Katie’s summer sangria, built on gin rather than brandy. Terramar gin and Aperol under Skagit strawberries and Swan House raspberries macerated down to their syrup, lengthened with rosé and lifted with lemon. Deep pink in the glass, tart at the front and dry at the back, made to be drunk cold in the early evening while the fire is still coming up.",
+    "ingredients": [
+      {
+        "name": "Terramar gin",
+        "amount": "",
+        "highlight": "Skagit local",
+        "description": "Gin from Terramar Brewstillery in Edison, just down the road — an award-winning brewery and distillery set in a former slaughterhouse on the old Edison Slough oxbow. They distill it grain-to-glass from Washington-grown, craft-malted barley (the same base as their beer) and are growing their own juniper and botanicals on the property. A true neighbor pour."
+      },
+      {
+        "name": "Aperol",
+        "amount": "",
+        "description": "The bittersweet orange spine under the berries, and a good part of where the colour comes from. Low in alcohol, so it lengthens the drink without weighting it."
+      },
+      {
+        "name": "Strawberry and raspberry maceration",
+        "amount": "",
+        "highlight": "From the farm",
+        "description": "Skagit strawberries and raspberries cut at Swan House, macerated with sugar until they give up their syrup. That syrup is the drink, rather than a sweetener stirred in after."
+      },
+      {
+        "name": "Lemon",
+        "amount": "",
+        "description": "Fresh lemon for lift and acid."
+      },
+      {
+        "name": "Rosé",
+        "amount": "",
+        "description": "The sangria element, lengthening the drink and carrying the fruit."
+      }
+    ]
+  },
+  {
+    "name": "Lavender Lemonade",
+    "tagline": "zero-proof · the farm mocktail",
+    "pour_notes": "Lavender cut fresh at Swan House, steeped and folded into a proper lemonade — floral and cooling, tart enough to be a real drink rather than a consolation. This is the zero-proof pour for the evening, and it drinks well straight through the crab bite and the squash.",
+    "ingredients": [
+      {
+        "name": "Swan House lavender",
+        "amount": "",
+        "highlight": "From the farm",
+        "description": "Lavender grown and cut at Swan House, steeped for its perfume without letting it go soapy. The most direct farm-to-glass line on the drink list."
+      },
+      {
+        "name": "Lemon",
+        "amount": "",
+        "description": "Fresh lemon, the tart backbone."
+      },
+      {
+        "name": "Simple syrup",
+        "amount": "",
+        "description": "Sweetened just enough to balance the acid and carry the lavender."
+      },
+      {
+        "name": "Water or soda",
+        "amount": "",
+        "description": "Lengthened and served cold over ice."
+      }
+    ]
+  }
+]
+};
+
+const DATES = [
+  { date: "2026-08-08", display: "Sat, August 8" },
+  { date: "2026-08-09", display: "Sun, August 9" },
+  { date: "2026-08-15", display: "Sat, August 15" },
+  { date: "2026-08-16", display: "Sun, August 16" }
+];
+
+/* ============================================================ RENDER */
+let guestInfo = { ...GUEST_INFO_DEFAULTS };
+const expanded = new Set();
+const esc = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+function renderDates() {
+  document.getElementById("hdr-dates").innerHTML =
+    DATES.map(d => `<span class="hdr-date">${esc(d.display)}</span>`).join("");
+}
+
+function dishHTML(d, idx) {
+  const key = "d" + idx;
+  const pron = d.pronunciation ? ` <span class="dish-pron">${esc(d.pronunciation)}</span>` : "";
+  const comp = d.components ? `<div class="dish-comp">${esc(d.components)}</div>` : "";
+  const ings = (d.ingredients || []).map(i =>
+    `<div class="ing"><span class="ing-bullet">·</span><span class="ing-term">${esc(i.term)}</span>${i.pronunciation ? ` <span class="ing-pron">${esc(i.pronunciation)}</span>` : ""} — ${esc(i.note)}</div>`).join("");
+  return `<div class="dish ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
+    <div class="dish-head" onclick="toggle('${key}')">
+      <div class="dish-name">${esc(d.name)}${pron}</div>${comp}
+    </div>
+    <div class="dish-details">
+      <div class="dish-story">${esc(d.story)}</div>
+      ${ings ? `<div class="ing-label">Ingredients to know</div>${ings}` : ""}
+    </div>
+  </div>`;
+}
+
+function renderMenu() {
+  let i = 0;
+  document.getElementById("menu").innerHTML = REF.courses.map(c => `
+    <div class="course">
+      <div class="course-label">${esc(c.label)}</div>
+      <div class="course-sub">${esc(c.subtitle)}</div>
+      ${c.dishes.map(d => dishHTML(d, i++)).join("")}
+    </div>`).join("");
+}
+
+function typePill(t) {
+  const cls = t === "red" ? "wine-type-red" : t.includes("sparkling") ? "wine-type-sparkling" : t.includes("NA") ? "wine-type-na" : "wine-type-white";
+  return `<span class="wine-type ${cls}">${esc(t)}</span>`;
+}
+
+function wineHTML(w, idx) {
+  const key = "w" + idx;
+  const na = w.alcohol_pct === 0 ? `<span class="wine-type wine-type-na">NA · 0%</span>` : "";
+  const specs = (w.specs || []).map(s => `
+    <div class="wine-spec">
+      <div class="wine-spec-label">${esc(s.label)}</div>
+      <div class="wine-dots">${[1,2,3,4,5].map(n => `<span class="wine-dot ${n <= s.rating ? "on" : ""}"></span>`).join("")}</div>
+      <div class="wine-spec-range">${esc(s.lands || (s.low + ' · ' + s.high))}</div>
+    </div>`).join("");
+  return `<div class="wine ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
+    <div class="wine-head" onclick="toggle('${key}')">
+      <div class="wine-pills">${typePill(w.type)}${na}</div>
+      <div class="wine-name">${esc(w.name)}${w.vintage ? `&nbsp;<span class="wine-vint">${esc(w.vintage)}</span>` : ""}</div>
+      <div class="wine-sub">${esc(w.region)} · ${esc(w.grapes)}</div>
+      <div class="wine-notes">${esc(w.pour_notes)}</div>
+      <div class="wine-specs">${specs}</div>
+    </div>
+    <div class="wine-details">
+      <div class="detail-label">Producer</div><div class="detail-body">${esc(w.producer)}</div>
+      <div class="detail-label">Winemaking</div><div class="detail-body">${esc(w.winemaking)}</div>
+    </div>
+  </div>`;
+}
+
+function renderWines() {
+  const el = document.getElementById("wines");
+  const hint = document.getElementById("wine-hint");
+  if (!REF.wines || !REF.wines.length) {
+    if (hint) hint.style.display = "none";
+    el.innerHTML = `<div class="held-note">Our pairings for this dinner are being finalized with the team. They'll appear right here before your evening at the farm.</div>`;
+    return;
+  }
+  if (hint) hint.style.display = "";
+  el.innerHTML = REF.wines.map((w, i) => wineHTML(w, i)).join("");
+}
+
+function cocktailHTML(c, idx) {
+  const key = "c" + idx;
+  const ings = (c.ingredients || []).map((i, n) => {
+    const ikey = key + "i" + n;
+    return `<div class="cocktail-ing ${i.highlight ? "has-highlight" : ""}">
+      <div class="ci-row" onclick="toggle('${ikey}'); event.stopPropagation();" style="cursor:pointer;">
+        <span class="ci-name">${esc(i.name)}</span>
+        ${i.highlight ? `<span class="ci-highlight">${esc(i.highlight)}</span>` : ""}
+        <span class="ci-amount">${esc(i.amount)}</span>
+      </div>
+      <div class="ci-desc" style="display:${expanded.has(ikey) ? "block" : "none"};">${esc(i.description)}</div>
+    </div>`;
+  }).join("");
+  return `<div class="cocktail ${expanded.has(key) ? "expanded" : ""}" data-key="${key}">
+    <div class="cocktail-head" onclick="toggle('${key}')">
+      <div class="wine-pills"><span class="wine-type wine-type-white">cocktail</span></div>
+      <div class="wine-name">${esc(c.name)}</div>
+      <div class="cocktail-tag">${esc(c.tagline)}</div>
+      <div class="wine-notes">${esc(c.pour_notes)}</div>
+    </div>
+    <div class="cocktail-details">
+      <div class="detail-label">What's in it · tap each for more</div>
+      ${ings}
+    </div>
+  </div>`;
+}
+
+function renderCocktails() {
+  const sec = document.getElementById("bar-section");
+  if (!REF.cocktails || !REF.cocktails.length) {
+    // Bar is pending Katie — hide the section entirely until a cocktail lands.
+    if (sec) sec.style.display = "none";
+    return;
+  }
+  if (sec) sec.style.display = "";
+  document.getElementById("cocktails").innerHTML = REF.cocktails.map((c, i) => cocktailHTML(c, i)).join("");
+}
+
+function toggle(key) {
+  expanded.has(key) ? expanded.delete(key) : expanded.add(key);
+  renderMenu(); renderWines(); renderCocktails();
+}
+
+function renderGuestInfo() {
+  /* Archive: the parking, route-note and host-note cards are gone, so all that survives of
+     this function is the footer tagline. Kept as a function rather than inlined so the INIT
+     line below still reads the same as the live portal's. */
+  const ft = document.getElementById("footer-tagline");
+  if (ft) ft.textContent = REF.header.tagline;
+}
+
+
+
+/* ============================================================ FIREBASE (live host edits) */
+
+
+
+
+
+/* ============================================================ EDIT MODE */
+
+
+
+
+
+/* ============================================================ INIT */
+renderDates(); renderMenu(); renderWines(); renderCocktails(); renderGuestInfo();
+</script>
+</body>
+</html>
