@@ -600,7 +600,7 @@ html.shf-intro-running .bubble.intro-in { opacity: 1; }
   <div class="hdr">
     <div class="hdr-eyebrow">Swan House Farm &middot; Skagit Valley</div>
     <div class="hdr-title">Farm Dinners</div>
-    <div class="hdr-sub" id="hdr-sub">August 2026 &middot; A peak-summer evening at the farm</div>
+    <div class="hdr-sub" id="hdr-sub">September 2026 &middot; An early-fall evening at the farm</div>
     <div class="hdr-dates" id="hdr-dates"></div>
   </div>
 
@@ -724,7 +724,7 @@ Day of the event, reach us at <a href="tel:+12065513328">206.551.3328</a>.
     </div>
     <div class="info-card">
       <div class="info-title">Driving directions</div>
-      <div class="info-body">Give yourself a little extra time on a summer weekend &mdash; I-5 can be heavy in both directions.
+      <div class="info-body">Give yourself a little extra time on a weekend &mdash; I-5 can be heavy in both directions.
 
 <strong>Coming from the south</strong> (Seattle, Everett): I-5 north to Exit 221 (Conway / Lake McMurray). About 70 minutes from Seattle without traffic.
 
@@ -827,6 +827,10 @@ The last stretch is gravel and unlit, so take it slowly after dark.</div>
     <div class="view-title">Past Dinners</div>
     <p class="prose" style="margin-bottom:16px;">Every dinner we've served at Swan House this season &mdash; the menu, the pours and the cocktails, exactly as they went out that night.</p>
     <div class="past-list">
+      <a class="past-item" href="/swan-house-dinners/2026-08/">
+        <div class="past-when">August 2026</div>
+        <div class="past-what">August 8, 9, 15 and 16 &mdash; peak summer, Dungeness crab used whole, and the farm's own lamb.</div>
+      </a>
       <a class="past-item" href="/swan-house-dinners/2026-07/">
         <div class="past-when">July 2026</div>
         <div class="past-what">July 11, 12, 18 and 19 &mdash; high summer, the family-style primal roast, and the first stone fruit.</div>
@@ -852,7 +856,7 @@ The last stretch is gravel and unlit, so take it slowly after dark.</div>
 <script>
 /* ============================================================
    DATA — embedded at deploy time.
-   Menu mirrors checkin-app/data/reference/2026-08.json (guest-tone edits applied; BOH detail stripped).
+   Menu mirrors checkin-app/data/reference/2026-09.json (guest-tone edits applied; BOH detail stripped).
    Published 2026-07-29 ahead of full menu lock so guests have it in hand.
    COURSE 3 IS DELIBERATELY UNSPECIFIC — the lamb is locked, the cuts and the cooking are still in
    test. The copy names only what holds across every route (farm lamb, salmoriglio, charred onion
@@ -865,7 +869,7 @@ The last stretch is gravel and unlit, so take it slowly after dark.</div>
    so this file and checkin-app/data/reference/2026-08.json cannot drift apart.
    GUEST_INFO defaults are overridden live by Firestore guestContent/<series>.
    ============================================================ */
-const SERIES_ID = "2026-08";
+const SERIES_ID = "2026-09";
 
 const GUEST_INFO_DEFAULTS = {
   parking: "At the end of Landing Rd you'll see the Swan House Farm sign. Head up the drive and the parking area is on your right.",
@@ -881,50 +885,56 @@ const REF = {
     {
       "label": "Antipasti",
       "subtitle": "passed welcome bites at sit-down",
+      "plateware": "Two bites passed together at sit-down. Per setting: 8\" bread plate and fork only. Cutlery is staggered course-by-course, not all preset at once. Crudo held cold at the pass and passed fast; figs passed warm off the grill.",
       "dishes": [
         {
-          "name": "Squash Panelle",
-          "pronunciation": "pah-NEL-leh",
-          "components": "chickpea and farm squash, ricotta salata, nasturtium, oregano and thyme blossoms",
-          "story": "Panelle are Palermo street food: chickpea flour cooked down into a thick batter, set firm, cut, and fried. Ours are folded with grated Swan House squash and oregano and mint, set in trays at San Fermo, then cut and fried here at the farm so they hit the tray crisp. Shaved ricotta salata over the top, and the whole tray comes out on a bed of nasturtium leaves scattered with oregano and thyme blossoms, all cut from the garden here. Naturally gluten free.",
+          "name": "Salmon Crudo",
+          "pronunciation": "KROO-doh",
+          "components": "corn crema, red cabbage kimchi, fresh padrón, gluten free grain cracker",
+          "story": "Salmon served raw and cold on a crisp gluten free grain cracker. Underneath it, a smooth crema of sweet Skagit corn; over it, a little of the red cabbage kimchi we started at the farm with Kelly's own cabbage, and a ring of fresh padrón pepper. Sweet, cool, fermented and green in one bite, and naturally gluten free.",
           "ingredients": [
             {
-              "term": "Panelle",
-              "pronunciation": "pah-NEL-leh",
-              "note": "Sicilian chickpea fritters, a Palermo street-food staple usually eaten in a roll; crisp outside and almost custardy in the middle"
+              "term": "Crudo",
+              "pronunciation": "KROO-doh",
+              "note": "Italian for raw; fish served cold and simply dressed, the Italian cousin of sashimi"
             },
             {
-              "term": "Ricotta salata",
-              "pronunciation": "ree-KOT-tah sah-LAH-tah",
-              "note": "ricotta that has been pressed, salted and aged until firm enough to shave; dry, milky and salty rather than creamy"
+              "term": "Padrón",
+              "pronunciation": "pah-DRONE",
+              "note": "a small green Spanish frying pepper, grown here at Swan House; mostly gentle, occasionally one runs hot, which is half the fun"
             },
             {
-              "term": "Summer squash",
+              "term": "Kimchi",
               "pronunciation": null,
-              "note": "Kelly's squash, picked young; grated into the batter so it steams from the inside as the panelle fries"
-            },
-            {
-              "term": "Nasturtium",
-              "pronunciation": "nuh-STUR-shum",
-              "note": "the round garden leaf the bite is served on; peppery and bright, like watercress, and edible if you want it"
+              "note": "cabbage fermented with chili and aromatics; ours is made at the farm from the farm's own red cabbage"
             }
           ]
         },
         {
-          "name": "Chilled Dungeness Crab",
-          "pronunciation": null,
-          "components": "lemon, Calabrian chili, mint, on a cucumber round",
-          "story": "Dungeness crab, cooked and picked at the farm the day of your dinner, dressed simply with lemon, a whisper of Calabrian chili and torn mint, and served cold on a round of Kelly's cucumber. Nothing gets wasted: the shells go straight into a roasting pan and become the brodo the risotto cooks in two courses later. The first shellfish to appear at one of these dinners this summer.",
+          "name": "Grilled Fig and Guanciale",
+          "pronunciation": "gwan-CHAH-leh",
+          "components": "Swan House fig, farm guanciale, saba, fennel pollen",
+          "story": "A fig from the farm's own Desert King tree, grilled until it just slumps, draped with a thin slice of guanciale we cured here at the farm, and finished with saba and fennel pollen. The fig tree and the cure live a few hundred feet from your table.",
           "ingredients": [
             {
-              "term": "Dungeness crab",
-              "pronunciation": null,
-              "note": "the Pacific Northwest's own crab, sweet and clean; cooked whole and picked by hand here rather than bought as picked meat"
+              "term": "Guanciale",
+              "pronunciation": "gwan-CHAH-leh",
+              "note": "pork jowl cured with salt and pepper, the cut that makes carbonara carbonara; ours is cured at Swan House"
             },
             {
-              "term": "Calabrian chili",
+              "term": "Saba",
+              "pronunciation": "SAH-bah",
+              "note": "grape must cooked slowly down to a dark, sweet-tart syrup; balsamic's ancient, gentler cousin"
+            },
+            {
+              "term": "Desert King fig",
               "pronunciation": null,
-              "note": "a fruity, moderately hot southern Italian chili packed in oil; used here as a whisper, not a heat move"
+              "note": "the fig variety that actually ripens in the Pacific Northwest, green skinned with deep pink flesh; these come off the farm's own tree"
+            },
+            {
+              "term": "Fennel pollen",
+              "pronunciation": null,
+              "note": "the dried flower pollen of wild fennel; a little dusts on like honeyed anise"
             }
           ]
         }
@@ -933,27 +943,28 @@ const REF = {
     {
       "label": "Insalata",
       "subtitle": "course one",
+      "plateware": "Plated cold, farm-side build. Salad plate + fork.",
       "dishes": [
         {
-          "name": "Summer Squash, Two Ways",
-          "pronunciation": null,
-          "components": "raw ribbons and charred scapece, sunflower gremolata, herbs and flowers",
-          "story": "The crop the farm gives most generously in August, read two ways on one plate. Half is shaved raw into ribbons with lemon, olive oil and mint. Half is charred over live fire and marinated scapece-style in vinegar, chili and more mint. There is a sunflower-seed gremolata for crunch, and farm herbs and edible flowers go over the top. Squash blossoms are torn in when the morning's picking allows, and if the heirloom tomatoes have finally colored up by your weekend they fill in around the edges. Vegan and gluten free as written.",
+          "name": "Farm Tomato Caprese",
+          "pronunciation": "kah-PREH-zeh",
+          "components": "peak farm tomatoes, Ferndale Farmstead mozzarella, garden basil, toasted focaccia crumb, tomato leaf oil",
+          "story": "September is the month the farm's tomatoes hit their absolute peak, so this course stays out of their way. Thick-cut farm tomatoes, fresh mozzarella from Ferndale Farmstead up in Whatcom County, and basil we grew a few rows from your table and kept off the restaurant's menus so there would be enough for these dinners. Over the top, a crumb of toasted Breadfarm focaccia, a green oil made from the tomato plants' own leaves, and balsamic.",
           "ingredients": [
             {
-              "term": "Scapece",
-              "pronunciation": "skah-PEH-cheh",
-              "note": "a southern Italian method of cooking vegetables and then steeping them in vinegar, mint and chili; sharp, cool and a little sweet"
-            },
-            {
-              "term": "Gremolata",
-              "pronunciation": "greh-moh-LAH-tah",
-              "note": "traditionally lemon zest, garlic and parsley chopped together as a finishing condiment; ours is pure crunch instead — fried garlic, fried shallot, sunflower seeds and nigella seeds, and nothing else"
-            },
-            {
-              "term": "Squash blossom",
+              "term": "Ferndale Farmstead",
               "pronunciation": null,
-              "note": "the edible golden flower of the squash plant, delicate and faintly sweet; picked the morning of service, garnish scale only"
+              "note": "a farmstead creamery in Ferndale, Whatcom County, making Italian-style cheeses entirely from their own herd's milk; about as local as mozzarella gets"
+            },
+            {
+              "term": "Tomato leaf oil",
+              "pronunciation": null,
+              "note": "olive oil infused with the leaves of the tomato plants themselves; it tastes the way a tomato vine smells"
+            },
+            {
+              "term": "Breadfarm",
+              "pronunciation": null,
+              "note": "the Edison bakery a few miles from the farm; their focaccia is toasted into the golden crumb on this plate"
             }
           ]
         }
@@ -962,27 +973,33 @@ const REF = {
     {
       "label": "Primi",
       "subtitle": "course two",
+      "plateware": "Warm bowl. Finished in batches at the pass — banquet method, par-cooked and finished to order in service.",
       "dishes": [
         {
-          "name": "Crab Brodo Risotto",
-          "pronunciation": null,
-          "components": "crab brodo and picked crab, sweet corn crema, charred corn, basil, lemon",
-          "story": "The other half of the crab. The shells from the welcome bite are roasted with aromatics and Calabrian chili into a deep, gently spicy brodo, the rice cooks in it, and picked crab is folded through at the end. Where a risotto usually finishes with a lot of cold butter beaten in, this one finishes with a crema of peak Skagit sweet corn instead, so the sweetness and the body come from the corn and the depth and the warmth come from the crab. Charred kernels, torn basil, lemon zest. Naturally gluten free.",
+          "name": "Squid Ink Campanelle, Steamers and Chanterelles",
+          "pronunciation": "kahm-pah-NEL-leh",
+          "components": "squid ink campanelle, steamer clams, golden chanterelles, grilled corn, clam butter",
+          "story": "Campanelle means little bells: a ruffled, trumpet-shaped pasta, extruded by hand at San Fermo and turned black with squid ink. It cooks into a broth built from the steamer clams' own liquor, mounted with butter, and carries the clams, golden chanterelles, and kernels of grilled local corn. September is the best chanterelle month of the year in the Northwest woods, and this is the plate they were picked for.",
           "ingredients": [
             {
-              "term": "Brodo",
-              "pronunciation": "BROH-doh",
-              "note": "Italian for broth; here the crab shells roasted hard with aromatics and chili, then simmered down until it tastes like the whole crab rather than just the meat"
+              "term": "Campanelle",
+              "pronunciation": "kahm-pah-NEL-leh",
+              "note": "'little bells' — a short ruffled pasta shape that holds broth in its folds; ours is extruded fresh at the restaurant"
             },
             {
-              "term": "Mantecatura",
-              "pronunciation": "mahn-teh-kah-TOO-rah",
-              "note": "the final beating of fat into a risotto off the heat that makes it creamy; ours is sweet corn crema in place of the usual butter"
-            },
-            {
-              "term": "Sweet corn",
+              "term": "Squid ink",
               "pronunciation": null,
-              "note": "bi-color corn at its short August peak, from the valley; half becomes the crema, half is charred and folded through"
+              "note": "the ink of the squid, kneaded into the dough; it turns the pasta jet black and adds a gentle savory brine, not fishiness"
+            },
+            {
+              "term": "Steamer clams",
+              "pronunciation": null,
+              "note": "small sweet Northwest clams cooked in the shell; their liquor becomes the sauce"
+            },
+            {
+              "term": "Golden chanterelle",
+              "pronunciation": "shan-tuh-RELL",
+              "note": "the Northwest's signature wild mushroom, apricot-scented and meaty; September is its finest hour"
             }
           ]
         }
@@ -991,27 +1008,28 @@ const REF = {
     {
       "label": "Secondi",
       "subtitle": "course three",
+      "plateware": "Kitchen-finished and batch-fired. Nothing is carved in the room. Plated vs plattered decided at R&D.",
       "dishes": [
         {
-          "name": "Swan House Farm Lamb",
+          "name": "Swan House Beef, Steak for Two",
           "pronunciation": null,
-          "components": "charred onion agrodolce, salmoriglio, grilled cabbage in lamb jus",
-          "story": "The first time this summer that the farm's own lamb has been the center of one of these dinners. Tim raises the flock here at Swan House, and the whole course is built around it: herbs and lemon worked through and over the meat, slow heat and live fire to get it where it needs to go, and everything sliced and finished in the kitchen so it reaches the table hot rather than carved in front of you. Salmoriglio goes over the top, a sweet-tart agrodolce of Kelly's charred farm onions goes alongside, and grilled cabbage wedges are finished in the lamb's own jus. We settle the final cuts and the cooking with Tim in the last weeks before your dinner, around what the flock and the season actually give us.",
+          "components": "green pepper romesco, cold cucumber and mint salad",
+          "story": "The farm's own beef. Tim raises the cattle here at Swan House, and the steaks are cut right at the farm: one 16-ounce steak shared between each pair of guests, rib eye and New York across the tables, reverse-seared low and slow and finished over apple wood on the Big Green Egg. Alongside it, a romesco built green from the farm's September peppers, and a cold salad of Kelly's cucumbers and mint to keep the plate fresh.",
           "ingredients": [
             {
-              "term": "Salmoriglio",
-              "pronunciation": "sahl-moh-REE-lyoh",
-              "note": "a Sicilian sauce of lemon, olive oil, oregano and garlic emulsified warm; sharp and herbal, the traditional partner to grilled lamb"
+              "term": "Romesco",
+              "pronunciation": "roh-MES-koh",
+              "note": "a rustic Catalan pepper sauce, traditionally brick red; ours is built green from the sweet and frying peppers coming out of the garden right now"
             },
             {
-              "term": "Agrodolce",
-              "pronunciation": "ah-groh-DOHL-cheh",
-              "note": "Italian sweet-and-sour; here farm onions charred and cooked down with vinegar and honey until glossy, to cut the richness"
-            },
-            {
-              "term": "Swan House lamb",
+              "term": "Reverse sear",
               "pronunciation": null,
-              "note": "raised on the farm you are sitting on, a few hundred yards from the pergola; the reason this course exists at all"
+              "note": "the steak cooks gently in a low oven first, then finishes hard over apple wood; edge-to-edge rosy instead of a thin band of doneness"
+            },
+            {
+              "term": "Swan House beef",
+              "pronunciation": null,
+              "note": "raised on this property by Tim; the herd lives on the pastures you walked past on the way in"
             }
           ]
         }
@@ -1020,22 +1038,23 @@ const REF = {
     {
       "label": "Dolce",
       "subtitle": "course four",
+      "plateware": "Dessert plate + fork. Cakes baked at SF and travel; berries macerated farm-side.",
       "dishes": [
         {
-          "name": "Olive Oil Cake",
+          "name": "Toasted Fig Leaf Gelato",
           "pronunciation": null,
-          "components": "macerated berries and peaches, honey mascarpone, mint and farm flowers",
-          "story": "Olive oil in place of butter makes a cake that is tender, faintly fruity and less sweet than you expect, which is the point at the end of a long evening. Kelly's loganberries lead the berries, macerated in their own syrup, with blackberries, raspberries and sliced peaches alongside them. Honey-whipped mascarpone, torn mint, and a scatter of farm flowers.",
+          "components": "warm King apple butter, olive oil cake crumble",
+          "story": "The same fig tree that gave you the welcome bite gives up its leaves for dessert. Toasted until fragrant and steeped into the gelato base, fig leaf tastes of coconut and vanilla, a flavor you can only really get from a tree you have access to. The gelato lands over a spoonful of warm apple butter made from the farm's first King apples of the fall, with a crumble of dehydrated olive oil cake for crunch. Cold, warm and crisp in the same bite.",
           "ingredients": [
             {
-              "term": "Loganberry",
+              "term": "Fig leaf",
               "pronunciation": null,
-              "note": "a raspberry-blackberry cross that grows beautifully in the Skagit Valley; darker and more tart than a raspberry, from Kelly's canes"
+              "note": "toasted and steeped like a tea into the cream; it gives coconut and vanilla notes, no figs required — though ours come from the same tree as the fig on your first bite"
             },
             {
-              "term": "Mascarpone",
-              "pronunciation": "mah-skar-POH-neh",
-              "note": "the soft, barely sweet Italian cream cheese behind tiramisu; whipped here with honey and left loose"
+              "term": "King apple",
+              "pronunciation": null,
+              "note": "an old Northwest heirloom apple, one of the first to ripen at the farm each fall; cooked slowly down into the warm apple butter under the gelato"
             }
           ]
         }
@@ -1044,6 +1063,7 @@ const REF = {
     {
       "label": "Caffé",
       "subtitle": "to close",
+      "plateware": "Cups and saucers, poured tableside as dessert lands.",
       "dishes": [
         {
           "name": "Cafe Umbria",
@@ -1055,324 +1075,43 @@ const REF = {
       ]
     }
   ],
-  "wines": [
-  {
-    "name": "Bellenda ‘San Fermo’ Valdobbiadene Prosecco Superiore DOCG",
-    "vintage": "2024 Millesimato",
-    "type": "sparkling",
-    "region": "Valdobbiadene Prosecco Superiore DOCG, Veneto",
-    "grapes": "100% Glera",
-    "alcohol_pct": 11.5,
-    "pour_notes": "The arrival pour, and the one with the best story on the list: the cuvée is called San Fermo, after the little country church that sits beside the vineyard the grapes come from. Same name as the restaurant, entirely by coincidence. A fine, dense, continuous bead; delicate and fragrant, with a vein of minerality and a crisp walnut-husk tang on the finish. Brut, so it comes in dry rather than sweet. Pour it properly cold, 6-8°C, in a big glass rather than a flute.",
-    "specs": [
-      {
-        "label": "Body",
-        "rating": 2,
-        "low": "light",
-        "high": "full",
-        "lands": "light-bodied"
-      },
-      {
-        "label": "Dryness",
-        "rating": 4,
-        "low": "off-dry",
-        "high": "bone dry",
-        "lands": "brut, 7 g/L"
-      },
-      {
-        "label": "Acidity",
-        "rating": 4,
-        "low": "soft",
-        "high": "bright",
-        "lands": "crisp, lively"
-      },
-      {
-        "label": "Tannins",
-        "rating": 1,
-        "low": "none",
-        "high": "grippy",
-        "lands": "no tannins"
-      }
-    ],
-    "producer": "Bellenda works the steep Conegliano Valdobbiadene hills of the Veneto, the historic heart of Prosecco and the part of the zone that earns the Superiore designation. The San Fermo fruit comes off Carpesica, on limestone-clay soils full of morainic deposits left by the ancient Piave glacier, facing south-southwest at about 180 meters and planted at 4,000 vines per hectare. The name is the country church next to the vineyard.",
-    "winemaking": "Glera, second fermentation in the Italian (Charmat) method in 100hl stainless pressure tanks over roughly two months, with time on the lees. Millesimato means it is a single-vintage bottling rather than the usual multi-vintage blend. 7 g/L residual sugar puts it squarely in Brut."
-  },
-  {
-    "name": "Schiopetto Sauvignon ‘del Pompiere’",
-    "vintage": "2024",
-    "type": "white",
-    "region": "Venezia Giulia IGT, Friuli-Venezia Giulia",
-    "grapes": "100% Sauvignon Blanc",
-    "alcohol_pct": 13.5,
-    "pour_notes": "A Friulian Sauvignon with no oak on it at all — straw-gold with a green cast, smelling of wild herbs, field flowers and summer fruit, with a tropical lift underneath. Floral and mineral on the palate with real acid and a long, citrus-edged finish. It is built for the first half of the table: the chilled Dungeness bite, the raw squash ribbons and the scapece, and the crab-brodo risotto. The herbs on this menu run through almost every course, and this is a wine that meets herbs instead of fighting them. Pour it cold, 10-12°C.",
-    "specs": [
-      {
-        "label": "Body",
-        "rating": 2,
-        "low": "light",
-        "high": "full",
-        "lands": "light to medium-bodied"
-      },
-      {
-        "label": "Dryness",
-        "rating": 5,
-        "low": "off-dry",
-        "high": "bone dry",
-        "lands": "bone dry"
-      },
-      {
-        "label": "Acidity",
-        "rating": 4,
-        "low": "soft",
-        "high": "bright",
-        "lands": "crisp, high acid"
-      },
-      {
-        "label": "Tannins",
-        "rating": 1,
-        "low": "none",
-        "high": "grippy",
-        "lands": "no tannins"
-      }
-    ],
-    "producer": "Schiopetto sits in Capriva del Friuli, in the Collio hills hard against the Slovenian border. The house is one of the most important names in Italian white wine: founder Mario Schiopetto is widely credited with dragging Italian whites into the modern era in the 1960s and 70s by bringing in temperature control, stainless steel and clean, reductive winemaking that let the fruit and the site show through. The estate still farms those marly Eocene hillsides, where steady wind off the Adriatic and the Alps keeps the grapes fresh. ‘del Pompiere’ — ‘the fireman’s’ — is the house’s approachable line, and the label is a small red fire engine hauling a wine barrel and a ladder. Estate bottled by Soc. Agr. Terre Friulane; brought into Washington by Elliott Bay Distributing in Seattle.",
-    "winemaking": "Hand-harvested and gently pressed, then fermented in temperature-controlled stainless steel. Rested roughly four months in steel and two more in bottle before release. No wood anywhere in the process, which is the whole point — the aromatics, the salinity and the acid stay in front."
-  },
-  {
-    "name": "La Spinetta ‘Il Rosé di Casanova’",
-    "vintage": "2025",
-    "type": "rosé",
-    "region": "Toscana IGT Rosato, Terricciola, Tuscany",
-    "grapes": "50% Sangiovese · 50% Prugnolo Gentile (organic)",
-    "alcohol_pct": 12.0,
-    "pour_notes": "Pale copper-pink in a frosted bottle with Dürer’s rhinoceros on the label — the rhino is La Spinetta’s house mark and turns up on all their serious bottlings. Floral and fruity, citrus over a Mediterranean-scrub herbal note, then fresh and delicate on the palate with a mineral core and acid that carries all the way through. It is the bridge pour: light enough to follow the crab and the squash, structured enough to sit next to the lamb for anyone who does not want a red on a warm evening. Serve at 12°C, and in a real wine glass rather than something small.",
-    "specs": [
-      {
-        "label": "Body",
-        "rating": 2,
-        "low": "light",
-        "high": "full",
-        "lands": "light-bodied"
-      },
-      {
-        "label": "Dryness",
-        "rating": 5,
-        "low": "off-dry",
-        "high": "bone dry",
-        "lands": "bone dry"
-      },
-      {
-        "label": "Acidity",
-        "rating": 4,
-        "low": "soft",
-        "high": "bright",
-        "lands": "fresh, embracing acid"
-      },
-      {
-        "label": "Tannins",
-        "rating": 1,
-        "low": "none",
-        "high": "grippy",
-        "lands": "no tannins"
-      }
-    ],
-    "producer": "La Spinetta started in Piedmont and is best known there, but Casanova della Spinetta is their Tuscan estate at Terricciola, inland from Pisa. Roughly 57 acres at 250 meters on sandy ground rich in ancient oceanic sediment, facing southeast, with vines averaging about twenty years old. The grapes are certified organic (Valoritalia) and the estate carries a sustainable-farming certification. Produced by La Spinetta at Castagnole delle Lanze and bottled at Casanova della Spinetta in Terricciola.",
-    "winemaking": "Destemmed and softly pressed without pushing the fruit, with only brief skin contact to pull colour and not much else — which is why it stays pale and delicate rather than turning into a light red. Fermented about ten days, then roughly three months on its lees in stainless steel. No oak."
-  },
-  {
-    "name": "Fabrizio Pratesi ‘Locorosso’",
-    "vintage": "2023",
-    "type": "red",
-    "region": "Toscana IGT, Carmignano, Tuscany",
-    "grapes": "100% Sangiovese (organic)",
-    "alcohol_pct": 13.5,
-    "pour_notes": "Pure Sangiovese from Carmignano, and — like everything else on this list — no oak on it. Deep ruby, with strawberry, cherry and black currant, a dark spice edge and a faint note of chocolate. Ample on the palate but soft, with ripe tannins and the fresh acid Sangiovese is built on. That acid is the reason it works here: it cuts the fat on the crisped lamb shoulder and stands up to the sweet-tart charred onion agrodolce without turning heavy or jammy against it. Good with a light chill on a warm evening under the pergola.",
-    "specs": [
-      {
-        "label": "Body",
-        "rating": 3,
-        "low": "light",
-        "high": "full",
-        "lands": "medium-bodied"
-      },
-      {
-        "label": "Dryness",
-        "rating": 5,
-        "low": "off-dry",
-        "high": "bone dry",
-        "lands": "bone dry"
-      },
-      {
-        "label": "Acidity",
-        "rating": 4,
-        "low": "soft",
-        "high": "bright",
-        "lands": "fresh, lifted acid"
-      },
-      {
-        "label": "Tannins",
-        "rating": 3,
-        "low": "none",
-        "high": "grippy",
-        "lands": "soft, well-integrated"
-      }
-    ],
-    "producer": "Fabrizio Pratesi farms in Carmignano, the small hill zone northwest of Florence that has been growing wine since well before it was fashionable. The family has held the Lolocco estate since 1875, and this wine takes its name from it. Ten hectares, farmed organically, on stony medium-textured ground built from alberese marly limestone, clay schist and sandstone — poor, well-drained soil that keeps the vines honest. Imported by Vinifera Imports.",
-    "winemaking": "Guyot-trained at 6,250 vines per hectare, organically farmed. Fermented about twenty days in temperature-controlled stainless steel, then roughly six months in steel and a rest in bottle before release. No oak, deliberately — Pratesi makes oak-aged Carmignano too, and this bottling is the one meant to show the fruit and the site straight."
-  },
-  {
-    "name": "Les Marées Non-Alcoholic Sparkling Blanc de Blancs",
-    "vintage": null,
-    "type": "sparkling NA",
-    "region": "Southern France",
-    "grapes": "100% organic Chardonnay",
-    "alcohol_pct": 0,
-    "pour_notes": "A real sparkling NA wine, not soda. Organic Chardonnay from Southern France. Green apple, mineral, bright. Treat it like a Blanc de Blancs — chill it, pour it tall, toast with it.",
-    "specs": [
-      {
-        "label": "Body",
-        "rating": 2,
-        "low": "light",
-        "high": "full",
-        "lands": "light-bodied"
-      },
-      {
-        "label": "Dryness",
-        "rating": 5,
-        "low": "off-dry",
-        "high": "bone dry",
-        "lands": "bone dry"
-      },
-      {
-        "label": "Acidity",
-        "rating": 5,
-        "low": "soft",
-        "high": "bright",
-        "lands": "bright, lifted"
-      },
-      {
-        "label": "Tannins",
-        "rating": 1,
-        "low": "none",
-        "high": "grippy",
-        "lands": "no tannins"
-      }
-    ],
-    "producer": "Les Marées is made from organic Chardonnay grown on the sunlit shores of Southern France. The maker takes the Blanc de Blancs idea (Chardonnay-only sparkling, the same backbone as Champagne) and removes the alcohol while preserving the structure.",
-    "winemaking": "Made in the spirit of a real sparkling wine — bright, refined, structured around green apple and mineral. Aimed at slow café afternoons, easy celebrations, and any moment that calls for sparkle without alcohol."
-  },
-  {
-    "name": "Cantina Zaccagnini Alcohol-Removed White",
-    "vintage": null,
-    "type": "white NA",
-    "region": "Abruzzo, Italy",
-    "grapes": "Italian white grapes",
-    "alcohol_pct": 0,
-    "pour_notes": "A premium alcohol-removed Italian white from Abruzzo. Bright straw color, yellow fruits, white flowers, delicate and balanced. Made from a real wine that's had the alcohol gently distilled out — full character, zero buzz.",
-    "specs": [
-      {
-        "label": "Body",
-        "rating": 3,
-        "low": "light",
-        "high": "full",
-        "lands": "medium-bodied"
-      },
-      {
-        "label": "Dryness",
-        "rating": 4,
-        "low": "off-dry",
-        "high": "bone dry",
-        "lands": "dry"
-      },
-      {
-        "label": "Acidity",
-        "rating": 3,
-        "low": "soft",
-        "high": "bright",
-        "lands": "balanced"
-      },
-      {
-        "label": "Tannins",
-        "rating": 1,
-        "low": "none",
-        "high": "grippy",
-        "lands": "no tannins"
-      }
-    ],
-    "producer": "The Ciccio Zaccagnini estate sits on 500 acres in Bolognano, about 30 miles from the Adriatic coast and 8 miles from the Maiella mountains (which rise to 9,000 ft). The vineyards are in the cru section 'Colle Morto di Bolognano.' Marcello Zaccagnini and winemaker Concezio Marulli are central figures in the modern Abruzzo wine renaissance, and every bottle of this line carries a small piece of tralcetto — grape vine — as the estate's signature.",
-    "winemaking": "A first-class wine is the starting point — quality in, quality out. The alcohol is removed in a two-step distillation in a vacuum evaporator: the first pass captures the volatile aromas (which evaporate first), and those aromas are condensed and held aside. The second pass evaporates the ethanol. Finally the preserved aromas are returned to the dealcoholized wine, so the finished bottle retains the original wine's character without the alcohol."
-  }
-],
+  "wines": [],
   "cocktails": [
-  {
-    "name": "Strawberry & Raspberry Sangria",
-    "tagline": "gin · aperol · macerated berries",
-    "pour_notes": "Katie’s summer sangria, built on gin rather than brandy. Terramar gin and Aperol under Skagit strawberries and Swan House raspberries macerated down to their syrup, lengthened with rosé and lifted with lemon. Deep pink in the glass, tart at the front and dry at the back, made to be drunk cold in the early evening while the fire is still coming up.",
-    "ingredients": [
-      {
-        "name": "Terramar gin",
-        "amount": "",
-        "highlight": "Skagit local",
-        "description": "Gin from Terramar Brewstillery in Edison, just down the road — an award-winning brewery and distillery set in a former slaughterhouse on the old Edison Slough oxbow. They distill it grain-to-glass from Washington-grown, craft-malted barley (the same base as their beer) and are growing their own juniper and botanicals on the property. A true neighbor pour."
-      },
-      {
-        "name": "Aperol",
-        "amount": "",
-        "description": "The bittersweet orange spine under the berries, and a good part of where the colour comes from. Low in alcohol, so it lengthens the drink without weighting it."
-      },
-      {
-        "name": "Strawberry and raspberry maceration",
-        "amount": "",
-        "highlight": "From the farm",
-        "description": "Skagit strawberries and raspberries cut at Swan House, macerated with sugar until they give up their syrup. That syrup is the drink, rather than a sweetener stirred in after."
-      },
-      {
-        "name": "Lemon",
-        "amount": "",
-        "description": "Fresh lemon for lift and acid."
-      },
-      {
-        "name": "Rosé",
-        "amount": "",
-        "description": "The sangria element, lengthening the drink and carrying the fruit."
-      }
-    ]
-  },
-  {
-    "name": "Lavender Lemonade",
-    "tagline": "zero-proof · the farm mocktail",
-    "pour_notes": "Lavender cut fresh at Swan House, steeped and folded into a proper lemonade — floral and cooling, tart enough to be a real drink rather than a consolation. This is the zero-proof pour for the evening, and it drinks well straight through the crab bite and the squash.",
-    "ingredients": [
-      {
-        "name": "Swan House lavender",
-        "amount": "",
-        "highlight": "From the farm",
-        "description": "Lavender grown and cut at Swan House, steeped for its perfume without letting it go soapy. The most direct farm-to-glass line on the drink list."
-      },
-      {
-        "name": "Lemon",
-        "amount": "",
-        "description": "Fresh lemon, the tart backbone."
-      },
-      {
-        "name": "Simple syrup",
-        "amount": "",
-        "description": "Sweetened just enough to balance the acid and carry the lavender."
-      },
-      {
-        "name": "Water or soda",
-        "amount": "",
-        "description": "Lengthened and served cold over ice."
-      }
-    ]
-  }
-]
+    {
+      "name": "Lavender Lemonade",
+      "tagline": "zero-proof · the farm mocktail",
+      "pour_notes": "Lavender cut fresh at Swan House, steeped and folded into a proper lemonade — floral and cooling, tart enough to be a real drink rather than a consolation. This is the zero-proof pour for the evening, and it drinks well straight through the crudo and the caprese.",
+      "ingredients": [
+        {
+          "name": "Swan House lavender",
+          "amount": "",
+          "highlight": "From the farm",
+          "description": "Lavender grown and cut at Swan House, steeped for its perfume without letting it go soapy. The most direct farm-to-glass line on the drink list."
+        },
+        {
+          "name": "Lemon",
+          "amount": "",
+          "description": "Fresh lemon, the tart backbone."
+        },
+        {
+          "name": "Simple syrup",
+          "amount": "",
+          "description": "Sweetened just enough to balance the acid and carry the lavender."
+        },
+        {
+          "name": "Water or soda",
+          "amount": "",
+          "description": "Lengthened and served cold over ice."
+        }
+      ]
+    }
+  ]
 };
 const DATES = [
-  { date: "2026-08-08", display: "Sat, August 8" },
-  { date: "2026-08-09", display: "Sun, August 9" },
-  { date: "2026-08-15", display: "Sat, August 15" },
-  { date: "2026-08-16", display: "Sun, August 16" }
+  { date: "2026-09-05", display: "Sat, September 5" },
+  { date: "2026-09-06", display: "Sun, September 6" },
+  { date: "2026-09-12", display: "Sat, September 12" },
+  { date: "2026-09-13", display: "Sun, September 13" }
 ];
 
 
@@ -1388,7 +1127,7 @@ const FARM_LAT = 48.42, FARM_LON = -122.47;
 
 /* Allergens present on this series' menu. HAND-DERIVED AND CHEF-CONFIRMED — do not
    auto-parse this from REF. "Egg-charred scapece" means the Big Green Egg, not eggs. */
-const MENU_ALLERGENS = ["Shellfish", "Tree nut", "Dairy", "Gluten", "Egg", "Sunflower seed"];
+const MENU_ALLERGENS = ["Fish", "Shellfish", "Dairy", "Gluten", "Egg"];  /* Sept draft, HAND-DERIVED, PENDING SAM CONFIRM: tree nut held until the romesco build locks; re-check kimchi build for fish-sauce/shrimp before final. */
 
 const LS_DATE = "shf_date_" + SERIES_ID;
 const LS_ALG  = "shf_alg_" + SERIES_ID;
