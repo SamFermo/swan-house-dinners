@@ -443,6 +443,12 @@ body.editing .editable-field { display: block; }
   font-size: 13.5px; line-height: 1.5; color: var(--accent-dark);
 }
 .alg-fallback { font-size: 12.5px; color: var(--text-soft); margin-top: 10px; line-height: 1.5; }
+.alg-blocked {
+  font-size: 12.5px; color: var(--wood); background: var(--gold-soft);
+  border: 1px solid var(--gold); border-radius: 8px;
+  padding: 9px 11px; margin: 0 0 10px; line-height: 1.5;
+}
+.alg-blocked a { color: var(--wood); font-weight: 700; }
 
 /* ---------- past dinners ---------- */
 .past-list { display: flex; flex-direction: column; gap: 10px; }
@@ -1308,6 +1314,51 @@ async function lookupByEmail(email){
   return bookings.filter(b => b.date === chosen)[0] || bookings[0];
 }
 
+/* App Check preflight (2026-08-27). A guest whose browser blocks Google's reCAPTCHA
+   (content blocker, iOS Lockdown Mode) passes every visual check and then has the
+   Firestore write rejected only at send — which is what happened to a 9/12 guest on
+   2026-08-26: she assumed the form was broken and emailed Tim through the fail-soft.
+   This preflight actually requests an App Check token shortly after load; if that
+   fails, the form shows the email route UP FRONT instead of after a failed attempt.
+
+   Deliberately advisory only. It never disables the send button and never blocks a
+   submit, so a false positive (slow network) costs a redundant hint, not a lost
+   submission. And it must never re-render the whole panel — a guest may be mid-typing
+   when it resolves — so it injects the notice in place instead. */
+let algBlocked = false;
+
+function algNoticeHTML(){
+  return `<div class="alg-blocked" id="alg-blocked">Heads up — your browser seems to be blocking
+    the secure service this form sends through (often a content blocker or Lockdown Mode), so the
+    button below may not work. If it doesn't, email
+    <a href="mailto:tim@sanfermoseattle.com?subject=Dietary%20needs%20for%20our%20farm%20dinner">tim@sanfermoseattle.com</a>
+    instead — we read those just as quickly.</div>`;
+}
+
+function algShowBlockedNotice(){
+  if (!algBlocked) return;
+  if (document.getElementById("alg-blocked")) return;
+  const btn = document.getElementById("alg-send");
+  if (!btn) return; /* form not on screen yet; algFormHTML includes the notice on later renders */
+  btn.insertAdjacentHTML("beforebegin", algNoticeHTML());
+}
+
+async function appCheckPreflight(){
+  try {
+    await fbInit();
+    if (!fbAcMod || !fbAppCheck) throw new Error("app-check-never-initialized");
+    await Promise.race([
+      fbAcMod.getToken(fbAppCheck, false),
+      new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("app-check-timeout")); }, 8000); })
+    ]);
+    algBlocked = false;
+  } catch (e) {
+    algBlocked = true;
+    console.warn("App Check preflight failed — showing email-first hint:", e && (e.code || e.message));
+    algShowBlockedNotice();
+  }
+}
+
 function algFormHTML(){
   const chosen = lsGet(LS_DATE);
   /* No silent default. With no `selected` anywhere the browser picks the FIRST option,
@@ -1338,6 +1389,7 @@ function algFormHTML(){
         <div class="alg-hint">If someone else booked for you, use their name.</div>
       </div>
     </div>
+    ${algBlocked ? algNoticeHTML() : ""}
     <button class="alg-send" id="alg-send">Send to the kitchen</button>
     <div class="alg-status" id="alg-status"></div>
     <div class="alg-fallback">Prefer email? Write to <a href="mailto:tim@sanfermoseattle.com?subject=Dietary%20needs%20for%20our%20farm%20dinner">tim@sanfermoseattle.com</a> and we'll pick it up there.</div>`;
@@ -1739,6 +1791,7 @@ const FIREBASE_CONFIG = {
 };
 const EDIT_PIN = "1936"; /* change me — share only with Tim & Kelly */
 let fbDb = null, fbMod = null;
+let fbAppCheck = null, fbAcMod = null; /* captured so appCheckPreflight can request a token */
 
 async function fbInit() {
   if (fbDb) return fbDb;
@@ -1750,7 +1803,8 @@ async function fbInit() {
   // Wrapped so a hiccup can't block load; runs UNENFORCED (monitoring) until enforced.
   try {
     const acMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js");
-    acMod.initializeAppCheck(app, {
+    fbAcMod = acMod;
+    fbAppCheck = acMod.initializeAppCheck(app, {
       provider: new acMod.ReCaptchaEnterpriseProvider('6LeCgjAtAAAAABX8x9jbb3tkOXmmQ5UvNZD1RL2_'),
       isTokenAutoRefreshEnabled: true,
     });
@@ -1904,6 +1958,7 @@ function runIntroMorph(){
 wireNav();
 renderDates(); renderTeaser(); renderMenu(); renderWines(); renderCocktails(); renderGuestInfo();
 loadGuestContent();
+appCheckPreflight();
 showView((location.hash || "#home").slice(1), false);
 if (new URLSearchParams(location.search).get("edit") === "1") enterEditMode();
 runIntroMorph();
