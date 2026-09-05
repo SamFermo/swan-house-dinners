@@ -655,7 +655,7 @@ html.shf-intro-running .bubble.intro-in { opacity: 1; }
         <div class="lcard-go">Find the farm &rarr;</div>
       </div>
       <div class="lcard" tabindex="0" role="button" data-go="evening">
-        <div class="lcard-eyebrow">4:30 to 9 pm</div>
+        <div class="lcard-eyebrow">3:30 to 8 pm</div>
         <div class="lcard-title">Your Evening</div>
         <div class="lcard-sub">Arrival, farm tours, dinner under the pergola, and how the night runs.</div>
         <div class="lcard-go">See the timeline &rarr;</div>
@@ -770,15 +770,15 @@ The last stretch is gravel and unlit, so take it slowly after dark.</div>
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time">4:30 &ndash; 5:30 pm</div>
+          <div class="ev-time">3:30 &ndash; 4:30 pm</div>
           <div class="ev-name">Arrival &amp; farm tours</div>
-          <div class="ev-desc">Arrive any time after 4:30 for welcome drinks, hors d'oeuvres, and a walk through the farm.</div>
+          <div class="ev-desc">Arrive any time after 3:30 for welcome drinks, hors d'oeuvres, and a walk through the farm.</div>
         </div>
       </div>
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time">5:30 pm</div>
+          <div class="ev-time">4:30 pm</div>
           <div class="ev-name">Dinner in the garden</div>
           <div class="ev-desc">We sit down together at three communal tables under the pergola for two passed bites and four courses, paired with wine. Running behind? Give us a call at 206.551.3328 and we'll make sure you're set.</div>
         </div>
@@ -786,7 +786,7 @@ The last stretch is gravel and unlit, so take it slowly after dark.</div>
       <div class="ev-step">
         <div class="ev-rail"><div class="ev-dot"></div><div class="ev-line"></div></div>
         <div class="ev-body">
-          <div class="ev-time">Wraps up around 9 pm</div>
+          <div class="ev-time">Wraps up around 8 pm</div>
           <div class="ev-name">Dessert &amp; coffee</div>
           <div class="ev-desc">The evening closes with dessert and Cafe Umbria coffee.</div>
         </div>
@@ -1203,7 +1203,7 @@ function renderNight(){
   const days = Math.round((new Date(chosen + "T17:30:00") - new Date()) / 86400000);
   const when = days > 1 ? days + " days away" : days === 1 ? "Tomorrow" : days === 0 ? "Tonight" : "That's a wrap";
   box.innerHTML = `<div class="wx">
-      <div class="wx-tile"><div class="wx-k">Your dinner</div><div class="wx-v">${esc(d.display)}</div><div class="wx-note">Doors from 4:30, we sit at 5:30</div></div>
+      <div class="wx-tile"><div class="wx-k">Your dinner</div><div class="wx-v">${esc(d.display)}</div><div class="wx-note">Doors from 3:30, we sit at 4:30</div></div>
       <div class="wx-tile"><div class="wx-k">Countdown</div><div class="wx-v">${esc(when)}</div><div class="wx-note">&nbsp;</div></div>
     </div>
     <div class="wx" id="wx-box"><div class="wx-tile"><div class="wx-k">Forecast</div><div class="wx-v">&mdash;</div><div class="wx-note">Checking the forecast for the farm&hellip;</div></div></div>`;
@@ -1241,8 +1241,8 @@ async function loadWeather(dateStr){
     if (!r.ok) throw new Error("http " + r.status);
     const j = await r.json();
     const hrs = (j.hourly && j.hourly.time) || [];
-    const i18 = hrs.indexOf(dateStr + "T18:00");
-    const i21 = hrs.indexOf(dateStr + "T21:00");
+    const i18 = hrs.indexOf(dateStr + "T17:00");
+    const i21 = hrs.indexOf(dateStr + "T20:00");
     const t18 = i18 >= 0 ? Math.round(j.hourly.temperature_2m[i18]) : null;
     const t21 = i21 >= 0 ? Math.round(j.hourly.temperature_2m[i21]) : null;
     const rain = (j.daily && j.daily.precipitation_probability_max) ? j.daily.precipitation_probability_max[0] : null;
@@ -1253,7 +1253,7 @@ async function loadWeather(dateStr){
                                        : t21 < 66 ? "A light layer is a good idea, it cools off by the river."
                                                   : "Warm through the evening, a light layer is plenty.";
     box.innerHTML =
-      `<div class="wx-tile"><div class="wx-k">At the table</div><div class="wx-v">${t18}&deg;</div><div class="wx-note">6 pm${t21 !== null ? ", " + t21 + "&deg; by 9 pm" : ""}</div></div>` +
+      `<div class="wx-tile"><div class="wx-k">At the table</div><div class="wx-v">${t18}&deg;</div><div class="wx-note">5 pm${t21 !== null ? ", " + t21 + "&deg; by 8 pm" : ""}</div></div>` +
       (rain !== null ? `<div class="wx-tile"><div class="wx-k">Rain</div><div class="wx-v">${Math.round(rain)}%</div><div class="wx-note">Dinner is under cover either way</div></div>` : "") +
       (sunset ? `<div class="wx-tile"><div class="wx-k">Sunset</div><div class="wx-v">${esc(sunset)}</div><div class="wx-note">${esc(layer)}</div></div>` : "");
   } catch (e) {
