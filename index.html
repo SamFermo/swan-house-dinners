@@ -865,8 +865,8 @@ The last stretch is gravel and unlit, so take it slowly after dark.</div>
    Menu mirrors checkin-app/data/reference/2026-09.json (guest-tone edits applied; BOH detail stripped).
    September 2026. Wines deployed 2026-09-05 (morning of W1): Bellenda 'San Fermo' Prosecco,
    La Spinetta 'Casanova della Spinetta' Vermentino 2025 (white), Fabrizio Pratesi 'Locorosso' 2023
-   (red), plus the two NA pours. NO rosé this series. Cocktail still pending Katie; only Lavender
-   Lemonade is listed. Wines mirror checkin-app/data/reference/2026-09.json exactly.
+   (red), plus the two NA pours. NO rosé this series. Cocktail added 2026-09-05: Nectarine & Raspberry Gin Spritz (Katie), Lavender
+   Lemonade stays. Wines mirror checkin-app/data/reference/2026-09.json exactly.
    GUEST_INFO defaults are overridden live by Firestore guestContent/<series>.
    ============================================================ */
 const SERIES_ID = "2026-09";
@@ -1283,6 +1283,45 @@ const REF = {
     }
   ],
   "cocktails": [
+    {
+      "name": "Nectarine & Raspberry Gin Spritz",
+      "tagline": "gin · bianco vermouth · gran classico · soda",
+      "pour_notes": "Katie’s September drink. Terramar gin over nectarines and Swan House raspberries macerated down to their syrup, with bianco vermouth for a soft floral middle and a measure of Gran Classico for bitterness at the back. Lemon for lift, then topped with soda, so it drinks long and cold and slightly bitter while the fire comes up. Pale coral in the glass.",
+      "ingredients": [
+        {
+          "name": "Terramar gin",
+          "amount": "",
+          "highlight": "Skagit local",
+          "description": "Gin from Terramar Brewstillery in Edison, just down the road — an award-winning brewery and distillery set in a former slaughterhouse on the old Edison Slough oxbow. They distill it grain-to-glass from Washington-grown, craft-malted barley (the same base as their beer) and are growing their own juniper and botanicals on the property. A true neighbor pour."
+        },
+        {
+          "name": "Nectarine and raspberry maceration",
+          "amount": "",
+          "highlight": "From the farm",
+          "description": "Ripe nectarines and raspberries cut at Swan House, macerated with sugar until they give up their syrup. The syrup is the drink, not a sweetener added after."
+        },
+        {
+          "name": "Bianco vermouth",
+          "amount": "",
+          "description": "White vermouth, lightly sweet and floral, which rounds the fruit and softens the gin."
+        },
+        {
+          "name": "Gran Classico",
+          "amount": "",
+          "description": "A Swiss bitter in the old Turin style, built on gentian and wormwood with a bright orange edge. Where the bitterness and the colour come from; drier and more herbal than Aperol."
+        },
+        {
+          "name": "Lemon",
+          "amount": "",
+          "description": "Fresh lemon for acid and lift."
+        },
+        {
+          "name": "Soda water",
+          "amount": "",
+          "description": "Topped to length, so it stays light and cold through the welcome hour."
+        }
+      ]
+    },
     {
       "name": "Lavender Lemonade",
       "tagline": "zero-proof · the farm mocktail",
